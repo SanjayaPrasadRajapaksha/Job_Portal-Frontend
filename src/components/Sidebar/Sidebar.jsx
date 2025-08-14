@@ -1,5 +1,5 @@
+import { FaPaperPlane } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-
 const jobCategories = [
   { name: "IT & Software Development", path: "/categories/software-development" },
   { name: "Hardware & Technical Support", path: "/categories/hardware-technical-support" },
@@ -32,9 +32,30 @@ const jobCategories = [
 
 export default function Sidebar() {
   return (
-    <aside className="h-full w-64 min-w-[220px] flex flex-col bg-[#fdfffc] border-r border-[rgb(247,184,1)] shadow-lg z-20">
-      <div className="relative flex-1 flex flex-col bg-gradient-to-b from-[rgb(247,184,1)] to-[rgb(255,206,61)] overflow-hidden">
-        
+  <aside className="w-64 min-w-[220px] flex flex-col bg-[#fdfffc] border-r border-[rgb(247,184,1)] shadow-lg z-20 max-h-[90vh] my-4 rounded-2xl">
+      <div className="flex-1 flex flex-col bg-gradient-to-b from-[rgb(247,184,1)] to-[rgb(255,206,61)] overflow-hidden">
+
+
+      {/* Inline Subscribe Form */}
+        <div className="p-1 bg-white shadow-md border-b border-[rgb(247,184,1)]">
+
+          <form className="flex items-center gap-2">
+            <input
+              type="email"
+              placeholder="Subscribe with your email"
+              className="flex-1 px-3 py-2 rounded-full border border-[rgb(247,184,1)] focus:outline-none focus:ring-2 focus:ring-[rgb(247,184,1)] text-sm placeholder-[#720026] bg-white"
+              required
+            />
+            <button
+              type="submit"
+              className="p-2 rounded-full bg-[#720026] text-[rgb(247,184,1)] shadow-md hover:bg-[#a8324a] hover:text-white transition-all duration-200 border-2 border-[rgb(247,184,1)] flex items-center justify-center"
+            >
+              <FaPaperPlane className="text-sm" />
+            </button>
+          </form>
+
+        </div>
+
         {/* Heading */}
         <h2 className="bg-[#720026] text-[#ecf8f8] text-sm text-center py-3 font-semibold tracking-wide uppercase">
           JOB CATEGORIES
@@ -58,6 +79,9 @@ export default function Sidebar() {
         <div className="bg-[#720026] text-[#ecf8f8] text-xs text-center py-2 flex items-center justify-center gap-2 border-t border-[rgb(247,184,1)]">
           <span className="animate-bounce">⬇️</span> Scroll for More <span className="animate-bounce">⬇️</span>
         </div>
+
+        
+  
       </div>
     </aside>
   );
