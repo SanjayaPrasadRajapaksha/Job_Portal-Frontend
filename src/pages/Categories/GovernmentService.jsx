@@ -1,0 +1,8 @@
+export default function GovernmentService() {
+  return (
+    <div className="p-8">
+      <h1 className="text-2xl font-bold mb-4">Government Service</h1>
+      <p>Explore jobs and information related to Government Service.</p>
+    </div>
+  );
+}

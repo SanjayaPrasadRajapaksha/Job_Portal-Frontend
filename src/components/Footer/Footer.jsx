@@ -1,71 +1,65 @@
 import React from 'react';
-import { FaFacebookF, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
-import { SiX } from 'react-icons/si'; // Twitter X icon
+import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { SiX } from 'react-icons/si'; // X (Twitter) icon
 
 const footerLinks = [
-  { name: "Home", href: "#" },
-  { name: "Banner promotions", href: "#" },
-  { name: "Top Employers", href: "#" },
-  { name: "T & C", href: "#" },
-  { name: "Privacy Policy", href: "#" },
-  { name: "FAQ", href: "#" },
-  { name: "Media Room", href: "#" },
-  { name: "Partners", href: "#" },
-  { name: "LMI", href: "#" },
-  { name: "Contact Us", href: "#" },
-  { name: "Sitemap", href: "#" },
+  "Home",
+  "Banner promotions",
+  "Top Employers",
+  "T & C",
+  "Privacy Policy",
+  "FAQ",
+  "Media Room",
+  "Partners",
+  "LMI",
+  "Contact Us",
+  "Sitemap"
 ];
 
 const socialLinks = [
-  { icon: <FaFacebookF />, href: "#", label: "Facebook", bg: "#1877f3" },
-  { icon: <SiX />, href: "#", label: "X", bg: "#222" },
-  { icon: <FaLinkedinIn />, href: "#", label: "LinkedIn", bg: "#0077b5" },
-  { icon: <FaInstagram />, href: "#", label: "Instagram", bg: "#ed4956" },
+  { icon: <FaFacebookF />, href: "#", label: "Facebook", bg: "#FFBD00" },
+  { icon: <SiX />, href: "#", label: "X", bg: "#FF9100" },
+  { icon: <FaLinkedinIn />, href: "#", label: "LinkedIn", bg: "#FF6D00" },
+  { icon: <FaInstagram />, href: "#", label: "Instagram", bg: "#FF5400" },
 ];
 
 export default function Footer() {
   return (
     <footer>
-      {/* Top nav bar */}
-      <div className="w-full bg-gradient-to-b from-neutral-800 to-neutral-900 shadow-inner">
-        <div className="max-w-screen-xl mx-auto flex items-center justify-between px-2 py-1">
-          <nav className="flex-1 flex items-center gap-1">
+      {/* Top links section */}
+      <div className="w-full bg-[#1b263b] shadow-inner">
+        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-1 gap-1">
+          <nav className="flex flex-wrap gap-2 justify-center md:justify-start text-sm">
             {footerLinks.map((link, idx) => (
-              <React.Fragment key={link.name}>
+              <React.Fragment key={link}>
                 <a
-                  href={link.href}
-                  className="px-2 text-sm text-blue-100 hover:text-orange-200 transition"
+                  href="#"
+                  className="px-1 text-[#e0e1dd] hover:text-[#FFBD00] font-semibold transition"
                 >
-                  {link.name}
+                  {link}
                 </a>
-                {idx !== footerLinks.length - 1 && (
-                  <span className="text-gray-400">|</span>
-                )}
+                {idx !== footerLinks.length - 1 && <span className="text-[#778da9]">|</span>}
               </React.Fragment>
             ))}
           </nav>
-          <div className="flex gap-1 ml-2">
+
+          {/* Social Icons */}
+          <div className="flex gap-1 mt-1 md:mt-0">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
                 href={social.href}
                 aria-label={social.label}
-                className="w-7 h-7 rounded flex items-center justify-center"
-                style={{
-                  background: social.bg,
-                }}
+                className="w-7 h-7 rounded-full flex items-center justify-center transition-transform hover:scale-110 shadow-md"
+                style={{ background: social.bg }}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="text-white text-lg">{social.icon}</span>
+                <span className="text-white text-sm">{social.icon}</span>
               </a>
             ))}
           </div>
         </div>
-      </div>
-      {/* Lower copyright bar */}
-      <div className="w-full bg-gray-300 text-center py-1 text-xs text-gray-900 border-t border-gray-400">
-        Copyright © 2006-2025 Genesisi Software (Pvt) Ltd, All Rights Reserved.
       </div>
     </footer>
   );

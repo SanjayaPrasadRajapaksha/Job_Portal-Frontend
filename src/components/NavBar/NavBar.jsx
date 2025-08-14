@@ -1,55 +1,52 @@
-import { FaUserFriends, FaSignInAlt } from 'react-icons/fa';
+import { FaSignInAlt, FaUserFriends } from 'react-icons/fa';
 
 export default function NavBar() {
   return (
-    <nav className="flex items-center justify-between bg-white px-6 py-2 h-20 shadow">
+    <nav className="flex items-center justify-between bg-[#ecf8f8] px-6 py-2 h-20 shadow-lg border-b border-[rgb(247,184,1)]">
       {/* Left Section: Logo and Tagline */}
       <div className="flex items-center gap-2 min-w-fit">
         <div className="flex flex-col">
-          <span className="font-extrabold text-3xl tracking-tight text-[#7C2222] leading-none flex items-baseline">
+          <span className="font-extrabold text-3xl tracking-tight text-[#720026] leading-none flex items-baseline">
             jobcore
-            <span className="text-xs align-super ml-1 font-normal text-[#7C2222]">®</span>
+            <span className="text-xs align-super ml-1 font-normal text-[rgb(247,184,1)]">®</span>
           </span>
-          <span className="text-xs text-gray-700 -mt-1">recruitment made easy</span>
+          <span className="text-xs text-[rgb(247,184,1)] -mt-1">recruitment made easy</span>
         </div>
-        {/* Post Vacancy Button */}
+      </div>
+
+      {/* Right Section: All Nav Buttons and Links */}
+      <div className="flex items-center gap-3">
         <a
           href="#"
-          className="ml-4 px-4 py-2 rounded bg-[#7C2222] text-white font-semibold shadow-lg text-sm hover:bg-[#a03a3a] transition"
-          style={{ boxShadow: '0 0 8px #b97e7e' }}
+          className="px-4 py-2 rounded bg-[#720026] text-[#ecf8f8] font-semibold shadow text-sm hover:bg-[rgb(247,184,1)] hover:text-[#720026] transition border border-[#720026]"
         >
           Post Your Vacancy
         </a>
-        {/* Happy Customers Button */}
         <a
           href="#"
-          className="ml-2 px-4 py-2 rounded bg-[#f3bb22] text-black font-semibold text-sm hover:bg-[#ffd54f] transition"
+          className="px-4 py-2 rounded bg-[rgb(247,184,1)] text-[#720026] font-semibold text-sm hover:bg-[#720026] hover:text-[#ecf8f8] transition border border-[rgb(247,184,1)]"
         >
           Happy Customers
         </a>
-        {/* Nav Links */}
-        <a href="#" className="ml-5 text-black font-semibold hover:underline text-sm">
+        <a href="#" className="text-[#720026] font-semibold hover:underline text-sm">
           Top Employers
         </a>
-        <a href="#" className="ml-4 text-black font-semibold hover:underline text-sm">
+        <a href="#" className="text-[#720026] font-semibold hover:underline text-sm">
           Contact Us
         </a>
-      </div>
-      {/* Right Section: Icon Buttons */}
-      <div className="flex gap-2">
         <a
           href="#"
-          className="bg-[#f3bb22] hover:bg-[#ffd54f] rounded px-3 py-2 flex items-center justify-center"
+          className="bg-[rgb(247,184,1)] hover:bg-[#720026] rounded px-3 py-2 flex items-center justify-center transition-shadow border border-[rgb(247,184,1)]"
           title="User"
         >
-          <FaUserFriends className="text-xl text-black" />
+          <FaUserFriends className="text-xl text-[#720026]" />
         </a>
         <a
           href="#"
-          className="bg-[#f3bb22] hover:bg-[#ffd54f] rounded px-3 py-2 flex items-center justify-center"
+          className="bg-[rgb(247,184,1)] hover:bg-[#720026] rounded px-3 py-2 flex items-center justify-center transition-shadow border border-[rgb(247,184,1)]"
           title="Login"
         >
-          <FaSignInAlt className="text-xl text-black" />
+          <FaSignInAlt className="text-xl text-[#720026]" />
         </a>
       </div>
     </nav>

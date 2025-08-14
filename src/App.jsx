@@ -1,13 +1,13 @@
 import React from "react"
 import { BrowserRouter as Router } from 'react-router-dom'
 import Layout from '../src/components/Layout/Layout'
-import TPRoutes from '../src/routes/TPRoutes'
+import Routes from '../src/routes/Routes'
 
 function App() {
   return (
     <Router>
       <Layout>
-        <TPRoutes />
+        <Routes />
       </Layout>
     </Router>
   )
