@@ -12,24 +12,24 @@ export default function CommonSearchBar({ onSearch }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center w-full max-w-xs bg-white rounded-full shadow-md overflow-hidden border border-gray-200"
+      className="flex items-center w-full max-w-xs gap-2"
     >
-      {/* Input field */}
+      {/* Boxed input field */}
       <input
         type="text"
         placeholder="Search..."
-        className="flex-1 px-3 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition-all duration-300 text-sm"
+        className="flex-1 px-3 py-2 placeholder-gray-400 border border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-300 text-sm bg-white"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
         style={{ minWidth: "0" }}
       />
-
-      {/* Clickable round search icon on the right */}
+      {/* Separate search icon button */}
       <button
         type="submit"
-        className="flex items-center justify-center w-9 h-9 bg-green-500 rounded-full hover:bg-green-600 transition-all duration-300"
+        className="flex items-center justify-center w-10 h-10 bg-green-500 rounded-md hover:bg-green-600 transition-all duration-300"
+        aria-label="Search"
       >
-        <FiSearch className="text-white text-base" />
+        <FiSearch className="text-white text-lg" />
       </button>
     </form>
   );

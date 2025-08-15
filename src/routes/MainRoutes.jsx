@@ -1,4 +1,5 @@
-import { Route, Routes } from "react-router-dom";
+
+import { Route,Routes} from "react-router-dom";
 import AdministrationOffice from "../pages/Categories/AdministrationOffice";
 import AgricultureEnvironment from "../pages/Categories/AgricultureEnvironment";
 import ArtsDesign from "../pages/Categories/ArtsDesign";
@@ -26,8 +27,9 @@ import SkilledTrades from "../pages/Categories/SkilledTrades";
 import SoftwareDevelopment from "../pages/Categories/SoftwareDevelopment";
 import SportsRecreation from "../pages/Categories/SportsRecreation";
 import Telecommunications from "../pages/Categories/Telecommunications";
+import NewJobPost from "../pages/JobPost/NewJobPost";
 
-export default function CategoryRoutes() {
+function MainRoutes() {
   return (
     <Routes>
       <Route path="/categories/software-development" element={<SoftwareDevelopment />} />
@@ -57,6 +59,10 @@ export default function CategoryRoutes() {
       <Route path="/categories/energy-utilities" element={<EnergyUtilities />} />
       <Route path="/categories/sports-recreation" element={<SportsRecreation />} />
       <Route path="/categories/other" element={<Other />} />
+
+      <Route path="/post/new" element={<NewJobPost/>} />
     </Routes>
   );
 }
+
+export default MainRoutes;

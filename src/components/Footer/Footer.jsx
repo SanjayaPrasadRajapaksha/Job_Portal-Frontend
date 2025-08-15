@@ -61,6 +61,11 @@ export default function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Lower copyright bar */}
+      <div className="w-full bg-gray-300 text-center py-1 text-xs text-gray-900 border-t border-gray-400">
+        Copyright © 2006-2025 Genesisi Software (Pvt) Ltd, All Rights Reserved.
+      </div>
     </footer>
   );
 }

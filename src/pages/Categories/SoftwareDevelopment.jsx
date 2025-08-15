@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CommonJobTable from "../../components/CommonJobTable";
 
 // 30 sample jobs with the requested columns and "Posted On" in the format "14 Aug 2025"
 const jobList = [
@@ -51,72 +52,27 @@ export default function SoftwareDevelopment() {
         return matchesSearch && matchesStatus;
     });
 
-    return (
-        <div className="p-4">
-            {/* <div className="flex items-center justify-between mb-3 gap-4">
-       
-                <div className="px-4 py-2 rounded-lg shadow-md border-2 border-[#00bd45] bg-[#00bd45] text-white font-bold cursor-pointer">
-                    IT & Software Development
-                </div>
+        // Define columns for the common table
+        const columns = [
+            { key: "id", header: "#", render: (job, i) => i + 1, className: "bg-green-500 text-white text-center font-semibold min-w-[40px] w-[1%]" },
+            { key: "position", header: "Position", className: "text-[#8d0d37] font-semibold" },
+            { key: "company", header: "Company / Industry", className: "font-semibold" },
+            { key: "location", header: "Location", className: "" },
+            { key: "postedOn", header: "Posted On", render: (job) => `Posted on ${job.postedOn}`, className: "" },
+            { key: "status", header: "Status", className: "", render: (job) => (
+                <span className={`${job.status === "Full Time" ? "text-green-700" : "text-blue-700"}`}>{job.status}</span>
+            ) },
+        ];
 
-
-                <div className="flex-1">
-                    <CommonFilterSearch
-                        searchText={searchText}
-                        setSearchText={setSearchText}
-                        statusFilter={statusFilter}
-                        setStatusFilter={setStatusFilter}
-                        statusOptions={["All", "Full Time", "Part Time"]}
-                        placeholder="Search position, company, location"
-                    />
-                </div>
-            </div> */}
-
-            {/* Table */}
-            <div className="overflow-x-auto max-h-[440px] rounded shadow" style={{ overflowY: "auto" }}>
-                <table className="min-w-full border-collapse relative">
-                    <thead>
-                        <tr
-                            className="bg-[#8f0231] text-white text-left"
-                            style={{ position: "sticky", top: 0, zIndex: 1 }}
-                        >
-                            <th className="py-4 px-3 font-semibold">#</th> {/* ID column */}
-                            <th className="py-4 px-3 font-semibold">Position</th>
-                            <th className="py-4 px-3 font-semibold">Company / Industry</th>
-                            <th className="py-4 px-3 font-semibold">Location</th>
-                            <th className="py-4 px-3 font-semibold">Posted On</th>
-                            <th className="py-4 px-3 font-semibold">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredJobs.map((job, i) => (
-                            <tr
-                                key={i}
-                                className={`border-t transition-colors duration-200 ${hoveredRow === i ? "bg-yellow-500" : ""}`}
-                                onMouseEnter={() => setHoveredRow(i)}
-                                onMouseLeave={() => setHoveredRow(null)}
-                                style={{ cursor: "pointer", height: "56px" }}
-                            >
-                                    <td className="py-3 px-3 ">{i + 1}</td> {/* ID value */}
-                                    <td className={`py-3 px-3 font-semibold text-[#8d0d37] `}>{job.position}</td>
-                                    <td className="py-3 px-3 font-semibold">{job.company}</td>
-                                    <td className="py-3 px-3 font-semibold">{job.location}</td>
-                                    <td className="py-3 px-3 font-semibold">{job.postedOn}</td>
-                                    <td className={`py-3 px-3 font-semibold ${job.status === "Full Time" ? "text-green-700" : "text-blue-700"}`}> 
-                                        {job.status}
-                                    </td>
-                            </tr>
-                        ))}
-                        {filteredJobs.length === 0 && (
-                            <tr>
-                                <td colSpan={6} className="text-center py-4 text-gray-500 font-semibold">
-                                    No jobs found.
-                                </td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
+        return (
+            <div className="p-4">
+                {/* Common reusable job table */}
+                <CommonJobTable
+                    jobs={filteredJobs}
+                    columns={columns}
+                    rowHoverColor="bg-yellow-500"
+                    positionHoverColor="text-[#8d0d37]"
+                />
             </div>
-        </div>
-    );
+        );
 }

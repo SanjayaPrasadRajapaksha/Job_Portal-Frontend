@@ -1,27 +1,36 @@
 import { FaSignInAlt, FaUserFriends } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export default function NavBar() {
   return (
     <nav className="flex items-center justify-between bg-[#ecf8f8] px-6 py-2 h-20 shadow-lg border-b border-[rgb(247,184,1)]">
-      {/* Left Section: Logo and Tagline */}
+      {/* Left Section: Logo with Static Underline */}
       <div className="flex items-center gap-2 min-w-fit">
         <div className="flex flex-col">
-          <span className="font-extrabold text-3xl tracking-tight text-[#720026] leading-none flex items-baseline">
-            jobcore
-            <span className="text-xs align-super ml-1 font-normal text-[rgb(247,184,1)]">®</span>
+          <span className="font-extrabold text-3xl tracking-tight text-[#720026] leading-none relative flex items-baseline">
+            jobcor
+            <span className="relative">
+              e
+              <sup className="text-xs font-normal text-[rgb(247,184,1)] ml-0.5">®</sup>
+            </span>
           </span>
-          <span className="text-xs text-[rgb(247,184,1)] -mt-1">recruitment made easy</span>
+          {/* Gradient animated underline */}
+          <span className="block w-16 h-1 mt-1 rounded-full bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 animate-pulse"></span>
         </div>
       </div>
 
+
       {/* Right Section: All Nav Buttons and Links */}
       <div className="flex items-center gap-3">
-        <a
-          href="#"
-          className="px-4 py-2 rounded bg-[#720026] text-[#ecf8f8] font-semibold shadow text-sm hover:bg-[rgb(247,184,1)] hover:text-[#720026] transition border border-[#720026]"
+        <Link
+          to="/post/new"
+          className="px-4 py-2 rounded bg-green-500 text-[#ecf8f8] font-semibold shadow text-sm 
+             hover:bg-green-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
         >
-          Post Your Vacancy
-        </a>
+          Post A New Job
+        </Link>
+
+
         <a
           href="#"
           className="px-4 py-2 rounded bg-[rgb(247,184,1)] text-[#720026] font-semibold text-sm hover:bg-[#720026] hover:text-[#ecf8f8] transition border border-[rgb(247,184,1)]"
