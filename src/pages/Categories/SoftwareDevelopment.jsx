@@ -53,16 +53,18 @@ export default function SoftwareDevelopment() {
     });
 
         // Define columns for the common table
-        const columns = [
-            { key: "id", header: "#", render: (job, i) => i + 1, className: "bg-green-500 text-white text-center font-semibold min-w-[40px] w-[1%]" },
-            { key: "position", header: "Position", className: "text-[#8d0d37] font-semibold" },
-            { key: "company", header: "Company / Industry", className: "font-semibold" },
-            { key: "location", header: "Location", className: "" },
-            { key: "postedOn", header: "Posted On", render: (job) => `Posted on ${job.postedOn}`, className: "" },
-            { key: "status", header: "Status", className: "", render: (job) => (
-                <span className={`${job.status === "Full Time" ? "text-green-700" : "text-blue-700"}`}>{job.status}</span>
-            ) },
-        ];
+       const columns = [
+  { key: "id", header: "#", render: (job, i) => i + 1, className: "bg-green-500 text-white text-center font-semibold min-w-[40px] w-[1%]" },
+  { key: "position", header: "Position", className: "text-[#8d0d37] font-semibold" },
+  { key: "company", header: "Company / Industry", className: "font-semibold" },
+  { key: "location", header: "Location" }, // No bold here
+  { key: "postedOn", header: "Posted On", render: (job) => `Posted on ${job.postedOn}` }, // No bold here
+  { key: "status", header: "Status", render: (job) => (
+      <span className={`${job.status === "Full Time" ? "text-green-700" : "text-blue-700"}`}>{job.status}</span>
+    )
+  },
+];
+
 
         return (
             <div className="p-4">

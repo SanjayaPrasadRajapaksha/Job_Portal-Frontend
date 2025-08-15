@@ -1,35 +1,59 @@
 import { useState } from "react";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiX } from "react-icons/fi";
 
-export default function CommonSearchBar({ onSearch }) {
+export default function CommonSearchBar({ onSearch, placeholder = "Search..." }) {
   const [searchText, setSearchText] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (onSearch) onSearch(searchText);
+    if (onSearch) onSearch(searchText.trim());
+  };
+
+  const handleClear = () => {
+    setSearchText("");
+    if (onSearch) onSearch("");
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center w-full max-w-xs gap-2"
+      className="flex items-center w-full sm:max-w-md gap-2 px-2 py-1 bg-white border border-green-200 rounded-lg shadow-sm focus-within:ring-2 focus-within:ring-green-300 transition-all duration-300"
+      role="search"
+      aria-label="Search jobs"
     >
-      {/* Boxed input field */}
+      {/* Search Icon (Decorative) */}
+      <FiSearch className="text-green-500 text-lg flex-shrink-0" aria-hidden="true" />
+
+      {/* Input */}
       <input
         type="text"
-        placeholder="Search..."
-        className="flex-1 px-3 py-2 placeholder-gray-400 border border-green-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 transition-all duration-300 text-sm bg-white"
+        placeholder={placeholder}
+        className="flex-1 px-2 py-1 placeholder-gray-400 text-sm focus:outline-none"
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
-        style={{ minWidth: "0" }}
+        onKeyDown={(e) => {
+          if (e.key === "Escape") handleClear();
+        }}
       />
-      {/* Separate search icon button */}
+
+      {/* Clear Button (only if text exists) */}
+      {searchText && (
+        <button
+          type="button"
+          onClick={handleClear}
+          className="p-1 text-gray-400 hover:text-gray-600 transition"
+          aria-label="Clear search"
+        >
+          <FiX />
+        </button>
+      )}
+
+      {/* Submit Button */}
       <button
         type="submit"
-        className="flex items-center justify-center w-10 h-10 bg-green-500 rounded-md hover:bg-green-600 transition-all duration-300"
-        aria-label="Search"
+        className="px-3 py-1.5 bg-green-500 rounded-md hover:bg-green-600 transition text-white text-sm font-semibold flex items-center"
       >
-        <FiSearch className="text-white text-lg" />
+        Search
       </button>
     </form>
   );
