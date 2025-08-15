@@ -1,4 +1,4 @@
-import { FaSignInAlt, FaUserFriends, FaBars } from 'react-icons/fa';
+import { FaSignInAlt, FaUser, FaBars } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -7,8 +7,8 @@ export default function NavBar() {
   const location = useLocation();
 
   const navLinks = [
-    { label: 'Happy Customers', path: '/customers' },
-    { label: 'Top Employers', path: '/employers' },
+    { label: 'Reviews', path: '/reviews' },
+    // { label: 'Top Employers', path: '/employers' },
     { label: 'Contact Us', path: '/contact' },
   ];
 
@@ -59,7 +59,7 @@ export default function NavBar() {
             className="bg-[rgb(247,184,1)] hover:bg-[#720026] rounded px-3 py-2 flex items-center justify-center transition-shadow border border-[rgb(247,184,1)]"
             title="User"
           >
-            <FaUserFriends className="text-xl text-[#720026]" />
+            <FaUser className="text-xl text-[#720026]" />
           </Link>
 
           <Link
@@ -107,7 +107,7 @@ export default function NavBar() {
               className="bg-[rgb(247,184,1)] hover:bg-[#720026] rounded px-3 py-2 flex items-center justify-center border border-[rgb(247,184,1)]"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaUserFriends className="text-xl text-[#720026]" />
+              <FiUser className="text-xl text-[#720026]" />
             </Link>
             <Link
               to="/login"

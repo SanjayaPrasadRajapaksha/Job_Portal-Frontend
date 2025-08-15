@@ -21,9 +21,7 @@ export default function CommonSearchBar({ onSearch, placeholder = "Search..." })
       role="search"
       aria-label="Search jobs"
     >
-      {/* Search Icon (Decorative) */}
-      <FiSearch className="text-green-500 text-lg flex-shrink-0" aria-hidden="true" />
-
+    
       {/* Input */}
       <input
         type="text"

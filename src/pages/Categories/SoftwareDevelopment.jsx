@@ -56,7 +56,7 @@ export default function SoftwareDevelopment() {
        const columns = [
   { key: "id", header: "#", render: (job, i) => i + 1, className: "bg-green-500 text-white text-center font-semibold min-w-[40px] w-[1%]" },
   { key: "position", header: "Position", className: "text-[#8d0d37] font-semibold" },
-  { key: "company", header: "Company / Industry", className: "font-semibold" },
+  { key: "company", header: "Company / Industry", className: "font-medium text-gray-800" },
   { key: "location", header: "Location" }, // No bold here
   { key: "postedOn", header: "Posted On", render: (job) => `Posted on ${job.postedOn}` }, // No bold here
   { key: "status", header: "Status", render: (job) => (

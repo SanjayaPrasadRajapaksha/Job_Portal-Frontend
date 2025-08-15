@@ -28,6 +28,8 @@ import SoftwareDevelopment from "../pages/Categories/SoftwareDevelopment";
 import SportsRecreation from "../pages/Categories/SportsRecreation";
 import Telecommunications from "../pages/Categories/Telecommunications";
 import NewJobPost from "../pages/JobPost/NewJobPost";
+import Contact from "../pages/Contact/Contact";
+import Reviews from "../pages/Reviews/Reviews";
 
 function MainRoutes() {
   return (
@@ -61,6 +63,9 @@ function MainRoutes() {
       <Route path="/categories/other" element={<Other />} />
 
       <Route path="/post/new" element={<NewJobPost/>} />
+      <Route path="/contact" element={<Contact/>} />
+      <Route path="/reviews" element={<Reviews />} />
+      {/* Add other routes as needed */}
     </Routes>
   );
 }
