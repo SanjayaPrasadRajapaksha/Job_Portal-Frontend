@@ -55,7 +55,7 @@ export default function Sidebar() {
         </div>
 
         {/* Heading */}
-        <h2 className="bg-green-700 text-yellow-300 text-sm text-center py-3 font-semibold tracking-wide uppercase shadow-sm">
+        <h2 className="bg-green-700 text-white text-sm text-center py-3 font-semibold tracking-wide uppercase shadow-sm">
           Job Categories
         </h2>
 
@@ -74,7 +74,7 @@ export default function Sidebar() {
         </ul>
 
         {/* Scroll hint */}
-      <div className="bg-green-700 text-yellow-300 text-xs text-center py-2 flex items-center justify-center gap-2 border-t border-green-600">
+      <div className="bg-green-700 text-white text-xs text-center py-2 flex items-center justify-center gap-2 border-t border-green-600">
         More Categories Below
       </div>
       </div>
