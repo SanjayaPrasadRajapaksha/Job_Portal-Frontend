@@ -294,7 +294,7 @@ export default function NewJobPost() {
         <div>
           <button
             type="submit"
-            className="w-full py-3 bg-green-500 text-white rounded-xl shadow hover:bg-green-600 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 font-semibold"
+            className="w-full bg-gradient-to-r from-green-500 to-yellow-400 hover:from-yellow-400 hover:to-green-500 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105"
           >
             Submit Job Post
           </button>

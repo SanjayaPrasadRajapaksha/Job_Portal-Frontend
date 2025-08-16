@@ -1,7 +1,3 @@
-// import { useState } from "react";
-// import CommonJobTable from "../../components/CommonJobTable";
-
-// 30 sample jobs with the requested columns and "Posted On" in the format "14 Aug 2025"
 const jobList = [
     { position: "Software Engineer", company: "MAS Capital / IT", location: "Colombo", postedOn: "14 Aug 2025", status: "Full Time" },
     { position: "Graphic Designer", company: "Dilly & Carlo / Design", location: "Maharagama", postedOn: "13 Aug 2025", status: "Part Time" },
@@ -38,7 +34,6 @@ const jobList = [
 export default function SoftwareDevelopment() {
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
-           
             {/* Card Grid */}
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {jobList.map((job, i) => (
@@ -48,7 +43,7 @@ export default function SoftwareDevelopment() {
                     >
                         {/* Top Row */}
                         <div className="flex items-center gap-2 mb-2">
-                            <span className="inline-block bg-indigo-500 text-white text-xs font-bold rounded-full px-3 py-1 shadow">
+                            <span className="inline-block bg-yellow-400 text-white text-xs font-bold rounded-full px-3 py-1 shadow">
                                 {i + 1}
                             </span>
                             {job.status === "Full Time" ? (
@@ -64,7 +59,7 @@ export default function SoftwareDevelopment() {
 
                         {/* Job Title & Company */}
                         <div className="mb-1">
-                            <h3 className="text-lg font-extrabold text-gray-800 group-hover:text-indigo-600 transition-colors">
+                            <h3 className="text-lg font-extrabold text-gray-800 group-hover:text-yellow-500 transition-colors">
                                 {job.position}
                             </h3>
                             <div className="text-sm text-gray-500 font-medium">{job.company}</div>
@@ -74,7 +69,7 @@ export default function SoftwareDevelopment() {
                         <div className="flex items-center gap-2 text-sm text-gray-600">
                             <span className="inline-flex items-center gap-1 font-medium text-gray-700">
                                 <svg
-                                    className="w-4 h-4 text-indigo-500"
+                                    className="w-4 h-4 text-yellow-400"
                                     fill="currentColor"
                                     viewBox="0 0 20 20"
                                 >

@@ -74,10 +74,9 @@ export default function Sidebar() {
         </ul>
 
         {/* Scroll hint */}
-        <div className="bg-green-700 text-yellow-300 text-xs text-center py-2 flex items-center justify-center gap-2 border-t border-green-600">
-           Scroll for More
-          
-        </div>
+      <div className="bg-green-700 text-yellow-300 text-xs text-center py-2 flex items-center justify-center gap-2 border-t border-green-600">
+        More Categories Below
+      </div>
       </div>
     </aside>
   );
