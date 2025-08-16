@@ -5,7 +5,8 @@ const initialReviews = [
   {
     name: "Alice Johnson",
     role: "Employer",
-    review: "JobCore made hiring so much easier! The process was smooth and the candidates were top-notch.",
+    review:
+      "JobCore made hiring so much easier! The process was smooth and the candidates were top-notch.",
     rating: 5,
     date: "July 2025",
     avatar: "https://randomuser.me/api/portraits/women/44.jpg",
@@ -13,7 +14,8 @@ const initialReviews = [
   {
     name: "Michael Lee",
     role: "Job Seeker",
-    review: "I found my dream job through JobCore. The platform is user-friendly and the support team is amazing!",
+    review:
+      "I found my dream job through JobCore. The platform is user-friendly and the support team is amazing!",
     rating: 5,
     date: "June 2025",
     avatar: "https://randomuser.me/api/portraits/men/32.jpg",
@@ -21,7 +23,8 @@ const initialReviews = [
   {
     name: "Priya Singh",
     role: "Employer",
-    review: "We hired several great employees thanks to JobCore. Highly recommended for any business!",
+    review:
+      "We hired several great employees thanks to JobCore. Highly recommended for any business!",
     rating: 4,
     date: "May 2025",
     avatar: "https://randomuser.me/api/portraits/women/68.jpg",
@@ -29,36 +32,21 @@ const initialReviews = [
   {
     name: "Carlos Ramirez",
     role: "Job Seeker",
-    review: "The application process was quick and easy. I got responses from employers within days!",
+    review:
+      "The application process was quick and easy. I got responses from employers within days!",
     rating: 4,
     date: "April 2025",
     avatar: "https://randomuser.me/api/portraits/men/65.jpg",
-  },
-  {
-    name: "Emily Chen",
-    role: "Employer",
-    review: "Excellent platform for finding qualified candidates. The support team is responsive and helpful.",
-    rating: 5,
-    date: "March 2025",
-    avatar: "https://randomuser.me/api/portraits/women/12.jpg",
-  },
-  {
-    name: "David Brown",
-    role: "Job Seeker",
-    review: "I appreciate the variety of job listings and the easy-to-use interface. Highly recommend JobCore!",
-    rating: 5,
-    date: "February 2025",
-    avatar: "https://randomuser.me/api/portraits/men/23.jpg",
   },
 ];
 
 function StarRating({ rating }) {
   return (
-    <div className="flex gap-0.5">
+    <div className="flex gap-0.5" aria-label={`${rating} star rating`}>
       {[...Array(5)].map((_, i) => (
         <svg
           key={i}
-          className={`w-5 h-5 ${i < rating ? "text-yellow-400" : "text-gray-300"}`}
+          className={`w-4 h-4 ${i < rating ? "text-yellow-400" : "text-gray-300"}`}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -94,16 +82,20 @@ export default function Reviews() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#ecf8f8] to-[#fefefe] flex flex-col items-center py-12 px-4">
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-16 px-6">
       <div className="max-w-5xl w-full relative">
         {/* Header */}
-        <h1 className="text-4xl font-extrabold text-[#720026] mb-3 text-center">What Our Users Say</h1>
-        <p className="text-[#720026] mb-10 text-center text-lg">Real feedback from employers and job seekers</p>
+        <h1 className="text-4xl font-extrabold text-gray-800 mb-2 text-center">
+          What Our Users Say
+        </h1>
+        <p className="text-gray-500 mb-12 text-center text-lg">
+          Real feedback from employers and job seekers
+        </p>
 
-        {/* Leave Review Button in top-right corner */}
+        {/* Leave Review Button */}
         <div className="absolute top-0 right-0 mt-2">
           <button
-            className="bg-yellow-400 hover:bg-[#720026] text-[#720026] hover:text-yellow-400 font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+            className="bg-gradient-to-r from-yellow-400 to-green-500 hover:from-green-500 hover:to-yellow-400 text-white font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
             onClick={() => setShowForm(true)}
           >
             Leave a Review
@@ -112,15 +104,17 @@ export default function Reviews() {
 
         {/* Review Form Modal */}
         {showForm && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-2xl p-8 shadow-2xl border border-yellow-400 w-full max-w-md relative">
+          <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+            <div className="bg-white rounded-3xl p-8 shadow-2xl border border-green-300 w-full max-w-md relative">
               <button
-                className="absolute top-3 right-3 text-gray-400 hover:text-[#720026] text-3xl"
+                className="absolute top-3 right-3 text-gray-400 hover:text-green-600 text-3xl"
                 onClick={() => setShowForm(false)}
               >
                 &times;
               </button>
-              <h2 className="text-2xl font-bold text-[#720026] mb-5">Leave a Review</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-5 text-center">
+                Leave a Review
+              </h2>
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <input
                   type="text"
@@ -128,14 +122,14 @@ export default function Reviews() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="Your Name"
-                  className="w-full border border-yellow-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                   required
                 />
                 <select
                   name="role"
                   value={form.role}
                   onChange={handleChange}
-                  className="w-full border border-yellow-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                   required
                 >
                   <option value="">Select Role</option>
@@ -147,15 +141,15 @@ export default function Reviews() {
                   value={form.review}
                   onChange={handleChange}
                   placeholder="Your Review"
-                  className="w-full border border-yellow-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                   rows="3"
                   required
-                ></textarea>
+                />
                 <select
                   name="rating"
                   value={form.rating}
                   onChange={handleChange}
-                  className="w-full border border-yellow-400 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
                   required
                 >
                   {[5, 4, 3, 2, 1].map((r) => (
@@ -166,7 +160,7 @@ export default function Reviews() {
                 </select>
                 <button
                   type="submit"
-                  className="w-full bg-yellow-400 hover:bg-[#720026] text-[#720026] hover:text-yellow-400 font-bold py-3 rounded-full shadow transition-all duration-300 transform hover:scale-105"
+                  className="w-full bg-gradient-to-r from-green-500 to-yellow-400 hover:from-yellow-400 hover:to-green-500 text-white font-bold py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
                 >
                   Submit Review
                 </button>
@@ -176,27 +170,29 @@ export default function Reviews() {
         )}
 
         {/* Reviews Grid */}
-        <div className="grid gap-8 md:grid-cols-2 mt-10">
+        <div className="grid gap-8 md:grid-cols-2 mt-12">
           {reviews.map((review, idx) => (
             <div
               key={idx}
-              className="bg-white border border-yellow-400 rounded-2xl shadow-lg p-6 flex flex-col gap-3 hover:shadow-2xl transition-shadow duration-300 transform hover:-translate-y-1"
+              className="bg-gradient-to-br from-white via-green-50 to-white border border-gray-200 rounded-3xl shadow-md p-6 flex flex-col gap-3 transition-transform duration-300 transform hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="flex items-center gap-4">
                 <img
                   src={review.avatar}
                   alt={review.name}
-                  className="w-16 h-16 rounded-full border-2 border-yellow-400 object-cover"
+                  className="w-16 h-16 rounded-full border-2 border-green-300 object-cover"
                 />
                 <div>
-                  <div className="font-bold text-[#720026] text-lg">{review.name}</div>
+                  <div className="font-bold text-gray-800 text-lg">{review.name}</div>
                   <div className="text-gray-500 text-sm">
                     {review.role} • {review.date}
                   </div>
                 </div>
               </div>
               <StarRating rating={review.rating} />
-              <p className="text-gray-700 italic mt-2">"{review.review}"</p>
+              <p className="text-gray-700 italic mt-2 relative pl-6 before:content-['❝'] before:absolute before:left-0 before:text-green-400 before:text-xl">
+                {review.review}
+              </p>
             </div>
           ))}
         </div>
