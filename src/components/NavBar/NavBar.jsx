@@ -36,7 +36,7 @@ export default function NavBar() {
             className="px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow text-sm 
               hover:bg-yellow-400 hover:text-black hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
           >
-            Post A New Job
+            Post Vacancy
           </Link>
 
           {navLinks.map((link) => (
@@ -88,7 +88,7 @@ export default function NavBar() {
             className="px-4 py-2 rounded-xl bg-green-600 text-white font-semibold text-sm hover:bg-yellow-400 hover:text-black transition-all duration-200"
             onClick={() => setIsMenuOpen(false)}
           >
-            Post A New Job
+            Post Vacancy
           </Link>
 
           {navLinks.map((link) => (
