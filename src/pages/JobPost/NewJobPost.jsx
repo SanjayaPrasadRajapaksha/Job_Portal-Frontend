@@ -55,7 +55,7 @@ export default function NewJobPost() {
 
   return (
     <div className="max-w-4xl mx-auto p-8 bg-gradient-to-br from-green-50 via-white to-green-50 rounded-3xl shadow-xl border border-green-200">
-      <h2 className="text-3xl font-extrabold text-green-700 mb-8 text-center">Post a New Job</h2>
+  <h2 className="text-3xl font-extrabold text-green-700 mb-8 text-center">Post a Vacancy</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
 
         {/* Job Title */}
