@@ -1,63 +1,125 @@
-import { FaSignInAlt, FaUserFriends } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { FaSignInAlt, FaUser, FaBars } from 'react-icons/fa';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function NavBar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const navLinks = [
+    { label: 'Reviews', path: '/reviews' },
+    { label: 'Contact Us', path: '/contact' },
+  ];
+
   return (
-    <nav className="flex items-center justify-between bg-[#ecf8f8] px-6 py-2 h-20 shadow-lg border-b border-[rgb(247,184,1)]">
-      {/* Left Section: Logo with Static Underline */}
-      <div className="flex items-center gap-2 min-w-fit">
-        <div className="flex flex-col">
-          <span className="font-extrabold text-3xl tracking-tight text-[#720026] leading-none relative flex items-baseline">
-            jobcor
-            <span className="relative">
-              e
-              <sup className="text-xs font-normal text-[rgb(247,184,1)] ml-0.5">®</sup>
+    <nav className="bg-gray-50 border-b border-yellow-400 shadow-sm">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between h-20">
+        
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 min-w-fit">
+          <div className="flex flex-col">
+            <span className="font-extrabold text-3xl tracking-tight text-green-700 leading-none flex items-baseline">
+              jobcor
+              <span className="relative">
+                e
+                <sup className="text-xs font-normal text-yellow-400 ml-0.5">®</sup>
+              </span>
             </span>
-          </span>
-          {/* Gradient animated underline */}
-          <span className="block w-16 h-1 mt-1 rounded-full bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 animate-pulse"></span>
-        </div>
-      </div>
-
-
-      {/* Right Section: All Nav Buttons and Links */}
-      <div className="flex items-center gap-3">
-        <Link
-          to="/post/new"
-          className="px-4 py-2 rounded bg-green-500 text-[#ecf8f8] font-semibold shadow text-sm 
-             hover:bg-green-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
-        >
-          Post A New Job
+            <span className="block w-16 h-1 mt-1 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-green-500 animate-pulse"></span>
+          </div>
         </Link>
 
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-6">
+          <Link
+            to="/post/new"
+            className="px-4 py-2 rounded-xl bg-green-600 text-white font-semibold shadow text-sm 
+              hover:bg-yellow-400 hover:text-black hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+          >
+            Post A New Job
+          </Link>
 
-        <a
-          href="#"
-          className="px-4 py-2 rounded bg-[rgb(247,184,1)] text-[#720026] font-semibold text-sm hover:bg-[#720026] hover:text-[#ecf8f8] transition border border-[rgb(247,184,1)]"
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`text-sm font-semibold transition-colors duration-200 ${
+                location.pathname === link.path
+                  ? 'text-green-700 underline'
+                  : 'text-gray-800 hover:text-green-700 hover:underline'
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          <Link
+            to="/user"
+            className="bg-yellow-400 hover:bg-green-600 rounded-xl px-3 py-2 flex items-center justify-center transition-all duration-200 border border-yellow-400 shadow-sm hover:shadow-md"
+            title="User"
+          >
+            <FaUser className="text-xl text-black" />
+          </Link>
+
+          <Link
+            to="/login"
+            className="bg-yellow-400 hover:bg-green-600 rounded-xl px-3 py-2 flex items-center justify-center transition-all duration-200 border border-yellow-400 shadow-sm hover:shadow-md"
+            title="Login"
+          >
+            <FaSignInAlt className="text-xl text-black" />
+          </Link>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-green-700 focus:outline-none"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle Menu"
         >
-          Happy Customers
-        </a>
-        <a href="#" className="text-[#720026] font-semibold hover:underline text-sm">
-          Top Employers
-        </a>
-        <a href="#" className="text-[#720026] font-semibold hover:underline text-sm">
-          Contact Us
-        </a>
-        <a
-          href="#"
-          className="bg-[rgb(247,184,1)] hover:bg-[#720026] rounded px-3 py-2 flex items-center justify-center transition-shadow border border-[rgb(247,184,1)]"
-          title="User"
-        >
-          <FaUserFriends className="text-xl text-[#720026]" />
-        </a>
-        <a
-          href="#"
-          className="bg-[rgb(247,184,1)] hover:bg-[#720026] rounded px-3 py-2 flex items-center justify-center transition-shadow border border-[rgb(247,184,1)]"
-          title="Login"
-        >
-          <FaSignInAlt className="text-xl text-[#720026]" />
-        </a>
+          <FaBars className="text-2xl" />
+        </button>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-gray-50 border-t border-yellow-400 flex flex-col p-4 space-y-4 shadow-lg animate-fadeIn">
+          <Link
+            to="/post/new"
+            className="px-4 py-2 rounded-xl bg-green-600 text-white font-semibold text-sm hover:bg-yellow-400 hover:text-black transition-all duration-200"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Post A New Job
+          </Link>
+
+          {navLinks.map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className="text-gray-800 font-semibold hover:text-green-700 hover:underline text-sm"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          <div className="flex gap-3">
+            <Link
+              to="/user"
+              className="bg-yellow-400 hover:bg-green-600 rounded-xl px-3 py-2 flex items-center justify-center border border-yellow-400 shadow-sm hover:shadow-md"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaUser className="text-xl text-black" />
+            </Link>
+            <Link
+              to="/login"
+              className="bg-yellow-400 hover:bg-green-600 rounded-xl px-3 py-2 flex items-center justify-center border border-yellow-400 shadow-sm hover:shadow-md"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <FaSignInAlt className="text-xl text-black" />
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

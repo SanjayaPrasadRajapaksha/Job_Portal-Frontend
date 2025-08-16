@@ -1,5 +1,6 @@
 import { FaPaperPlane } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+
 const jobCategories = [
   { name: "IT & Software Development", path: "/categories/software-development" },
   { name: "Hardware & Technical Support", path: "/categories/hardware-technical-support" },
@@ -32,43 +33,40 @@ const jobCategories = [
 
 export default function Sidebar() {
   return (
-  <aside className="w-64 min-w-[220px] flex flex-col bg-[#fdfffc] border-r border-[rgb(247,184,1)] shadow-lg z-20 max-h-[90vh] my-4 rounded-2xl">
-      <div className="flex-1 flex flex-col bg-gradient-to-b from-[rgb(247,184,1)] to-[rgb(255,206,61)] overflow-hidden">
-
-
-      {/* Inline Subscribe Form */}
-        <div className="p-1 bg-white shadow-md border-b border-[rgb(247,184,1)]">
-
+    <aside className="w-64 min-w-[220px] flex flex-col bg-white border-r border-gray-200 shadow-lg z-20 max-h-[90vh] my-4">
+      <div className="flex-1 flex flex-col bg-gradient-to-b from-green-200 to-green-50 overflow-hidden">
+        
+        {/* Subscribe Form */}
+        <div className="p-3 bg-white shadow-sm border-b border-gray-200">
           <form className="flex items-center gap-2">
             <input
               type="email"
               placeholder="Subscribe with your email"
-              className="flex-1 px-3 py-2 rounded-full border border-[rgb(247,184,1)] focus:outline-none focus:ring-2 focus:ring-[rgb(247,184,1)] text-sm placeholder-[#720026] bg-white"
+              className="flex-1 px-3 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm placeholder-gray-500 bg-white transition"
               required
             />
             <button
               type="submit"
-              className="p-2 rounded-full bg-[#720026] text-[rgb(247,184,1)] shadow-md hover:bg-[#a8324a] hover:text-white transition-all duration-200 border-2 border-[rgb(247,184,1)] flex items-center justify-center"
+              className="p-2 rounded-full bg-green-600 text-white shadow-md hover:bg-yellow-400 hover:text-green-900 transition-all duration-200 flex items-center justify-center"
             >
               <FaPaperPlane className="text-sm" />
             </button>
           </form>
-
         </div>
 
         {/* Heading */}
-        <h2 className="bg-[#720026] text-[#ecf8f8] text-sm text-center py-3 font-semibold tracking-wide uppercase">
-          JOB CATEGORIES
+        <h2 className="bg-green-700 text-yellow-300 text-sm text-center py-3 font-semibold tracking-wide uppercase shadow-sm">
+          Job Categories
         </h2>
 
         {/* Category List */}
-        <ul className="flex-1 overflow-y-auto py-2 px-2 space-y-2 scrollbar-thin scrollbar-thumb-[#720026] scrollbar-track-[rgb(247,184,1)]">
+        <ul className="flex-1 overflow-y-auto py-3 px-2 space-y-1 scrollbar-thin scrollbar-thumb-green-500 scrollbar-track-green-100">
           {jobCategories.map((cat) => (
-            <li
-              key={cat.name}
-              className="text-sm font-semibold px-3 py-2 hover:bg-[#720026] hover:text-[#ecf8f8] rounded-lg transition cursor-pointer shadow-sm"
-            >
-              <Link to={cat.path} className="block w-full h-full">
+            <li key={cat.name}>
+              <Link
+                to={cat.path}
+                className="block text-sm font-medium px-3 py-2 rounded-lg text-gray-700 hover:bg-yellow-300 hover:text-green-900 transition-all duration-200 shadow-sm hover:shadow-md"
+              >
                 {cat.name}
               </Link>
             </li>
@@ -76,12 +74,9 @@ export default function Sidebar() {
         </ul>
 
         {/* Scroll hint */}
-        <div className="bg-[#720026] text-[#ecf8f8] text-xs text-center py-2 flex items-center justify-center gap-2 border-t border-[rgb(247,184,1)]">
-          <span className="animate-bounce">⬇️</span> Scroll for More <span className="animate-bounce">⬇️</span>
-        </div>
-
-        
-  
+      <div className="bg-green-700 text-yellow-300 text-xs text-center py-2 flex items-center justify-center gap-2 border-t border-green-600">
+        More Categories Below
+      </div>
       </div>
     </aside>
   );

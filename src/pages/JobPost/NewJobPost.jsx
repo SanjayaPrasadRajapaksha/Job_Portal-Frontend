@@ -32,9 +32,9 @@ export default function NewJobPost() {
     website: '',
     email: '',
     applicationMethod: '',
+    applicationMethodOther: '',
   });
 
-  const [imageName, setImageName] = useState('');
   const [previewUrl, setPreviewUrl] = useState('');
 
   const handleChange = (e) => {
@@ -42,7 +42,6 @@ export default function NewJobPost() {
     if (name === 'image') {
       const file = files[0];
       setForm({ ...form, image: file });
-      setImageName(file?.name || '');
       setPreviewUrl(file ? URL.createObjectURL(file) : '');
     } else {
       setForm({ ...form, [name]: value });
@@ -52,43 +51,43 @@ export default function NewJobPost() {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert('Job post submitted!');
-    // Send form data to backend here
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-8 bg-gradient-to-br from-green-50 via-white to-green-50 rounded-2xl shadow-lg border border-green-100">
-      <h2 className="text-3xl font-bold text-green-700 mb-6 text-center">Post a New Job</h2>
+    <div className="max-w-4xl mx-auto p-8 bg-gradient-to-br from-green-50 via-white to-green-50 rounded-3xl shadow-xl border border-green-200">
+      <h2 className="text-3xl font-extrabold text-green-700 mb-8 text-center">Post a New Job</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
 
         {/* Job Title */}
         <div>
-          <label className="block font-semibold text-green-700 mb-1">Job Title:</label>
+          <label className="block font-semibold text-green-700 mb-2">Job Title</label>
           <input
             type="text"
             name="title"
             value={form.title}
             onChange={handleChange}
-            className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
+            placeholder="e.g., Senior Frontend Developer"
+            className="w-full border border-green-200 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
             required
           />
         </div>
 
         {/* Description */}
         <div>
-          <label className="block font-semibold text-green-700 mb-1">Description:</label>
+          <label className="block font-semibold text-green-700 mb-2">Description</label>
           <textarea
             name="description"
             value={form.description}
             onChange={handleChange}
-            className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm shadow-sm min-h-[120px] focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
-            placeholder="Enter job description..."
+            placeholder="Describe the job responsibilities, requirements, and perks..."
+            className="w-full border border-green-200 rounded-xl px-4 py-3 text-sm shadow-sm min-h-[120px] focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
             required
           />
         </div>
 
-        {/* Image Poster */}
+        {/* Image Upload */}
         <div>
-          <label className="block font-semibold text-green-700 mb-1">Image Poster (optional):</label>
+          <label className="block font-semibold text-green-700 mb-2">Job Poster (optional)</label>
           <input
             type="file"
             name="image"
@@ -96,20 +95,19 @@ export default function NewJobPost() {
             onChange={handleChange}
             className="block text-sm text-gray-600"
           />
-          {imageName && <span className="text-xs text-gray-500 ml-2">{imageName}</span>}
           {previewUrl && (
-            <img src={previewUrl} alt="Preview" className="mt-2 max-h-40 rounded border" />
+            <img src={previewUrl} alt="Preview" className="mt-2 max-h-40 rounded-xl border shadow-sm" />
           )}
         </div>
 
         {/* Category */}
         <div>
-          <label className="block font-semibold text-green-700 mb-1">Category:</label>
+          <label className="block font-semibold text-green-700 mb-2">Category</label>
           <select
             name="category"
             value={form.category}
             onChange={handleChange}
-            className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
+            className="w-full border border-green-200 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
             required
           >
             <option value="">Select category</option>
@@ -128,22 +126,21 @@ export default function NewJobPost() {
               value={form.categoryOther}
               onChange={handleChange}
               placeholder="Enter category"
-              className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm mt-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
+              className="w-full border border-green-200 rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
               required
             />
           )}
         </div>
 
         {/* Location */}
-        <div className="flex gap-4">
-          {/* District */}
-          <div className="flex-1">
-            <label className="block font-semibold text-green-700 mb-1">District:</label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block font-semibold text-green-700 mb-2">District</label>
             <select
               name="district"
               value={form.district}
               onChange={handleChange}
-              className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
+              className="w-full border border-green-200 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
               required
             >
               <option value="">Select district</option>
@@ -158,21 +155,20 @@ export default function NewJobPost() {
                 value={form.districtOther}
                 onChange={handleChange}
                 placeholder="Enter district"
-                className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm mt-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
+                className="w-full border border-green-200 rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
                 required
               />
             )}
           </div>
 
-          {/* City */}
-          <div className="flex-1">
-            <label className="block font-semibold text-green-700 mb-1">City:</label>
+          <div>
+            <label className="block font-semibold text-green-700 mb-2">City</label>
             <select
               name="city"
               value={form.city}
               onChange={handleChange}
               disabled={!form.district || form.district === 'Other'}
-              className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
+              className="w-full border border-green-200 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
               required
             >
               <option value="">Select city</option>
@@ -181,9 +177,6 @@ export default function NewJobPost() {
                   <option key={city} value={city}>{city}</option>
                 ))
               }
-              {form.district === 'Other' && (
-                <option value="Other">Other</option>
-              )}
             </select>
             {form.city === 'Other' && (
               <input
@@ -192,7 +185,7 @@ export default function NewJobPost() {
                 value={form.cityOther}
                 onChange={handleChange}
                 placeholder="Enter city"
-                className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm mt-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
+                className="w-full border border-green-200 rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
                 required
               />
             )}
@@ -201,18 +194,16 @@ export default function NewJobPost() {
 
         {/* Work Type */}
         <div>
-          <label className="block font-semibold text-green-700 mb-1">Work Type:</label>
+          <label className="block font-semibold text-green-700 mb-2">Work Type</label>
           <select
             name="workType"
             value={form.workType}
             onChange={handleChange}
-            className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
+            className="w-full border border-green-200 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
             required
           >
             <option value="">Select work type</option>
-            {workTypes.map((w) => (
-              <option key={w} value={w}>{w}</option>
-            ))}
+            {workTypes.map((w) => <option key={w} value={w}>{w}</option>)}
           </select>
           {form.workType === 'Other' && (
             <input
@@ -221,63 +212,66 @@ export default function NewJobPost() {
               value={form.workTypeOther}
               onChange={handleChange}
               placeholder="Enter work type"
-              className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm mt-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
+              className="w-full border border-green-200 rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
               required
             />
           )}
         </div>
 
-        {/* Company Name */}
-        <div>
-          <label className="block font-semibold text-green-700 mb-1">Company Name:</label>
-          <input
-            type="text"
-            name="company"
-            value={form.company}
-            onChange={handleChange}
-            className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
-            required
-          />
-        </div>
+        {/* Company, Website, Email */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label className="block font-semibold text-green-700 mb-2">Company</label>
+            <input
+              type="text"
+              name="company"
 
-        {/* Website */}
-        <div>
-          <label className="block font-semibold text-green-700 mb-1">Website:</label>
-          <input
-            type="url"
-            name="website"
-            value={form.website}
-            onChange={handleChange}
-            placeholder="https://example.com"
-            className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
-          />
-        </div>
+              value={form.company}
+              onChange={handleChange}
+              placeholder="Company Name"
+              className="w-full border border-green-200 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
+              required
+            />
+          </div>
 
-        {/* Email */}
-        <div>
-          <label className="block font-semibold text-green-700 mb-1">Email (Not published):</label>
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
-            required
-          />
-          <span className="text-xs text-gray-500">Applicants' CVs will be sent to this address.</span>
+          <div>
+            <label className="block font-semibold text-green-700 mb-2">Website</label>
+            <input
+              type="url"
+              name="website"
+              value={form.website}
+              onChange={handleChange}
+              placeholder="https://example.com"
+              className="w-full border border-green-200 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
+            />
+          </div>
+
+          <div>
+            <label className="block font-semibold text-green-700 mb-2">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder="example@email.com"
+              className="w-full border border-green-200 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
+              required
+            />
+            <span className="text-xs text-gray-500">Applicants' CVs will be sent here.</span>
+          </div>
         </div>
 
         {/* Application Method */}
         <div>
-          <label className="block font-semibold text-green-700 mb-1">Application Method:</label>
+          <label className="block font-semibold text-green-700 mb-2">Application Method</label>
           <select
             name="applicationMethod"
             value={form.applicationMethod}
             onChange={handleChange}
-            className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
+            className="w-full border border-green-200 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
             required
           >
-            <option value="">Select application method</option>
+            <option value="">Select method</option>
             <option value="Send CV to email">Send CV to email</option>
             <option value="Apply via website">Apply via website</option>
             <option value="Call company">Call company</option>
@@ -287,24 +281,25 @@ export default function NewJobPost() {
             <input
               type="text"
               name="applicationMethodOther"
-              value={form.applicationMethodOther || ''}
+              value={form.applicationMethodOther}
               onChange={handleChange}
               placeholder="Enter application method"
-              className="w-full border border-green-200 rounded-lg px-4 py-2 text-sm mt-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 focus:border-green-300"
+              className="w-full border border-green-200 rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-green-400 transition duration-200"
               required
             />
           )}
         </div>
 
-        {/* Submit */}
+        {/* Submit Button */}
         <div>
           <button
             type="submit"
-            className="w-full py-3 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 font-semibold"
+            className="w-full bg-gradient-to-r from-green-500 to-yellow-400 hover:from-yellow-400 hover:to-green-500 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105"
           >
             Submit Job Post
           </button>
         </div>
+
       </form>
     </div>
   );
