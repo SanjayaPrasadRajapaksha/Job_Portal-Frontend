@@ -1,7 +1,3 @@
-import { useState } from "react";
-import CommonJobTable from "../../components/CommonJobTable";
-
-// 30 sample jobs with the requested columns and "Posted On" in the format "14 Aug 2025"
 const jobList = [
     { position: "Software Engineer", company: "MAS Capital / IT", location: "Colombo", postedOn: "14 Aug 2025", status: "Full Time" },
     { position: "Graphic Designer", company: "Dilly & Carlo / Design", location: "Maharagama", postedOn: "13 Aug 2025", status: "Part Time" },
@@ -36,45 +32,58 @@ const jobList = [
 ];
 
 export default function SoftwareDevelopment() {
-    const [hoveredRow, setHoveredRow] = useState(null);
-    const [searchText, setSearchText] = useState("");
-    const [statusFilter, setStatusFilter] = useState("All");
+    return (
+        <div className="p-6 bg-gray-50 min-h-screen">
+            {/* Card Grid */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {jobList.map((job, i) => (
+                    <div
+                        key={i}
+                        className="relative bg-white rounded-2xl shadow-md border border-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col gap-3"
+                    >
+                        {/* Top Row */}
+                        <div className="flex items-center gap-2 mb-2">
+                            <span className="inline-block bg-yellow-400 text-white text-xs font-bold rounded-full px-3 py-1 shadow">
+                                {i + 1}
+                            </span>
+                            {job.status === "Full Time" ? (
+                                <span className="ml-auto text-xs px-3 py-1 rounded-full font-semibold bg-green-100 text-green-800 shadow-sm">
+                                    Full Time
+                                </span>
+                            ) : (
+                                <span className="ml-auto text-xs px-3 py-1 rounded-full font-semibold bg-blue-100 text-blue-800 shadow-sm">
+                                    Part Time
+                                </span>
+                            )}
+                        </div>
 
-    // Filter jobs based on search text and status
-    const filteredJobs = jobList.filter((job) => {
-        const matchesSearch =
-            job.position.toLowerCase().includes(searchText.toLowerCase()) ||
-            job.company.toLowerCase().includes(searchText.toLowerCase()) ||
-            job.location.toLowerCase().includes(searchText.toLowerCase());
+                        {/* Job Title & Company */}
+                        <div className="mb-1">
+                            <h3 className="text-lg font-extrabold text-gray-800 group-hover:text-yellow-500 transition-colors">
+                                {job.position}
+                            </h3>
+                            <div className="text-sm text-gray-500 font-medium">{job.company}</div>
+                        </div>
 
-        const matchesStatus = statusFilter === "All" || job.status === statusFilter;
-
-        return matchesSearch && matchesStatus;
-    });
-
-        // Define columns for the common table
-       const columns = [
-  { key: "id", header: "#", render: (job, i) => i + 1, className: "bg-green-500 text-white text-center font-semibold min-w-[40px] w-[1%]" },
-  { key: "position", header: "Position", className: "text-[#8d0d37] font-semibold" },
-  { key: "company", header: "Company / Industry", className: "font-semibold" },
-  { key: "location", header: "Location" }, // No bold here
-  { key: "postedOn", header: "Posted On", render: (job) => `Posted on ${job.postedOn}` }, // No bold here
-  { key: "status", header: "Status", render: (job) => (
-      <span className={`${job.status === "Full Time" ? "text-green-700" : "text-blue-700"}`}>{job.status}</span>
-    )
-  },
-];
-
-
-        return (
-            <div className="p-4">
-                {/* Common reusable job table */}
-                <CommonJobTable
-                    jobs={filteredJobs}
-                    columns={columns}
-                    rowHoverColor="bg-yellow-500"
-                    positionHoverColor="text-[#8d0d37]"
-                />
+                        {/* Location & Date */}
+                        <div className="flex items-center gap-2 text-sm text-gray-600">
+                            <span className="inline-flex items-center gap-1 font-medium text-gray-700">
+                                <svg
+                                    className="w-4 h-4 text-yellow-400"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                >
+                                    <path d="M10 2a6 6 0 016 6c0 4.418-6 10-6 10S4 12.418 4 8a6 6 0 016-6zm0 8a2 2 0 100-4 2 2 0 000 4z" />
+                                </svg>
+                                {job.location}
+                            </span>
+                            <span className="ml-auto text-xs text-gray-400 font-medium">
+                                {job.postedOn}
+                            </span>
+                        </div>
+                    </div>
+                ))}
             </div>
-        );
+        </div>
+    );
 }
