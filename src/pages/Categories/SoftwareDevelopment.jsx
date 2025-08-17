@@ -25,7 +25,7 @@ export default function SoftwareDevelopment() {
         {jobList.map((job, i) => (
           <div
             key={i}
-            className="relative bg-white rounded-2xl shadow-md border border-gray-200 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 p-6 flex flex-col gap-3"
+            className="relative bg-white rounded-md shadow-md border border-gray-200 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 p-6 flex flex-col gap-3"
           >
             {/* Top Row */}
             <div className="flex items-center gap-2 mb-2">
