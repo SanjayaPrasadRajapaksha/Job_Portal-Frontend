@@ -55,7 +55,7 @@ export default function NewJobPost() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-blue-50 flex flex-col items-center justify-center py-16 px-4">
-      <div className="max-w-4xl w-full bg-white rounded-3xl border border-gray-200 p-10 shadow-sm">
+      <div className="max-w-4xl w-full bg-white rounded-md  border-gray-200 p-10 ">
         <h2 className="text-3xl text-teal-700 mb-6 text-center font-serif">
           Post Your Vacancy
         </h2>
@@ -72,7 +72,7 @@ export default function NewJobPost() {
               value={form.title}
               onChange={handleChange}
               placeholder="e.g., Senior Frontend Developer"
-              className="w-full border bg-gray-100 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-100 shadow-sm text-gray-700 transition duration-200"
+              className="w-full border bg-gray-100 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-100 shadow-sm text-gray-700 transition duration-200"
               required
             />
           </div>
@@ -87,7 +87,7 @@ export default function NewJobPost() {
               value={form.description}
               onChange={handleChange}
               placeholder="Describe the job responsibilities, requirements, and perks..."
-              className="w-full border bg-gray-100 rounded-xl px-4 py-3 text-sm shadow-sm min-h-[120px] focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+              className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm min-h-[120px] focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
               required
             />
           </div>
@@ -105,7 +105,7 @@ export default function NewJobPost() {
               className="block text-sm text-gray-600"
             />
             {previewUrl && (
-              <img src={previewUrl} alt="Preview" className="mt-2 max-h-40 rounded-xl border shadow-sm" />
+              <img src={previewUrl} alt="Preview" className="mt-2 max-h-40 rounded-md border shadow-sm" />
             )}
           </div>
 
@@ -118,7 +118,7 @@ export default function NewJobPost() {
               name="category"
               value={form.category}
               onChange={handleChange}
-              className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+              className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
               required
             >
               <option value="">Select category</option>
@@ -137,7 +137,7 @@ export default function NewJobPost() {
                 value={form.categoryOther}
                 onChange={handleChange}
                 placeholder="Enter category"
-                className="w-full border rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               />
             )}
@@ -154,7 +154,7 @@ export default function NewJobPost() {
                 name="district"
                 value={form.district}
                 onChange={handleChange}
-                className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               >
                 <option value="">Select district</option>
@@ -169,7 +169,7 @@ export default function NewJobPost() {
                   value={form.districtOther}
                   onChange={handleChange}
                   placeholder="Enter district"
-                  className="w-full border rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                  className="w-full border rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                   required
                 />
               )}
@@ -185,7 +185,7 @@ export default function NewJobPost() {
                 value={form.city}
                 onChange={handleChange}
                 disabled={!form.district || form.district === 'Other'}
-                className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               >
                 <option value="">Select city</option>
@@ -202,7 +202,7 @@ export default function NewJobPost() {
                   value={form.cityOther}
                   onChange={handleChange}
                   placeholder="Enter city"
-                  className="w-full border rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                  className="w-full border rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                   required
                 />
               )}
@@ -218,7 +218,7 @@ export default function NewJobPost() {
               name="workType"
               value={form.workType}
               onChange={handleChange}
-              className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+              className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
               required
             >
               <option value="">Select work type</option>
@@ -231,7 +231,7 @@ export default function NewJobPost() {
                 value={form.workTypeOther}
                 onChange={handleChange}
                 placeholder="Enter work type"
-                className="w-full border bg-gray-100 rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border bg-gray-100 rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               />
             )}
@@ -247,7 +247,7 @@ export default function NewJobPost() {
                 value={form.company}
                 onChange={handleChange}
                 placeholder="Company Name"
-                className="w-full border bg-gray-100 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               />
             </div>
@@ -260,7 +260,7 @@ export default function NewJobPost() {
                 value={form.website}
                 onChange={handleChange}
                 placeholder="https://example.com"
-                className="w-full border bg-gray-100 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
               />
             </div>
 
@@ -272,7 +272,7 @@ export default function NewJobPost() {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="example@email.com"
-                className="w-full border bg-gray-100 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               />
               <span className="text-xs text-gray-500">Applicants' CVs will be sent here.</span>
@@ -288,7 +288,7 @@ export default function NewJobPost() {
               name="applicationMethod"
               value={form.applicationMethod}
               onChange={handleChange}
-              className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+              className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
               required
             >
               <option value="">Select method</option>
@@ -304,7 +304,7 @@ export default function NewJobPost() {
                 value={form.applicationMethodOther}
                 onChange={handleChange}
                 placeholder="Enter application method"
-                className="w-full border rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               />
             )}

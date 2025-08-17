@@ -86,12 +86,12 @@ export default function Reviews() {
       <div className="max-w-5xl w-full relative">
         {/* Header */}
         <h1 className="text-3xl text-gray-800 mb-2 text-center">What Our Users Say</h1>
-        <p className="text-gray-500 text-center mb-10">Real feedback from employers and job seekers</p>
+       
 
         {/* Leave Review Button */}
         <div className="absolute top-0 right-0 mt-2">
           <button
-            className="bg-blue-200 text-blue-900 font-semibold py-2 px-5 rounded-md hover:bg-blue-300 transition duration-200"
+            className="bg-blue-300 text-blue-800 font-semibold py-2 px-6 rounded-md text-sm hover:bg-blue-400 transition duration-200"
             onClick={() => setShowForm(true)}
           >
             Leave a Review
@@ -101,14 +101,14 @@ export default function Reviews() {
         {/* Review Form Modal */}
         {showForm && (
           <div className="fixed inset-0 bg-black bg-opacity-20 flex items-center justify-center z-50">
-            <div className="bg-white rounded-2xl p-8 shadow-lg w-full max-w-md relative">
+            <div className="bg-white rounded-md p-8 shadow-lg w-full max-w-md relative">
               <button
                 className="absolute top-3 right-3 text-gray-400 hover:text-gray-800 text-2xl"
                 onClick={() => setShowForm(false)}
               >
                 &times;
               </button>
-              <h2 className="text-xl text-gray-700 mb-4 text-center">Leave a Review</h2>
+              <h2 className="text-xl text-gray-900 mb-4 text-center">Leave a Review</h2>
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <input
                   type="text"
@@ -116,7 +116,7 @@ export default function Reviews() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="Name *"
-                  className="w-full border bg-gray-50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-100 shadow-sm transition duration-200"
+                  className="w-full border bg-gray-50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-100 shadow-sm transition duration-200"
                   required
                 />
                 <select
@@ -135,7 +135,7 @@ export default function Reviews() {
                   value={form.review}
                   onChange={handleChange}
                   placeholder="Message *"
-                  className="w-full border bg-gray-50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-100 shadow-sm transition duration-200"
+                  className="w-full border bg-gray-50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-100 shadow-sm transition duration-200"
                   rows="3"
                   required
                 />
@@ -155,7 +155,7 @@ export default function Reviews() {
                 <div className="w-full flex justify-end">
                   <button
                     type="submit"
-                    className="bg-blue-200 text-blue-900 font-semibold py-2 px-6 rounded-md text-sm hover:bg-blue-300 transition duration-200"
+                    className="bg-blue-300 text-blue-900 font-semibold py-2 px-6 rounded-md text-sm hover:bg-blue-400 transition duration-200"
                   >
                     Submit
                   </button>
@@ -174,7 +174,7 @@ export default function Reviews() {
             return (
               <div
                 key={idx}
-                className={`relative ${bgColor} border border-gray-200 rounded-2xl shadow-sm p-6 flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-md group min-w-[250px] max-w-[300px]`}
+                className={`relative ${bgColor} border border-gray-200 rounded-md shadow-sm p-6 flex flex-col gap-4 transition-transform duration-300 hover:-translate-y-1 hover:shadow-md group min-w-[250px] max-w-[300px]`}
               >
                 {/* Name & Role */}
                 <div className="flex flex-col items-start gap-1">

@@ -2,7 +2,6 @@ import React from "react";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { SiX } from "react-icons/si";
 
-const footerLinks = ["Home", "Banner promotions", "Top Employers", "T & C"];
 
 const socialLinks = [
   { icon: <FaFacebookF />, href: "#", label: "Facebook", bg: "bg-blue-600" },
@@ -18,24 +17,11 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-400 text-gray-200 text-sm border-t border-gray-200">
-      <div className="max-w-screen-xl mx-auto flex flex-wrap md:flex-nowrap items-center justify-between px-2 py-1 gap-2">
-        
+<footer className="bg-gradient-to-b from-gray-700 to-gray-800">
+  <div className="max-w-screen-xl text-gray-200 mx-auto flex flex-wrap md:flex-nowrap items-center justify-between px-2 py-1 gap-2 shadow-lg rounded-t-lg bg-gradient-to-b from-gray-700 to-gray-800">
         {/* Links */}
         <nav className="flex flex-wrap gap-1 justify-start flex-1 text-xs">
-          {footerLinks.map((link, idx) => (
-            <React.Fragment key={link}>
-              <a
-                href="#"
-                className="px-1 hover:text-green-600 hover:underline transition-colors"
-              >
-                {link}
-              </a>
-              {idx !== footerLinks.length - 1 && (
-                <span className="text-gray-400">|</span>
-              )}
-            </React.Fragment>
-          ))}
+          © 2006-2025 Genesisi Software (Pvt) Ltd. All Rights Reserved.
         </nav>
 
         {/* Subscribe Form */}
@@ -48,14 +34,14 @@ export default function Footer() {
           />
           <button
             type="submit"
-            className="h-6 px-2 bg-green-500 hover:bg-green-600 text-white rounded-r-md text-xs shadow-sm transition"
+            className="h-6 px-2 bg-red-600 hover:bg-red-700 text-white rounded-r-md text-xs shadow-sm transition"
           >
             Subscribe
           </button>
         </form>
 
         {/* Social Icons */}
-        <div className="flex gap-1 items-center flex-shrink-0">
+        <div className="flex gap-1 items-center flex-shrink-0 ml-9">
           {socialLinks.map((social) => (
             <a
               key={social.label}
@@ -72,9 +58,9 @@ export default function Footer() {
       </div>
 
       {/* Copyright */}
-      <div className="w-full bg-gray-200 text-center py-0.5 text-[10px] text-gray-600 border-t">
+      {/* <div className="w-full bg-gray-200 text-center py-0.5 text-[10px] text-gray-600 border-t">
         © 2006-2025 Genesisi Software (Pvt) Ltd. All Rights Reserved.
-      </div>
+      </div> */}
     </footer>
   );
 }
