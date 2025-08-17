@@ -59,11 +59,11 @@ export default function NewJobPost() {
         <h2 className="text-3xl text-teal-700 mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
           Post Your Vacancy
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-14">
 
           {/* Job Title */}
           <div>
-            <label className="block text-teal-400 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+            <label className="block text-gray-600 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
               Title *
             </label>
             <input
@@ -79,7 +79,7 @@ export default function NewJobPost() {
 
           {/* Description */}
           <div>
-            <label className="block text-teal-400 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+            <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
               Description
             </label>
             <textarea
@@ -94,7 +94,7 @@ export default function NewJobPost() {
 
           {/* Image Upload */}
           <div>
-            <label className="block text-teal-400 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+            <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
               Job Poster
             </label>
             <input
@@ -111,7 +111,7 @@ export default function NewJobPost() {
 
           {/* Category */}
           <div>
-            <label className="block text-teal-400 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+            <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
               Category *
             </label>
             <select
@@ -147,7 +147,7 @@ export default function NewJobPost() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* District */}
             <div>
-              <label className="block text-teal-400 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+              <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
                 District
               </label>
               <select
@@ -177,7 +177,7 @@ export default function NewJobPost() {
 
             {/* City */}
             <div>
-              <label className="block text-teal-400 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+              <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
                 City
               </label>
               <select
@@ -211,7 +211,7 @@ export default function NewJobPost() {
 
           {/* Work Type */}
           <div>
-            <label className="block text-teal-400 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+            <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
               Work Type
             </label>
             <select
@@ -240,7 +240,7 @@ export default function NewJobPost() {
           {/* Company, Website, Email */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-teal-400 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Company</label>
+              <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Company</label>
               <input
                 type="text"
                 name="company"
@@ -253,7 +253,7 @@ export default function NewJobPost() {
             </div>
 
             <div>
-              <label className="block text-teal-400 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Website</label>
+              <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Website</label>
               <input
                 type="url"
                 name="website"
@@ -265,7 +265,7 @@ export default function NewJobPost() {
             </div>
 
             <div>
-              <label className="block text-teal-400 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Email</label>
+              <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Email</label>
               <input
                 type="email"
                 name="email"
@@ -281,7 +281,7 @@ export default function NewJobPost() {
 
           {/* Application Method */}
           <div>
-            <label className="block text-teal-400 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+            <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
               Application Method
             </label>
             <select
