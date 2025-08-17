@@ -38,6 +38,42 @@ const initialReviews = [
     date: "April 2025",
     avatar: "https://randomuser.me/api/portraits/men/65.jpg",
   },
+  {
+    name: "Alice Johnson",
+    role: "Employer",
+    review:
+      "JobCore made hiring so much easier! The process was smooth and the candidates were top-notch.",
+    rating: 5,
+    date: "July 2025",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    name: "Michael Lee",
+    role: "Job Seeker",
+    review:
+      "I found my dream job through JobCore. The platform is user-friendly and the support team is amazing!",
+    rating: 5,
+    date: "June 2025",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
+  {
+    name: "Priya Singh",
+    role: "Employer",
+    review:
+      "We hired several great employees thanks to JobCore. Highly recommended for any business!",
+    rating: 4,
+    date: "May 2025",
+    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+  },
+  {
+    name: "Carlos Ramirez",
+    role: "Job Seeker",
+    review:
+      "The application process was quick and easy. I got responses from employers within days!",
+    rating: 4,
+    date: "April 2025",
+    avatar: "https://randomuser.me/api/portraits/men/65.jpg",
+  },
 ];
 
 function StarRating({ rating }) {
@@ -85,17 +121,17 @@ export default function Reviews() {
     <div className="min-h-screen bg-gray-50 flex flex-col items-center py-16 px-6">
       <div className="max-w-5xl w-full relative">
         {/* Header */}
-        <h1 className="text-4xl font-extrabold text-gray-800 mb-2 text-center">
+        <h1 className="text-3xl text-gray-900 mb-2 text-center">
           What Our Users Say
         </h1>
-        <p className="text-gray-500 mb-12 text-center text-lg">
+        <p className="text-gray-600 text-center mb-10">
           Real feedback from employers and job seekers
         </p>
 
         {/* Leave Review Button */}
         <div className="absolute top-0 right-0 mt-2">
           <button
-            className="bg-gradient-to-r from-yellow-400 to-green-500 hover:from-green-500 hover:to-yellow-400 text-white font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+            className="bg-blue-200 text-blue-900 font-semibold py-2 px-5 rounded-md hover:bg-blue-300 transition duration-200"
             onClick={() => setShowForm(true)}
           >
             Leave a Review
@@ -104,15 +140,15 @@ export default function Reviews() {
 
         {/* Review Form Modal */}
         {showForm && (
-          <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-            <div className="bg-white rounded-3xl p-8 shadow-2xl border border-green-300 w-full max-w-md relative">
+          <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
+            <div className="bg-blue-50 rounded-2xl p-8 shadow-lg w-full max-w-md relative">
               <button
-                className="absolute top-3 right-3 text-gray-400 hover:text-green-600 text-3xl"
+                className="absolute top-3 right-3 text-gray-500 hover:text-gray-900 text-2xl"
                 onClick={() => setShowForm(false)}
               >
                 &times;
               </button>
-              <h2 className="text-2xl font-bold text-gray-800 mb-5 text-center">
+              <h2 className="text-xl text-gray-800 mb-4 text-center">
                 Leave a Review
               </h2>
               <form className="space-y-4" onSubmit={handleSubmit}>
@@ -121,15 +157,15 @@ export default function Reviews() {
                   name="name"
                   value={form.name}
                   onChange={handleChange}
-                  placeholder="Your Name"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                  placeholder="Name *"
+                  className="w-full border bg-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-100 shadow-sm transition duration-200"
                   required
                 />
                 <select
                   name="role"
                   value={form.role}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-100"
                   required
                 >
                   <option value="">Select Role</option>
@@ -140,8 +176,8 @@ export default function Reviews() {
                   name="review"
                   value={form.review}
                   onChange={handleChange}
-                  placeholder="Your Review"
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                  placeholder="Message *"
+                  className="w-full border bg-white rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-100 shadow-sm transition duration-200"
                   rows="3"
                   required
                 />
@@ -149,7 +185,7 @@ export default function Reviews() {
                   name="rating"
                   value={form.rating}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-100"
                   required
                 >
                   {[5, 4, 3, 2, 1].map((r) => (
@@ -158,44 +194,70 @@ export default function Reviews() {
                     </option>
                   ))}
                 </select>
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-green-500 to-yellow-400 hover:from-yellow-400 hover:to-green-500 text-white font-bold py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
-                >
-                  Submit Review
-                </button>
+                <div className="w-full flex justify-end">
+                  <button
+                    type="submit"
+                    className="bg-blue-200 text-blue-900 font-semibold py-2 px-6 rounded-md text-sm hover:bg-blue-300 transition duration-200"
+                  >
+                    Submit
+                  </button>
+                </div>
               </form>
             </div>
           </div>
         )}
 
+
         {/* Reviews Grid */}
-        <div className="grid gap-8 md:grid-cols-2 mt-12">
-          {reviews.map((review, idx) => (
-            <div
-              key={idx}
-              className="bg-gradient-to-br from-white via-green-50 to-white border border-gray-200 rounded-3xl shadow-md p-6 flex flex-col gap-3 transition-transform duration-300 transform hover:-translate-y-1 hover:shadow-xl"
-            >
-              <div className="flex items-center gap-4">
-                <img
-                  src={review.avatar}
-                  alt={review.name}
-                  className="w-16 h-16 rounded-full border-2 border-green-300 object-cover"
-                />
-                <div>
+        <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4 mt-12 justify-items-center">
+          {reviews.map((review, idx) => {
+            // Calm pastel background colors
+            const calmColors = [
+              "bg-blue-50",
+              "bg-green-50",
+              "bg-purple-50",
+              "bg-pink-50",
+              "bg-teal-50",
+              "bg-yellow-50"
+            ];
+            const bgColor = calmColors[idx % calmColors.length];
+
+            return (
+              <div
+                key={idx}
+                className={`relative ${bgColor} 
+                   border border-gray-200 rounded-2xl shadow-md p-6 flex flex-col gap-4
+                   transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg group
+                   min-w-[250px] max-w-[300px]`}
+              >
+                {/* Subtle hover border accent */}
+                <div className="absolute inset-0 rounded-2xl border-2 border-transparent 
+                        group-hover:border-gray-100 transition duration-500 pointer-events-none"></div>
+
+                {/* Name & Role */}
+                <div className="relative z-10 flex flex-col items-start gap-1 text-left">
                   <div className="font-bold text-gray-800 text-lg">{review.name}</div>
-                  <div className="text-gray-500 text-sm">
-                    {review.role} • {review.date}
-                  </div>
+                  <div className="text-gray-500 text-sm">{review.role} • {review.date}</div>
                 </div>
+
+                {/* Star Rating */}
+                <div className="relative z-10">
+                  <StarRating rating={review.rating} />
+                </div>
+
+                {/* Review Text */}
+                <p className="relative z-10 text-gray-700 italic mt-2 leading-relaxed">
+                  “{review.review}”
+                </p>
               </div>
-              <StarRating rating={review.rating} />
-              <p className="text-gray-700 italic mt-2 relative pl-6 before:content-['❝'] before:absolute before:left-0 before:text-green-400 before:text-xl">
-                {review.review}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
+
+
+
+
+
       </div>
     </div>
   );
