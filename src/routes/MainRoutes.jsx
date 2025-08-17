@@ -33,40 +33,42 @@ import Reviews from "../pages/Reviews/Reviews";
 
 function MainRoutes() {
   return (
-    <Routes>
-      <Route path="/categories/software-development" element={<SoftwareDevelopment />} />
-      <Route path="/categories/hardware-technical-support" element={<HardwareTechnicalSupport />} />
-      <Route path="/categories/mechanical-civil-engineering" element={<MechanicalCivilEngineering />} />
-      <Route path="/categories/healthcare-nursing" element={<HealthcareNursing />} />
-      <Route path="/categories/finance-accounting" element={<FinanceAccounting />} />
-      <Route path="/categories/sales-marketing" element={<SalesMarketing />} />
-      <Route path="/categories/human-resources" element={<HumanResources />} />
-      <Route path="/categories/administration-office" element={<AdministrationOffice />} />
-      <Route path="/categories/customer-service" element={<CustomerService />} />
-      <Route path="/categories/education-training" element={<EducationTraining />} />
-      <Route path="/categories/legal-compliance" element={<LegalCompliance />} />
-      <Route path="/categories/construction-real-estate" element={<ConstructionRealEstate />} />
-      <Route path="/categories/manufacturing-production" element={<ManufacturingProduction />} />
-      <Route path="/categories/logistics-supply-chain" element={<LogisticsSupplyChain />} />
-      <Route path="/categories/retail-fashion" element={<RetailFashion />} />
-      <Route path="/categories/hospitality-tourism" element={<HospitalityTourism />} />
-      <Route path="/categories/science-rd" element={<ScienceRD />} />
-      <Route path="/categories/arts-design" element={<ArtsDesign />} />
-      <Route path="/categories/government-service" element={<GovernmentService />} />
-      <Route path="/categories/ngo-social-work" element={<NGOSocialWork />} />
-      <Route path="/categories/skilled-trades" element={<SkilledTrades />} />
-      <Route path="/categories/telecommunications" element={<Telecommunications />} />
-      <Route path="/categories/agriculture-environment" element={<AgricultureEnvironment />} />
-      <Route path="/categories/automotive-services" element={<AutomotiveServices />} />
-      <Route path="/categories/energy-utilities" element={<EnergyUtilities />} />
-      <Route path="/categories/sports-recreation" element={<SportsRecreation />} />
-      <Route path="/categories/other" element={<Other />} />
+  
+      <Routes>
+        <Route path="/categories/software-development" element={<SoftwareDevelopment />} />
+        <Route path="/categories/hardware-technical-support" element={<HardwareTechnicalSupport />} />
+        <Route path="/categories/mechanical-civil-engineering" element={<MechanicalCivilEngineering />} />
+        <Route path="/categories/healthcare-nursing" element={<HealthcareNursing />} />
+        <Route path="/categories/finance-accounting" element={<FinanceAccounting />} />
+        <Route path="/categories/sales-marketing" element={<SalesMarketing />} />
+        <Route path="/categories/human-resources" element={<HumanResources />} />
+        <Route path="/categories/administration-office" element={<AdministrationOffice />} />
+        <Route path="/categories/customer-service" element={<CustomerService />} />
+        <Route path="/categories/education-training" element={<EducationTraining />} />
+        <Route path="/categories/legal-compliance" element={<LegalCompliance />} />
+        <Route path="/categories/construction-real-estate" element={<ConstructionRealEstate />} />
+        <Route path="/categories/manufacturing-production" element={<ManufacturingProduction />} />
+        <Route path="/categories/logistics-supply-chain" element={<LogisticsSupplyChain />} />
+        <Route path="/categories/retail-fashion" element={<RetailFashion />} />
+        <Route path="/categories/hospitality-tourism" element={<HospitalityTourism />} />
+        <Route path="/categories/science-rd" element={<ScienceRD />} />
+        <Route path="/categories/arts-design" element={<ArtsDesign />} />
+        <Route path="/categories/government-service" element={<GovernmentService />} />
+        <Route path="/categories/ngo-social-work" element={<NGOSocialWork />} />
+        <Route path="/categories/skilled-trades" element={<SkilledTrades />} />
+        <Route path="/categories/telecommunications" element={<Telecommunications />} />
+        <Route path="/categories/agriculture-environment" element={<AgricultureEnvironment />} />
+        <Route path="/categories/automotive-services" element={<AutomotiveServices />} />
+        <Route path="/categories/energy-utilities" element={<EnergyUtilities />} />
+        <Route path="/categories/sports-recreation" element={<SportsRecreation />} />
+        <Route path="/categories/other" element={<Other />} />
 
-      <Route path="/post/new" element={<NewJobPost/>} />
-      <Route path="/contact" element={<Contact/>} />
-      <Route path="/reviews" element={<Reviews />} />
-      {/* Add other routes as needed */}
-    </Routes>
+        <Route path="/post/new" element={<NewJobPost />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/reviews" element={<Reviews />} />
+        {/* Add other routes as needed */}
+      </Routes>
+  
   );
 }
 
