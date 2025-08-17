@@ -54,16 +54,16 @@ export default function NewJobPost() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-green-50 flex flex-col items-center justify-center py-16 px-4">
-      <div className="max-w-4xl w-full bg-white rounded-3xl  border-gray-200 p-10 ">
-        <h2 className="text-3xl text-teal-700 mb-4 text-center" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-blue-50 flex flex-col items-center justify-center py-16 px-4">
+      <div className="max-w-4xl w-full bg-white rounded-3xl border border-gray-200 p-10 shadow-sm">
+        <h2 className="text-3xl text-teal-700 mb-6 text-center font-serif">
           Post Your Vacancy
         </h2>
-        <form onSubmit={handleSubmit} className="space-y-14">
+        <form onSubmit={handleSubmit} className="space-y-10">
 
           {/* Job Title */}
           <div>
-            <label className="block text-gray-600 text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+            <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
               Title *
             </label>
             <input
@@ -72,14 +72,14 @@ export default function NewJobPost() {
               value={form.title}
               onChange={handleChange}
               placeholder="e.g., Senior Frontend Developer"
-              className="w-full border bg-blue-50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-100 shadow-sm transition duration-200"
+              className="w-full border bg-gray-100 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-100 shadow-sm text-gray-700 transition duration-200"
               required
             />
           </div>
 
           {/* Description */}
           <div>
-            <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+            <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
               Description
             </label>
             <textarea
@@ -87,14 +87,14 @@ export default function NewJobPost() {
               value={form.description}
               onChange={handleChange}
               placeholder="Describe the job responsibilities, requirements, and perks..."
-              className="w-full border bg-blue-50 rounded-xl px-4 py-3 text-sm shadow-sm min-h-[120px] focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+              className="w-full border bg-gray-100 rounded-xl px-4 py-3 text-sm shadow-sm min-h-[120px] focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
               required
             />
           </div>
 
           {/* Image Upload */}
           <div>
-            <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+            <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
               Job Poster
             </label>
             <input
@@ -111,14 +111,14 @@ export default function NewJobPost() {
 
           {/* Category */}
           <div>
-            <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+            <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
               Category *
             </label>
             <select
               name="category"
               value={form.category}
               onChange={handleChange}
-              className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+              className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
               required
             >
               <option value="">Select category</option>
@@ -137,7 +137,7 @@ export default function NewJobPost() {
                 value={form.categoryOther}
                 onChange={handleChange}
                 placeholder="Enter category"
-                className="w-full border rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+                className="w-full border rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               />
             )}
@@ -147,14 +147,14 @@ export default function NewJobPost() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* District */}
             <div>
-              <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
                 District
               </label>
               <select
                 name="district"
                 value={form.district}
                 onChange={handleChange}
-                className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+                className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               >
                 <option value="">Select district</option>
@@ -169,7 +169,7 @@ export default function NewJobPost() {
                   value={form.districtOther}
                   onChange={handleChange}
                   placeholder="Enter district"
-                  className="w-full border rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+                  className="w-full border rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                   required
                 />
               )}
@@ -177,7 +177,7 @@ export default function NewJobPost() {
 
             {/* City */}
             <div>
-              <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
                 City
               </label>
               <select
@@ -185,7 +185,7 @@ export default function NewJobPost() {
                 value={form.city}
                 onChange={handleChange}
                 disabled={!form.district || form.district === 'Other'}
-                className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+                className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               >
                 <option value="">Select city</option>
@@ -202,7 +202,7 @@ export default function NewJobPost() {
                   value={form.cityOther}
                   onChange={handleChange}
                   placeholder="Enter city"
-                  className="w-full border rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+                  className="w-full border rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                   required
                 />
               )}
@@ -211,14 +211,14 @@ export default function NewJobPost() {
 
           {/* Work Type */}
           <div>
-            <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+            <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
               Work Type
             </label>
             <select
               name="workType"
               value={form.workType}
               onChange={handleChange}
-              className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+              className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
               required
             >
               <option value="">Select work type</option>
@@ -231,7 +231,7 @@ export default function NewJobPost() {
                 value={form.workTypeOther}
                 onChange={handleChange}
                 placeholder="Enter work type"
-                className="w-full border bg-blue-50 rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+                className="w-full border bg-gray-100 rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               />
             )}
@@ -240,39 +240,39 @@ export default function NewJobPost() {
           {/* Company, Website, Email */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Company</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Company</label>
               <input
                 type="text"
                 name="company"
                 value={form.company}
                 onChange={handleChange}
                 placeholder="Company Name"
-                className="w-full border bg-blue-50 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+                className="w-full border bg-gray-100 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Website</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Website</label>
               <input
                 type="url"
                 name="website"
                 value={form.website}
                 onChange={handleChange}
                 placeholder="https://example.com"
-                className="w-full border bg-blue-50 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+                className="w-full border bg-gray-100 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
               />
             </div>
 
             <div>
-              <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>Email</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Email</label>
               <input
                 type="email"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
                 placeholder="example@email.com"
-                className="w-full border bg-blue-50 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+                className="w-full border bg-gray-100 rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               />
               <span className="text-xs text-gray-500">Applicants' CVs will be sent here.</span>
@@ -281,14 +281,14 @@ export default function NewJobPost() {
 
           {/* Application Method */}
           <div>
-            <label className="block text-gray-600  text-[15px] font-semibold mb-2 uppercase" style={{ fontFamily: 'Times New Roman, Times, serif' }}>
+            <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
               Application Method
             </label>
             <select
               name="applicationMethod"
               value={form.applicationMethod}
               onChange={handleChange}
-              className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+              className="w-full border rounded-xl px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
               required
             >
               <option value="">Select method</option>
@@ -304,7 +304,7 @@ export default function NewJobPost() {
                 value={form.applicationMethodOther}
                 onChange={handleChange}
                 placeholder="Enter application method"
-                className="w-full border rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 transition duration-200"
+                className="w-full border rounded-xl px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               />
             )}
@@ -314,7 +314,7 @@ export default function NewJobPost() {
           <div className="w-full flex justify-end">
             <button
               type="submit"
-              className="bg-teal-400 hover:bg-teal-500 text-white font-semibold py-2 px-6 rounded-md text-sm transition duration-200"
+              className="bg-teal-400 hover:bg-teal-500 text-white font-semibold py-2 px-6 rounded-md text-sm transition duration-200 shadow-sm"
             >
               Submit
             </button>
