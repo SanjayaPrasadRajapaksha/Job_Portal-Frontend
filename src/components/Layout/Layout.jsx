@@ -35,15 +35,15 @@ function Layout({ children }) {
         <Sidebar />
         <main className="flex-1 flex flex-col overflow-hidden">
 
-{/* Search bar and checkboxes bar below nav, beside sidebar, visible on any category path */}
-{location.pathname.startsWith('/categories/') && (
-  <div className="bg-gray-200 px-6 py-1   shadow-sm flex items-center gap-4 justify-start rounded-md ml-4">
-    <div className="ml-auto flex items-center gap-4">
-      <Checkboxes values={checkboxValues} onChange={setCheckboxValues} />
-      <CommonSearchBar onSearch={handleSearch} />
-    </div>
-  </div>
-)}
+          {/* Search bar and checkboxes bar below nav, beside sidebar, visible on any category path */}
+          {location.pathname.startsWith('/categories/') && (
+            <div className="bg-gray-200 px-6 py-1   shadow-sm flex items-center gap-4 justify-start rounded-md ml-4">
+              <div className="ml-auto flex items-center gap-4">
+                <Checkboxes values={checkboxValues} onChange={setCheckboxValues} />
+                <CommonSearchBar onSearch={handleSearch} />
+              </div>
+            </div>
+          )}
 
 
           <div className="flex-1 overflow-auto">{children}</div>

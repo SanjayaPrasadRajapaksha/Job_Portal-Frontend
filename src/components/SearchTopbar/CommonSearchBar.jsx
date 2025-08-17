@@ -48,7 +48,7 @@ export default function CommonSearchBar({ onSearch, placeholder = "Search..." })
       {/* Submit Button */}
       <button
         type="submit"
-        className="px-2 py-1 bg-green-600 rounded text-white text-xs font-semibold flex items-center"
+        className="px-3 py-1 bg-green-500 hover:bg-green-600 rounded-lg text-white text-xs font-semibold transition"
       >
         Search
       </button>
