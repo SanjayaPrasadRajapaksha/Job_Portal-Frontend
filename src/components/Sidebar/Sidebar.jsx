@@ -31,28 +31,11 @@ const jobCategories = [
   { name: "Other", path: "/categories/other" },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ onCategorySelect }) {
   return (
     <aside className="w-64 min-w-[220px] flex flex-col bg-white border-r border-gray-200 shadow-lg z-20 max-h-[90vh] my-4">
       <div className="flex-1 flex flex-col bg-gradient-to-b from-green-200 to-green-50 overflow-hidden">
         
-        {/* Subscribe Form */}
-        <div className="p-3 bg-white shadow-sm border-b border-gray-200">
-          <form className="flex items-center gap-2">
-            <input
-              type="email"
-              placeholder="Subscribe with your email"
-              className="flex-1 px-3 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm placeholder-gray-500 bg-white transition"
-              required
-            />
-            <button
-              type="submit"
-              className="p-2 rounded-full bg-green-600 text-white shadow-md hover:bg-yellow-400 hover:text-green-900 transition-all duration-200 flex items-center justify-center"
-            >
-              <FaPaperPlane className="text-sm" />
-            </button>
-          </form>
-        </div>
 
         {/* Heading */}
         <h2 className="bg-green-700 text-white text-sm text-center py-3 font-semibold tracking-wide uppercase shadow-sm">
@@ -65,7 +48,8 @@ export default function Sidebar() {
             <li key={cat.name}>
               <Link
                 to={cat.path}
-                className="block text-sm font-medium px-3 py-2 rounded-lg text-gray-700 hover:bg-yellow-300 hover:text-green-900 transition-all duration-200 shadow-sm hover:shadow-md"
+                className="block text-sm font-medium px-3 py-2 rounded-lg text-gray-700 hover:bg-yellow-400 hover:text-green-900 transition-all duration-200 shadow-sm hover:shadow-md"
+                onClick={() => onCategorySelect && onCategorySelect(cat)}
               >
                 {cat.name}
               </Link>
