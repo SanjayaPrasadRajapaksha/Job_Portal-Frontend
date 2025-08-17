@@ -33,7 +33,7 @@ export default function NavBar() {
 <div className="hidden md:flex items-center gap-6">
   <Link
     to="/post/new"
-    className="px-4 py-2 rounded-xl bg-[#239BA7] text-white font-semibold shadow text-sm"
+    className="px-4 py-2 rounded-md bg-[#239BA7] text-white font-semibold shadow text-sm"
   >
     Post Vacancy
   </Link>
@@ -59,7 +59,7 @@ export default function NavBar() {
   <div className="flex items-center gap-2">
     <Link
       to="/user"
-      className="bg-yellow-400 rounded-xl px-3 py-2 flex items-center justify-center border shadow-sm"
+      className="bg-yellow-400 rounded-md px-3 py-2 flex items-center justify-center border shadow-sm"
       title="User"
     >
       <FaUser className="text-md text-black" />
@@ -67,7 +67,7 @@ export default function NavBar() {
 
     <Link
       to="/login"
-      className="bg-yellow-400 rounded-xl px-3 py-2 flex items-center justify-center border shadow-sm"
+      className="bg-yellow-400 rounded-md px-3 py-2 flex items-center justify-center border shadow-sm"
       title="Login"
     >
       <FaSignInAlt className="text-md text-black" />
@@ -114,14 +114,14 @@ export default function NavBar() {
     <div className="flex gap-3">
       <Link
         to="/user"
-        className="bg-yellow-400 rounded-xl px-3 py-2 flex items-center justify-center border border-yellow-400 shadow-sm"
+        className="bg-yellow-400 rounded-md px-3 py-2 flex items-center justify-center border border-yellow-400 shadow-sm"
         onClick={() => setIsMenuOpen(false)}
       >
         <FaUser className="text-xl text-black" />
       </Link>
       <Link
         to="/login"
-        className="bg-yellow-400 rounded-xl px-3 py-2 flex items-center justify-center border border-yellow-400 shadow-sm"
+        className="bg-yellow-400 rounded-md px-3 py-2 flex items-center justify-center border border-yellow-400 shadow-sm"
         onClick={() => setIsMenuOpen(false)}
       >
         <FaSignInAlt className="text-xl text-black" />

@@ -1,4 +1,4 @@
-import { FaPaperPlane } from "react-icons/fa";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const jobCategories = [
@@ -32,24 +32,34 @@ const jobCategories = [
 ];
 
 export default function Sidebar({ onCategorySelect }) {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const handleSelect = (cat) => {
+    setSelectedCategory(cat.name);
+    if (onCategorySelect) onCategorySelect(cat);
+  };
+
   return (
     <aside className="w-64 min-w-[220px] flex flex-col bg-white border-r border-gray-200 shadow-lg z-20 max-h-[90vh] my-4">
-      <div className="flex-1 flex flex-col bg-gradient-to-b from-green-200 to-green-50 overflow-hidden">
-        
-
+      <div className="flex-1 flex flex-col bg-gradient-to-b from-green-500 to-green-300 overflow-hidden">
         {/* Heading */}
         <h2 className="bg-green-700 text-white text-sm text-center py-3 font-semibold tracking-wide uppercase shadow-sm">
           Job Categories
         </h2>
 
         {/* Category List */}
-        <ul className="flex-1 overflow-y-auto py-3 px-2 space-y-1 scrollbar-thin scrollbar-thumb-green-500 scrollbar-track-green-100">
+      <ul className="flex-1 overflow-y-auto px-1 py-1.5 space-y-1 scrollbar-green">
           {jobCategories.map((cat) => (
             <li key={cat.name}>
               <Link
                 to={cat.path}
-                className="block text-sm font-medium px-3 py-2 rounded-lg text-gray-700 hover:bg-yellow-400 hover:text-green-900 transition-all duration-200 shadow-sm hover:shadow-md"
-                onClick={() => onCategorySelect && onCategorySelect(cat)}
+                className={`block text-sm font-medium px-3 py-2  transition-all duration-200 shadow-sm
+                  ${
+                    selectedCategory === cat.name
+                      ? "bg-yellow-400 text-gray-800 shadow-md"
+                      : "text-gray-00 hover:bg-yellow-400 hover:text-green-900 hover:shadow-md"
+                  }`}
+                onClick={() => handleSelect(cat)}
               >
                 {cat.name}
               </Link>
@@ -58,9 +68,9 @@ export default function Sidebar({ onCategorySelect }) {
         </ul>
 
         {/* Scroll hint */}
-      <div className="bg-green-700 text-white text-xs text-center py-2 flex items-center justify-center gap-2 border-t border-green-600">
-        More Categories Below
-      </div>
+        <div className="bg-green-700 text-white text-xs text-center py-2 flex items-center justify-center gap-2 border-t border-green-600">
+          More Categories Below
+        </div>
       </div>
     </aside>
   );
