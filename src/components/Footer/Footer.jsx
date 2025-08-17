@@ -34,7 +34,7 @@ export default function Footer() {
           />
           <button
             type="submit"
-            className="h-6 px-2 bg-red-600 hover:bg-red-700 text-white rounded-r-md text-xs shadow-sm transition"
+            className="h-6 px-2 bg-red-600 text-white rounded-r-md text-xs shadow-sm transition"
           >
             Subscribe
           </button>

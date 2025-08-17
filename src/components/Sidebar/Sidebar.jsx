@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const jobCategories = [
@@ -31,9 +30,7 @@ const jobCategories = [
   { name: "Other", path: "/categories/other" },
 ];
 
-export default function Sidebar({ onCategorySelect }) {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-
+export default function Sidebar({ selectedCategory, setSelectedCategory, onCategorySelect }) {
   const handleSelect = (cat) => {
     setSelectedCategory(cat.name);
     if (onCategorySelect) onCategorySelect(cat);
