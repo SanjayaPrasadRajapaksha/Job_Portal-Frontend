@@ -31,10 +31,10 @@ export default function NavBar({ clearSidebarCategory }) {
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
           <Link
             to="/post/new"
-            className="px-4 py-2 rounded-md bg-[#239BA7] text-white font-semibold shadow text-sm"
+            className="px-1.5 py-1 rounded-md bg-[#239BA7] text-white font-semibold shadow text-sm"
             onClick={clearSidebarCategory}
           >
             Post Vacancy
@@ -44,32 +44,12 @@ export default function NavBar({ clearSidebarCategory }) {
             <Link
               key={link.path}
               to={link.path}
-              className="px-4 py-2 rounded-md font-semibold text-sm shadow bg-yellow-400 text-gray-800"
+              className="px-1.5 py-1 rounded-md font-semibold text-sm shadow bg-yellow-400 text-gray-800"
               onClick={clearSidebarCategory}
             >
               {link.label}
             </Link>
-
           ))}
-
-          {/* Group User + Login buttons with smaller gap */}
-          {/* <div className="flex items-center gap-2">
-    <Link
-      to="/user"
-      className="bg-yellow-400 rounded-md px-3 py-2 flex items-center justify-center border shadow-sm"
-      title="User"
-    >
-      <FaUser className="text-md text-black" />
-    </Link>
-
-    <Link
-      to="/login"
-      className="bg-yellow-400 rounded-md px-3 py-2 flex items-center justify-center border shadow-sm"
-      title="Login"
-    >
-      <FaSignInAlt className="text-md text-black" />
-    </Link>
-  </div> */}
         </div>
 
         {/* Mobile Menu Button */}
@@ -84,10 +64,10 @@ export default function NavBar({ clearSidebarCategory }) {
 
       {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
-        <div className="md:hidden bg-gray-50 border-t border-yellow-400 flex flex-col p-4 space-y-4 shadow-lg animate-fadeIn">
+        <div className="md:hidden bg-gray-50 border-t border-yellow-400 flex flex-col p-4 space-y-2 shadow-lg animate-fadeIn">
           <Link
             to="/post/new"
-            className="px-4 py-2 rounded-xl bg-green-600 text-white font-semibold text-sm"
+            className="px-1.5 py-1 rounded-md bg-green-600 text-white font-semibold text-sm"
             onClick={() => setIsMenuOpen(false)}
           >
             Post Vacancy
@@ -97,35 +77,35 @@ export default function NavBar({ clearSidebarCategory }) {
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-semibold ${location.pathname === link.path
-                ? 'text-green-700 underline'
-                : 'text-gray-800'
-                }`}
+              className={`text-sm font-semibold ${
+                location.pathname === link.path
+                  ? 'text-green-700 underline'
+                  : 'text-gray-800'
+              }`}
               onClick={() => setIsMenuOpen(false)}
             >
               {link.label}
             </Link>
           ))}
 
-          <div className="flex gap-3">
+          <div className="flex gap-2">
             <Link
               to="/user"
-              className="bg-yellow-400 rounded-md px-3 py-2 flex items-center justify-center border border-yellow-400 shadow-sm"
+              className="bg-yellow-400 rounded-md px-1.5 py-1 flex items-center justify-center border border-yellow-400 shadow-sm"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaUser className="text-xl text-black" />
+              <FaUser className="text-lg text-black" />
             </Link>
             <Link
               to="/login"
-              className="bg-yellow-400 rounded-md px-3 py-2 flex items-center justify-center border border-yellow-400 shadow-sm"
+              className="bg-yellow-400 rounded-md px-1.5 py-1 flex items-center justify-center border border-yellow-400 shadow-sm"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaSignInAlt className="text-xl text-black" />
+              <FaSignInAlt className="text-lg text-black" />
             </Link>
           </div>
         </div>
       )}
-
     </nav>
   );
 }
