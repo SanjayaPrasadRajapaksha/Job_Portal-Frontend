@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const jobCategories = [
@@ -31,19 +30,17 @@ const jobCategories = [
   { name: "Other", path: "/categories/other" },
 ];
 
-export default function Sidebar({ onCategorySelect }) {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-
+export default function Sidebar({ selectedCategory, setSelectedCategory, onCategorySelect }) {
   const handleSelect = (cat) => {
     setSelectedCategory(cat.name);
     if (onCategorySelect) onCategorySelect(cat);
   };
 
   return (
-    <aside className="w-64 min-w-[220px] flex flex-col bg-white border-r border-gray-200 shadow-lg z-20 max-h-[90vh] my-4">
+  <aside className="w-72 min-w-[220px] flex flex-col bg-white border-r border-gray-200 shadow-lg z-20 max-h-[90vh] my-4">
       <div className="flex-1 flex flex-col bg-gradient-to-b from-green-500 to-green-300 overflow-hidden">
         {/* Heading */}
-        <h2 className="bg-green-700 text-white text-sm text-center py-3 font-semibold tracking-wide uppercase shadow-sm">
+        <h2 className="bg-green-700 text-white text-md text-center py-3 font-semibold tracking-wide uppercase shadow-sm">
           Job Categories
         </h2>
 
@@ -53,11 +50,11 @@ export default function Sidebar({ onCategorySelect }) {
             <li key={cat.name}>
               <Link
                 to={cat.path}
-                className={`block text-sm font-medium px-3 py-2  transition-all duration-200 shadow-sm
+                className={`block text-md font-medium px-3 py-2  transition-all duration-200 shadow-sm
                   ${
                     selectedCategory === cat.name
-                      ? "bg-yellow-400 text-gray-800 shadow-md"
-                      : "text-gray-00 hover:bg-yellow-400 hover:text-green-900 hover:shadow-md"
+                      ? "bg-yellow-400 text-gray-900 shadow-md"
+                      : "text-gray-900 hover:bg-yellow-400 hover:text-green-900 hover:shadow-md"
                   }`}
                 onClick={() => handleSelect(cat)}
               >

@@ -91,7 +91,7 @@ export default function Reviews() {
         {/* Leave Review Button */}
         <div className="absolute top-0 right-0 mt-2">
           <button
-            className="bg-blue-300 text-blue-800 font-semibold py-2 px-6 rounded-md text-sm hover:bg-blue-400 transition duration-200"
+            className="bg-blue-300 text-blue-800 font-semibold py-2 px-6 rounded-md text-sm transition duration-200"
             onClick={() => setShowForm(true)}
           >
             Leave a Review
@@ -155,7 +155,7 @@ export default function Reviews() {
                 <div className="w-full flex justify-end">
                   <button
                     type="submit"
-                    className="bg-blue-300 text-blue-900 font-semibold py-2 px-6 rounded-md text-sm hover:bg-blue-400 transition duration-200"
+                    className="bg-blue-300 text-blue-900 font-semibold py-2 px-6 rounded-md text-sm transition duration-200"
                   >
                     Submit
                   </button>
@@ -178,7 +178,7 @@ export default function Reviews() {
               >
                 {/* Name & Role */}
                 <div className="flex flex-col items-start gap-1">
-                  <div className="font-bold text-gray-800 text-lg">{review.name}</div>
+                  <div className="font-bold text-gray-700 text-lg">{review.name}</div>
                   <div className="text-gray-500 text-sm">{review.role} • {review.date}</div>
                 </div>
 

@@ -1,15 +1,15 @@
 import React from "react"
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter} from 'react-router-dom'
 import Layout from '../src/components/Layout/Layout'
 import MainRoutes from './routes/MainRoutes'
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Layout>
         <MainRoutes />
       </Layout>
-    </Router>
+    </BrowserRouter>
   )
 }
 
