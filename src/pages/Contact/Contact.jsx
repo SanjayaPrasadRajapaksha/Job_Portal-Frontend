@@ -2,15 +2,15 @@ import { HiOutlineLocationMarker, HiOutlineMail, HiOutlinePhone } from "react-ic
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center py-16 px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center py-16 px-4">
       <div className="max-w-6xl w-full p-10 grid md:grid-cols-2 gap-12">
 
         {/* Left Column: Form */}
-    <div className="flex flex-col justify-center h-full space-y-6 rounded-md border p-8">
+        <div className="flex flex-col  bg-white justify-center h-full space-y-6 rounded-md  p-8">
           <h1 className="text-3xl text-gray-800 mb-2 text-center md:text-left">
             Contact Us
           </h1>
-         
+
           <form className="space-y-6">
             <input
               type="text"
@@ -27,7 +27,7 @@ export default function Contact() {
               rows="5"
               placeholder="Message *"
             ></textarea>
-            
+
             <div className="w-full flex justify-end">
               <button
                 type="submit"
@@ -41,7 +41,7 @@ export default function Contact() {
 
         {/* Right Column: Contact Info & Map */}
         <div className="flex flex-col h-full gap-10">
-          <div className="bg-purple-50 rounded-md shadow p-6">
+          <div className="bg-white rounded-md  p-6">
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <HiOutlineLocationMarker className="text-purple-400 text-lg" />

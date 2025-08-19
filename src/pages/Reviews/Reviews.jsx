@@ -38,6 +38,33 @@ const initialReviews = [
     date: "April 2025",
     avatar: "https://randomuser.me/api/portraits/men/65.jpg",
   },
+  {
+    name: "Alice Johnson",
+    role: "Employer",
+    review:
+      "JobCore made hiring so much easier! The process was smooth and the candidates were top-notch.",
+    rating: 5,
+    date: "July 2025",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    name: "Michael Lee",
+    role: "Job Seeker",
+    review:
+      "I found my dream job through JobCore. The platform is user-friendly and the support team is amazing!",
+    rating: 5,
+    date: "June 2025",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
+  {
+    name: "Priya Singh",
+    role: "Employer",
+    review:
+      "We hired several great employees thanks to JobCore. Highly recommended for any business!",
+    rating: 4,
+    date: "May 2025",
+    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+  },
 ];
 
 function StarRating({ rating }) {
@@ -82,16 +109,16 @@ export default function Reviews() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-16 px-6">
+    <div className="min-h-screen flex flex-col items-center py-16 px-6">
       <div className="max-w-5xl w-full relative">
         {/* Header */}
         <h1 className="text-3xl text-gray-800 mb-2 text-center">What Our Users Say</h1>
-       
+
 
         {/* Leave Review Button */}
         <div className="absolute top-0 right-0 mt-2">
           <button
-            className="bg-blue-300 text-blue-800 font-semibold py-2 px-6 rounded-md text-sm transition duration-200"
+            className="bg-yellow-400 text-white font-semibold py-2 px-6 rounded-md text-sm transition duration-200"
             onClick={() => setShowForm(true)}
           >
             Leave a Review
@@ -155,7 +182,7 @@ export default function Reviews() {
                 <div className="w-full flex justify-end">
                   <button
                     type="submit"
-                    className="bg-blue-300 text-blue-900 font-semibold py-2 px-6 rounded-md text-sm transition duration-200"
+                    className="bg-yellow-400 text-white font-semibold py-2 px-6 rounded-md text-sm transition duration-200"
                   >
                     Submit
                   </button>
@@ -168,7 +195,14 @@ export default function Reviews() {
         {/* Reviews Grid */}
         <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 mt-12 justify-items-center">
           {reviews.map((review, idx) => {
-            const calmColors = ["bg-blue-50", "bg-green-50", "bg-purple-50", "bg-pink-50", "bg-teal-50"];
+            const calmColors = [
+              "bg-blue-50",
+              "bg-purple-50",
+              "bg-pink-50",
+              "bg-red-50",
+              "bg-orange-50"
+            ];
+
             const bgColor = calmColors[idx % calmColors.length];
 
             return (
