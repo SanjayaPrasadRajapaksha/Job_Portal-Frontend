@@ -38,7 +38,7 @@ export default function NavBar({ clearSidebarCategory }) {
         <div className="hidden md:flex items-center gap-3">
           <Link
             to="/post/new"
-            className="px-1.5 py-1 rounded-md bg-[#239BA7] text-white font-semibold shadow text-sm"
+            className="px-2 py-1 rounded-md bg-[#239BA7] text-white font-semibold shadow text-md"
             onClick={clearSidebarCategory}
           >
             Post Vacancy
