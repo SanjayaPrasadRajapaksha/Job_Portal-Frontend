@@ -48,7 +48,12 @@ export default function NavBar({ clearSidebarCategory }) {
             <Link
               key={link.path}
               to={link.path}
-              className="px-1.5 py-1 rounded-md font-semibold text-sm shadow bg-yellow-400 text-gray-800"
+              className={
+                `px-1.5 py-1 font-semibold text-md text-gray-800 relative transition-colors duration-200
+                hover:text-green-700
+                after:absolute after:left-0 after:-bottom-0.5 after:w-full after:h-[2px] after:bg-gradient-to-r after:from-yellow-400 after:via-yellow-500 after:to-green-500 after:scale-x-0 hover:after:scale-x-100 after:origin-left after:transition-transform after:duration-300 after:rounded-full`
+              }
+              style={{overflow: 'visible'}}
               onClick={clearSidebarCategory}
             >
               {link.label}

@@ -1,31 +1,27 @@
 import { useState } from 'react';
 
-const districtCityMap = {
-  Colombo: ['Colombo', 'Moratuwa', 'Dehiwala', 'Kotte'],
-  Gampaha: ['Negombo', 'Gampaha', 'Ja-Ela', 'Minuwangoda'],
-  Kandy: ['Kandy', 'Peradeniya', 'Gampola'],
-  Galle: ['Galle', 'Hikkaduwa', 'Ambalangoda'],
-  Matara: ['Matara', 'Weligama', 'Hakmana'],
-  Kurunegala: ['Kurunegala', 'Kuliyapitiya', 'Polgahawela'],
-  Jaffna: ['Jaffna', 'Chavakachcheri', 'Point Pedro'],
-  Anuradhapura: ['Anuradhapura', 'Kekirawa', 'Medawachchiya'],
-  Badulla: ['Badulla', 'Bandarawela', 'Haputale'],
-  Other: ['Other'],
-};
+const districts = [
+  'Colombo', 'Gampaha', 'Kalutara', 'Kandy', 'Matale', 'Nuwara Eliya',
+  'Galle', 'Matara', 'Hambantota', 'Jaffna', 'Kilinochchi', 'Mannar',
+  'Vavuniya', 'Mullaitivu', 'Batticaloa', 'Ampara', 'Trincomalee',
+  'Kurunegala', 'Puttalam', 'Anuradhapura', 'Polonnaruwa', 'Badulla',
+  'Monaragala', 'Ratnapura', 'Kegalle'
+];
 
 const workTypes = ['Full Time', 'Part Time', 'Other'];
 
+
 export default function NewJobPost() {
+  const today = new Date().toISOString().split('T')[0];
   const [form, setForm] = useState({
     title: '',
     description: '',
     image: null,
     category: '',
     categoryOther: '',
-    district: '',
-    districtOther: '',
-    city: '',
-    cityOther: '',
+    area: '',
+    selectedDistricts: [],
+    areaOther: '',
     workType: '',
     workTypeOther: '',
     company: '',
@@ -33,28 +29,56 @@ export default function NewJobPost() {
     email: '',
     applicationMethod: '',
     applicationMethodOther: '',
+    openingDay: today,
+    closingDay: '',
   });
-
   const [previewUrl, setPreviewUrl] = useState('');
+  const [imageError, setImageError] = useState('');
+
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
+    const { name, value, files, checked } = e.target;
     if (name === 'image') {
       const file = files[0];
+      if (file && !file.type.startsWith('image/')) {
+        setImageError('Only image files are allowed.');
+        setForm({ ...form, image: null });
+        setPreviewUrl('');
+        return;
+      }
+      setImageError('');
       setForm({ ...form, image: file });
       setPreviewUrl(file ? URL.createObjectURL(file) : '');
+    } else if (name === 'area') {
+      setForm({ ...form, area: value, selectedDistricts: [], areaOther: '' });
+    } else if (name === 'district-checkbox') {
+      let updated = [...form.selectedDistricts];
+      if (checked) {
+        updated.push(value);
+      } else {
+        updated = updated.filter((d) => d !== value);
+      }
+      setForm({ ...form, selectedDistricts: updated });
+    } else if (name === 'openingDay') {
+      // Do nothing, openingDay is not editable
     } else {
       setForm({ ...form, [name]: value });
     }
   };
 
+  const [descOrFileError, setDescOrFileError] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!form.description.trim() && !form.image) {
+      setDescOrFileError('Please provide either a job description or upload a job poster file.');
+      return;
+    }
+    setDescOrFileError('');
     alert('Job post submitted!');
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-blue-50 flex flex-col items-center justify-center py-16 px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center py-16 px-4">
       <div className="max-w-4xl w-full bg-white rounded-md  border-gray-200 p-10 ">
         <h2 className="text-3xl text-teal-700 mb-6 text-center font-serif">
           Post Your Vacancy
@@ -77,10 +101,11 @@ export default function NewJobPost() {
             />
           </div>
 
-          {/* Description */}
+
+          {/* Description or File Upload (at least one required) */}
           <div>
             <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
-              Description
+              Description <span className="text-gray-400 font-normal">(optional, unless no file)</span>
             </label>
             <textarea
               name="description"
@@ -88,14 +113,13 @@ export default function NewJobPost() {
               onChange={handleChange}
               placeholder="Describe the job responsibilities, requirements, and perks..."
               className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm min-h-[120px] focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
-              required
             />
           </div>
 
-          {/* Image Upload */}
+
           <div>
             <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
-              Job Poster
+              Job Poster <span className="text-gray-400 font-normal">(optional, unless no description)</span>
             </label>
             <input
               type="file"
@@ -104,10 +128,17 @@ export default function NewJobPost() {
               onChange={handleChange}
               className="block text-sm text-gray-600"
             />
-            {previewUrl && (
+            {imageError && (
+              <div className="text-red-600 text-sm font-medium mt-1">{imageError}</div>
+            )}
+            {previewUrl && !imageError && (
               <img src={previewUrl} alt="Preview" className="mt-2 max-h-40 rounded-md border shadow-sm" />
             )}
           </div>
+
+          {descOrFileError && (
+            <div className="text-red-600 text-sm font-medium -mt-6 mb-2">{descOrFileError}</div>
+          )}
 
           {/* Category */}
           <div>
@@ -128,91 +159,65 @@ export default function NewJobPost() {
               <option value="Education">Education</option>
               <option value="Sales">Sales</option>
               <option value="Engineering">Engineering</option>
-              <option value="Other">Other</option>
             </select>
-            {form.category === 'Other' && (
-              <input
-                type="text"
-                name="categoryOther"
-                value={form.categoryOther}
-                onChange={handleChange}
-                placeholder="Enter category"
-                className="w-full border rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
-                required
-              />
-            )}
           </div>
 
-          {/* District & City */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* District */}
-            <div>
-              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
-                District
-              </label>
-              <select
-                name="district"
-                value={form.district}
-                onChange={handleChange}
-                className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
-                required
-              >
-                <option value="">Select district</option>
-                {Object.keys(districtCityMap).map((d) => (
-                  <option key={d} value={d}>{d}</option>
-                ))}
-              </select>
-              {form.district === 'Other' && (
-                <input
-                  type="text"
-                  name="districtOther"
-                  value={form.districtOther}
-                  onChange={handleChange}
-                  placeholder="Enter district"
-                  className="w-full border rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
-                  required
-                />
-              )}
-            </div>
 
-            {/* City */}
-            <div>
-              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
-                City
-              </label>
-              <select
-                name="city"
-                value={form.city}
-                onChange={handleChange}
-                disabled={!form.district || form.district === 'Other'}
-                className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
-                required
-              >
-                <option value="">Select city</option>
-                {form.district && form.district !== 'Other' &&
-                  districtCityMap[form.district].map((city) => (
-                    <option key={city} value={city}>{city}</option>
-                  ))
-                }
-              </select>
-              {form.city === 'Other' && (
-                <input
-                  type="text"
-                  name="cityOther"
-                  value={form.cityOther}
-                  onChange={handleChange}
-                  placeholder="Enter city"
-                  className="w-full border rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
-                  required
-                />
-              )}
+        {/* Area Selection */}
+        <div>
+          <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
+            Location *
+          </label>
+          <select
+            name="area"
+            value={form.area}
+            onChange={handleChange}
+            className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+            required
+          >
+            <option value="">Select Location</option>
+            <option value="Islandwide">Islandwide</option>
+            <option value="District">District</option>
+            <option value="Other">Other</option>
+          </select>
+
+          {/* District checkboxes if District selected */}
+          {form.area === 'District' && (
+            <div className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto border rounded p-2 bg-gray-50">
+              {districts.map((district) => (
+                <label key={district} className="flex items-center gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    name="district-checkbox"
+                    value={district}
+                    checked={form.selectedDistricts.includes(district)}
+                    onChange={handleChange}
+                  />
+                  {district}
+                </label>
+              ))}
             </div>
-          </div>
+          )}
+
+          {/* Text field if Other selected */}
+          {form.area === 'Other' && (
+            <input
+              type="text"
+              name="areaOther"
+              value={form.areaOther}
+              onChange={handleChange}
+              placeholder="Enter Area"
+              className="w-full border bg-gray-100 rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+              required
+            />
+          )}
+        </div>
+
 
           {/* Work Type */}
           <div>
             <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
-              Work Type
+              Work Type *
             </label>
             <select
               name="workType"
@@ -230,17 +235,43 @@ export default function NewJobPost() {
                 name="workTypeOther"
                 value={form.workTypeOther}
                 onChange={handleChange}
-                placeholder="Enter work type"
+                placeholder="Enter Work Type"
                 className="w-full border bg-gray-100 rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               />
             )}
           </div>
 
+          {/* Vacancy Open/Close Days */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Vacancy Opening Day</label>
+              <input
+                type="date"
+                name="openingDay"
+                value={form.openingDay}
+                disabled
+                className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none text-gray-700 cursor-not-allowed"
+              />
+            </div>
+            <div>
+              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Vacancy Closing Day</label>
+              <input
+                type="date"
+                name="closingDay"
+                value={form.closingDay}
+                min={form.openingDay}
+                onChange={handleChange}
+                required
+                className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700"
+              />
+            </div>
+          </div>
+
           {/* Company, Website, Email */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Company</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Company *</label>
               <input
                 type="text"
                 name="company"
@@ -253,7 +284,7 @@ export default function NewJobPost() {
             </div>
 
             <div>
-              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Website</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Website (optional)</label>
               <input
                 type="url"
                 name="website"
@@ -265,7 +296,7 @@ export default function NewJobPost() {
             </div>
 
             <div>
-              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Email</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Email *</label>
               <input
                 type="email"
                 name="email"
@@ -282,7 +313,7 @@ export default function NewJobPost() {
           {/* Application Method */}
           <div>
             <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
-              Application Method
+              Application Method *
             </label>
             <select
               name="applicationMethod"
@@ -303,8 +334,8 @@ export default function NewJobPost() {
                 name="applicationMethodOther"
                 value={form.applicationMethodOther}
                 onChange={handleChange}
-                placeholder="Enter application method"
-                className="w-full border rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                placeholder="Enter Application Method"
+                className="w-full border bg-gray-100 rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
                 required
               />
             )}
