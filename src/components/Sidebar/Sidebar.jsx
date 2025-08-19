@@ -65,7 +65,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory, onCateg
         </ul>
 
         {/* Scroll hint */}
-        <div className="bg-green-700 text-white text-xs text-center py-2 flex items-center justify-center gap-2 border-t border-green-600">
+        <div className="bg-green-700 text-white text-[13px] text-center py-2 flex items-center justify-center gap-2 border-t border-green-600">
           More Categories Below
         </div>
       </div>
