@@ -16,19 +16,23 @@ export default function NavBar({ clearSidebarCategory }) {
     <nav className="bg-gray-50 border-b shadow-sm">
       <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between h-20">
 
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 min-w-fit">
-          <div className="flex flex-col">
-            <span className="font-extrabold text-3xl tracking-tight text-green-700 leading-none flex items-baseline">
-              jobcor
-              <span className="relative">
-                e
-                <sup className="text-xs font-normal text-yellow-400 ml-0.5">®</sup>
-              </span>
-            </span>
-            <span className="block w-16 h-1 mt-1 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-green-500 animate-pulse"></span>
-          </div>
-        </Link>
+{/* Logo */}
+<Link to="/" className="flex items-center gap-2 min-w-fit">
+  <div className="flex flex-col">
+    <span className="font-bold text-5xl tracking-tight text-green-700 leading-none flex items-baseline">
+      jobcor
+      <span className="relative text-5xl font-bold text-green-700">
+        e
+        <sup className="absolute top-2 right- -1 text-xs font-normal text-yellow-400">®</sup>
+      </span>
+    </span>
+
+    {/* Gradient underline */}
+    <span className="block w-20 h-1 mt-2 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-green-500 animate-pulse"></span>
+  </div>
+</Link>
+
+
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-3">
@@ -77,11 +81,10 @@ export default function NavBar({ clearSidebarCategory }) {
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-semibold ${
-                location.pathname === link.path
+              className={`text-sm font-semibold ${location.pathname === link.path
                   ? 'text-green-700 underline'
                   : 'text-gray-800'
-              }`}
+                }`}
               onClick={() => setIsMenuOpen(false)}
             >
               {link.label}

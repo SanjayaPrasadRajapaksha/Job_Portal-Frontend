@@ -50,7 +50,7 @@ export default function CommonSearchBar({ onSearch, placeholder = "Search..." })
       <button
         type="submit"
         onClick={handleSubmit}
-        className="px-3 py-1 bg-green-500 rounded-md text-white text-xs font-semibold transition"
+        className="px-2 py-1 bg-green-700 rounded-md text-white text-xs font-semibold transition"
       >
         Search
       </button>

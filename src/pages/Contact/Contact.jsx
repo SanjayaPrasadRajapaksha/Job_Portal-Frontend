@@ -40,7 +40,7 @@ export default function Contact() {
         </div>
 
         {/* Right Column: Contact Info & Map */}
-        <div className="flex flex-col h-full gap-8">
+        <div className="flex flex-col h-full gap-10">
           <div className="bg-purple-50 rounded-md shadow p-6">
             <div className="space-y-3">
               <div className="flex items-center gap-2">
