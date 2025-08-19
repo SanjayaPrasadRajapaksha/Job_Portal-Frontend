@@ -14,16 +14,16 @@ export default function Contact() {
           <form className="space-y-6">
             <input
               type="text"
-              className="w-full border bg-gray-100 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-100 shadow-sm transition duration-200 text-gray-700"
+              className="w-full border bg-gray-100 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm transition duration-200 text-gray-700"
               placeholder="Name *"
             />
             <input
               type="email"
-              className="w-full border bg-gray-100 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-100 shadow-sm transition duration-200 text-gray-700"
+              className="w-full border bg-gray-100 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm transition duration-200 text-gray-700"
               placeholder="Email *"
             />
             <textarea
-              className="w-full border bg-gray-100 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-100 shadow-sm transition duration-200 text-gray-700"
+              className="w-full border bg-gray-100 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm transition duration-200 text-gray-700"
               rows="5"
               placeholder="Message *"
             ></textarea>

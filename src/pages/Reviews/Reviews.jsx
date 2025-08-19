@@ -143,14 +143,14 @@ export default function Reviews() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="Name *"
-                  className="w-full border bg-gray-50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-100 shadow-sm transition duration-200"
+                  className="w-full border bg-gray-50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm transition duration-200"
                   required
                 />
                 <select
                   name="role"
                   value={form.role}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-100"
                   required
                 >
                   <option value="">Select Role</option>
@@ -162,7 +162,7 @@ export default function Reviews() {
                   value={form.review}
                   onChange={handleChange}
                   placeholder="Message *"
-                  className="w-full border bg-gray-50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-100 shadow-sm transition duration-200"
+                  className="w-full border bg-gray-50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm transition duration-200"
                   rows="3"
                   required
                 />
@@ -170,7 +170,7 @@ export default function Reviews() {
                   name="rating"
                   value={form.rating}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-100"
                   required
                 >
                   {[5, 4, 3, 2, 1].map((r) => (
