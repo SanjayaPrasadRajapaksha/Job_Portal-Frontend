@@ -31,7 +31,7 @@ export default function Contact() {
             <div className="w-full flex justify-end">
               <button
                 type="submit"
-                className="bg-green-500 text-white font-semibold py-2 px-6 rounded-md text-sm hover:bg-green-600 transition duration-200 shadow"
+                className="bg-green-500 text-white font-semibold py-2 px-6 rounded-md text-sm transition duration-200 shadow"
               >
                 Send Message
               </button>
