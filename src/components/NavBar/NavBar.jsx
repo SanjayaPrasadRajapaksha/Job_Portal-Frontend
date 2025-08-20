@@ -12,12 +12,12 @@ export default function NavBar({ clearSidebarCategory }) {
     { label: 'Contact Us', path: '/contact' },
   ];
 
-     return (
-<nav
-  className="bg-gray-50 border-b z-50 relative"
-  style={{ boxShadow: '0 4px 10px -2px rgba(0,0,0,0.25)' }}
->
-  <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between h-20">
+  return (
+    <nav
+      className="bg-gray-50 border-b z-50 relative"
+      style={{ boxShadow: '0 4px 10px -2px rgba(0,0,0,0.25)' }}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between h-20">
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 min-w-fit">
