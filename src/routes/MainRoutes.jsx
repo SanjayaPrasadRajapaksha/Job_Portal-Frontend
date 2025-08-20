@@ -30,6 +30,7 @@ import Telecommunications from "../pages/Categories/Telecommunications";
 import NewJobPost from "../pages/JobPost/NewJobPost";
 import Contact from "../pages/Contact/Contact";
 import Reviews from "../pages/Reviews/Reviews";
+import Company from "../pages/Company/Company";
 
 function MainRoutes() {
   return (
@@ -66,6 +67,7 @@ function MainRoutes() {
         <Route path="/post/new" element={<NewJobPost />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/reviews" element={<Reviews />} />
+        <Route path="/company" element={<Company />} />
         {/* Add other routes as needed */}
       </Routes>
   

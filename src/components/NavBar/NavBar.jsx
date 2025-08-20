@@ -8,7 +8,7 @@ export default function NavBar({ clearSidebarCategory }) {
 
   const navLinks = [
     { label: 'Reviews', path: '/reviews' },
-    { label: 'Companies', path: '/companies' },
+    { label: 'Companies', path: '/company' },
     { label: 'Contact Us', path: '/contact' },
   ];
 
