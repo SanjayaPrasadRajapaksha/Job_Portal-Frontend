@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 const districts = [
   'Colombo', 'Gampaha', 'Kalutara', 'Kandy', 'Matale', 'Nuwara Eliya',
@@ -96,28 +98,39 @@ export default function NewJobPost() {
               value={form.title}
               onChange={handleChange}
               placeholder="e.g., Senior Frontend Developer"
-              className="w-full border bg-gray-100 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-teal-100 shadow-sm text-gray-700 transition duration-200"
+              className="w-full border bg-gray-100 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm text-gray-700 transition duration-200"
               required
             />
           </div>
-
-
           {/* Description or File Upload (at least one required) */}
-          <div>
+          <div className="mb-12">
             <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
               Description <span className="text-gray-400 font-normal">(optional, unless no file)</span>
             </label>
-            <textarea
-              name="description"
-              value={form.description}
-              onChange={handleChange}
-              placeholder="Describe the job responsibilities, requirements, and perks..."
-              className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm min-h-[120px] focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
-            />
+
+            {/* Wrapper controls hover/focus visuals */}
+            <div
+              className="
+              w-full bg-gray-100 rounded-md  shadow-sm
+              transition duration-200
+            hover:border-gray-400
+            focus-within:border-teal-400 focus-within:ring-2 focus-within:ring-gray-100
+              overflow-hidden"
+            >
+              <ReactQuill
+                theme="snow"
+                value={form.description}
+                onChange={(val) => setForm({ ...form, description: val })}
+                placeholder="Describe the job responsibilities, requirements, and perks..."
+                // keep only height here; NO border here
+                style={{ height: "200px" }}
+              />
+            </div>
+
           </div>
 
-
-          <div>
+          {/* Job Poster */}
+          <div className="mb-8">
             <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
               Job Poster <span className="text-gray-400 font-normal">(optional, unless no description)</span>
             </label>
@@ -149,7 +162,7 @@ export default function NewJobPost() {
               name="category"
               value={form.category}
               onChange={handleChange}
-              className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+              className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-100 text-gray-700 transition duration-200"
               required
             >
               <option value="">Select category</option>
@@ -163,55 +176,55 @@ export default function NewJobPost() {
           </div>
 
 
-        {/* Area Selection */}
-        <div>
-          <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
-            Location *
-          </label>
-          <select
-            name="area"
-            value={form.area}
-            onChange={handleChange}
-            className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
-            required
-          >
-            <option value="">Select Location</option>
-            <option value="Islandwide">Islandwide</option>
-            <option value="District">District</option>
-            <option value="Other">Other</option>
-          </select>
-
-          {/* District checkboxes if District selected */}
-          {form.area === 'District' && (
-            <div className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto border rounded p-2 bg-gray-50">
-              {districts.map((district) => (
-                <label key={district} className="flex items-center gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    name="district-checkbox"
-                    value={district}
-                    checked={form.selectedDistricts.includes(district)}
-                    onChange={handleChange}
-                  />
-                  {district}
-                </label>
-              ))}
-            </div>
-          )}
-
-          {/* Text field if Other selected */}
-          {form.area === 'Other' && (
-            <input
-              type="text"
-              name="areaOther"
-              value={form.areaOther}
+          {/* Area Selection */}
+          <div>
+            <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">
+              Location *
+            </label>
+            <select
+              name="area"
+              value={form.area}
               onChange={handleChange}
-              placeholder="Enter Area"
-              className="w-full border bg-gray-100 rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+              className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-100 text-gray-700 transition duration-200"
               required
-            />
-          )}
-        </div>
+            >
+              <option value="">Select Location</option>
+              <option value="Islandwide">Islandwide</option>
+              <option value="District">District</option>
+              <option value="Other">Other</option>
+            </select>
+
+            {/* District checkboxes if District selected */}
+            {form.area === 'District' && (
+              <div className="mt-3 grid grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto border rounded p-2 bg-gray-50">
+                {districts.map((district) => (
+                  <label key={district} className="flex items-center gap-2 text-sm">
+                    <input
+                      type="checkbox"
+                      name="district-checkbox"
+                      value={district}
+                      checked={form.selectedDistricts.includes(district)}
+                      onChange={handleChange}
+                    />
+                    {district}
+                  </label>
+                ))}
+              </div>
+            )}
+
+            {/* Text field if Other selected */}
+            {form.area === 'Other' && (
+              <input
+                type="text"
+                name="areaOther"
+                value={form.areaOther}
+                onChange={handleChange}
+                placeholder="Enter Area"
+                className="w-full border bg-gray-100 rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-100 text-gray-700 transition duration-200"
+                required
+              />
+            )}
+          </div>
 
 
           {/* Work Type */}
@@ -223,7 +236,7 @@ export default function NewJobPost() {
               name="workType"
               value={form.workType}
               onChange={handleChange}
-              className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+              className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-100 text-gray-700 transition duration-200"
               required
             >
               <option value="">Select work type</option>
@@ -236,7 +249,7 @@ export default function NewJobPost() {
                 value={form.workTypeOther}
                 onChange={handleChange}
                 placeholder="Enter Work Type"
-                className="w-full border bg-gray-100 rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border bg-gray-100 rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-100 text-gray-700 transition duration-200"
                 required
               />
             )}
@@ -263,7 +276,7 @@ export default function NewJobPost() {
                 min={form.openingDay}
                 onChange={handleChange}
                 required
-                className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700"
+                className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-100 text-gray-700"
               />
             </div>
           </div>
@@ -278,7 +291,7 @@ export default function NewJobPost() {
                 value={form.company}
                 onChange={handleChange}
                 placeholder="Company Name"
-                className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-100 text-gray-700 transition duration-200"
                 required
               />
             </div>
@@ -291,7 +304,7 @@ export default function NewJobPost() {
                 value={form.website}
                 onChange={handleChange}
                 placeholder="https://example.com"
-                className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-100 text-gray-700 transition duration-200"
               />
             </div>
 
@@ -303,7 +316,7 @@ export default function NewJobPost() {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="example@email.com"
-                className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border bg-gray-100 rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-100 text-gray-700 transition duration-200"
                 required
               />
               <span className="text-xs text-gray-500">Applicants' CVs will be sent here.</span>
@@ -319,7 +332,7 @@ export default function NewJobPost() {
               name="applicationMethod"
               value={form.applicationMethod}
               onChange={handleChange}
-              className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+              className="w-full border rounded-md px-4 py-3 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-100 text-gray-700 transition duration-200"
               required
             >
               <option value="">Select method</option>
@@ -335,7 +348,7 @@ export default function NewJobPost() {
                 value={form.applicationMethodOther}
                 onChange={handleChange}
                 placeholder="Enter Application Method"
-                className="w-full border bg-gray-100 rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-100 text-gray-700 transition duration-200"
+                className="w-full border bg-gray-100 rounded-md px-4 py-3 mt-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-100 text-gray-700 transition duration-200"
                 required
               />
             )}

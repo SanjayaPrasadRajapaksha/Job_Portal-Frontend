@@ -19,18 +19,21 @@ export default function NavBar({ clearSidebarCategory }) {
 {/* Logo */}
 <Link to="/" className="flex items-center gap-2 min-w-fit">
   <div className="flex flex-col">
-    <span className="font-bold text-5xl tracking-tight text-green-700 leading-none flex items-baseline">
-      jobcor
-      <span className="relative text-5xl font-bold text-green-700">
-        e
-        <sup className="absolute top-2 right- -1 text-xs font-normal text-yellow-400">®</sup>
+    <span className="font-bold text-3xl md:text-4xl tracking-tight text-green-700 leading-none flex items-baseline">
+      JobCore.
+      <span className="relative text-3xl md:text-4xl font-bold text-green-700">
+        lk
+        <sup className="absolute top-0 -right-1 text-xs md:text-sm font-normal text-yellow-400">®</sup>
       </span>
     </span>
 
     {/* Gradient underline */}
-    <span className="block w-20 h-1 mt-2 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-green-500 animate-pulse"></span>
+    <span className="block w-20 md:w-28 h-1 mt-1 rounded-full bg-gradient-to-r from-yellow-400 via-yellow-500 to-green-500 animate-pulse"></span>
   </div>
 </Link>
+
+
+
 
 
 
@@ -38,7 +41,7 @@ export default function NavBar({ clearSidebarCategory }) {
         <div className="hidden md:flex items-center gap-3">
           <Link
             to="/post/new"
-            className="px-1.5 py-1 rounded-md bg-[#239BA7] text-white font-semibold shadow text-sm"
+            className="px-2 py-1 rounded-md bg-[#239BA7] text-white font-semibold shadow text-md"
             onClick={clearSidebarCategory}
           >
             Post Vacancy

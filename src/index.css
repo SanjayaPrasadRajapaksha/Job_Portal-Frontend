@@ -21,4 +21,7 @@
     background-color: #e9bb32;
     /* darker yellow */
 }
+/* global CSS or a module */
+.ql-toolbar, .ql-container { background-color: transparent; }
+.ql-editor { color: #374151; } /* text-gray-700 */
 
