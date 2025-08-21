@@ -138,31 +138,34 @@ export default function Reviews() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center py-16 px-6">
       <div className="max-w-6xl w-full">
-        <h1 className="text-4xl  text-center text-gray-800 mb-12">
-          Hear From Our Users
-        </h1>
+{/* Tab Buttons */}
+<div className="flex justify-between items-center mb-8">
+  {/* Left side: Employer & Job Seeker */}
+  <div className="flex gap-4">
+    {["Employer", "Job Seeker"].map((role) => (
+      <button
+        key={role}
+        className={`px-6 py-2 rounded-full border border-black font-semibold text-sm transition ${
+          filterRole === role
+            ? "bg-gray-800 text-white"
+            : "bg-white text-gray-600"
+        }`}
+        onClick={() => setFilterRole(role)}
+      >
+        {role}
+      </button>
+    ))}
+  </div>
 
-        {/* Tab Buttons */}
-        <div className="flex justify-center gap-4 mb-8">
-          {["Employer", "Job Seeker"].map((role) => (
-            <button
-              key={role}
-              className={`px-6 py-2 rounded-full border border-black font-semibold text-sm transition ${filterRole === role
-                ? "bg-gray-800 text-white  "
-                : "bg-white text-gray-600  "
-                }`}
-              onClick={() => setFilterRole(role)}
-            >
-              {role}
-            </button>
-          ))}
-          <button
-            className="px-6 py-2 rounded-full font-semibold text-sm bg-blue-600 text-white shadow-md  transition"
-            onClick={() => setShowForm(true)}
-          >
-            + Submit Review
-          </button>
-        </div>
+  {/* Right side: Submit Review */}
+  <button
+    className="px-6 py-2 rounded-full font-semibold text-sm bg-blue-600 text-white shadow-md transition"
+    onClick={() => setShowForm(true)}
+  >
+    + Submit Review
+  </button>
+</div>
+
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
           {filteredReviews.map((review, idx) => (
