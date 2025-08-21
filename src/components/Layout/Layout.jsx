@@ -33,13 +33,13 @@ function Layout({ children }) {
   return (
   <div className="h-screen flex flex-col">
       <NavBar clearSidebarCategory={() => setSelectedCategory(null)} />
-      <div className="flex flex-1 min-h-0 bg-gradient-to-b from-green-50 to-blue-50">
+      <div className="flex flex-1 min-h-0 bg-white">
         <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         <main className="flex-1 flex flex-col overflow-hidden">
 
           {/* Search bar and checkboxes bar below nav, beside sidebar, visible on any category path */}
           {location.pathname.startsWith('/categories/') && (
-            <div className="bg-gray-200 px-6 py-1 shadow-sm flex items-center gap-4 justify-start rounded-md ml-4 mt-3">
+            <div className="bg-gray-300 px-6 py-1 shadow-sm flex items-center gap-4 justify-start rounded-md ml-4 mt-3">
               <div className="ml-auto flex items-center gap-4">
                 <Checkboxes values={checkboxValues} onChange={setCheckboxValues} />
                 <CommonSearchBar onSearch={handleSearch} />

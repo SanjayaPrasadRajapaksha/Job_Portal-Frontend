@@ -19,13 +19,13 @@ const jobList = [
 
 export default function SoftwareDevelopment() {
   return (
-    <div className="p-6 bg-gradient-to-b from-green-50 to-blue-50 min-h-screen">
+    <div className="p-6 min-h-screen">
       {/* Card Grid */}
   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {jobList.map((job, i) => (
           <div
             key={i}
-            className="relative bg-gray-100 rounded-md shadow-md border border-gray-200 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 p-6 flex flex-col gap-3 min-w-[320px] max-w-[410px] min-h-[180px] mx-auto"
+            className="relative bg-gray-100 rounded-md shadow-md border border-gray-200 hover:shadow-lg hover:bg-white  hover:-translate-y-0.5 transition-all duration-300 p-6 flex flex-col gap-3 min-w-[320px] max-w-[410px] min-h-[180px] mx-auto"
           >
             {/* Top Row */}
             <div className="flex items-center gap-2 mb-2">

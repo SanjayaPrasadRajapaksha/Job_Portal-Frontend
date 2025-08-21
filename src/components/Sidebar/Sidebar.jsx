@@ -40,7 +40,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory, onCateg
   <aside className="w-72 min-w-[220px] flex flex-col bg-white border-r border-gray-200 shadow-lg z-20 max-h-[90vh] my-4">
       <div className="flex-1 flex flex-col bg-gradient-to-b from-green-500 to-green-300 overflow-hidden">
         {/* Heading */}
-        <h2 className="bg-green-700 text-white text-md text-center py-3 font-semibold tracking-wide uppercase shadow-sm">
+        <h2 className="bg-green-800 text-white text-md text-center py-3 font-semibold tracking-wide uppercase shadow-sm">
           Job Categories
         </h2>
 

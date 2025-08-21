@@ -1,20 +1,21 @@
 import { useState } from "react";
 
-// Sample review data
 const initialReviews = [
   {
     name: "Alice Johnson",
     role: "Employer",
     company: "Acme Corp",
     position: "HR Manager",
-    review: "JobCore made hiring so much easier! The process was smooth and the candidates were top-notch.",
+    review:
+      "JobCore made hiring so much easier! The process was smooth and the candidates were top-notch.",
     rating: 5,
     date: "July 2025",
   },
   {
     name: "Michael Lee",
     role: "Job Seeker",
-    review: "I found my dream job through JobCore. The platform is user-friendly and the support team is amazing!",
+    review:
+      "I found my dream job through JobCore. The platform is user-friendly and the support team is amazing!",
     rating: 5,
     date: "June 2025",
   },
@@ -23,30 +24,25 @@ const initialReviews = [
     role: "Employer",
     company: "GlobalTech",
     position: "Recruiter",
-    review: "We hired several great employees thanks to JobCore. Highly recommended for any business!",
+    review:
+      "We hired several great employees thanks to JobCore. Highly recommended for any business!",
     rating: 4,
     date: "May 2025",
-  },
-  {
-    name: "Carlos Ramirez",
-    role: "Job Seeker",
-    review: "The application process was quick and easy. I got responses from employers within days!",
-    rating: 4,
-    date: "April 2025",
-  },
-  {
+  }, {
     name: "Alice Johnson",
     role: "Employer",
     company: "Acme Corp",
     position: "HR Manager",
-    review: "JobCore made hiring so much easier! The process was smooth and the candidates were top-notch.",
+    review:
+      "JobCore made hiring so much easier! The process was smooth and the candidates were top-notch.",
     rating: 5,
     date: "July 2025",
   },
   {
     name: "Michael Lee",
     role: "Job Seeker",
-    review: "I found my dream job through JobCore. The platform is user-friendly and the support team is amazing!",
+    review:
+      "I found my dream job through JobCore. The platform is user-friendly and the support team is amazing!",
     rating: 5,
     date: "June 2025",
   },
@@ -55,16 +51,37 @@ const initialReviews = [
     role: "Employer",
     company: "GlobalTech",
     position: "Recruiter",
-    review: "We hired several great employees thanks to JobCore. Highly recommended for any business We hired several great employees thanks to JobCore. Highly recommended for any business!",
+    review:
+      "We hired several great employees thanks to JobCore. Highly recommended for any business!We hired several great employees thanks to JobCore. Highly recommended for any business!We hired several great employees thanks to JobCore. Highly recommended for any business!We hired several great employees thanks to JobCore. Highly recommended for any business!",
     rating: 4,
     date: "May 2025",
+  }, {
+    name: "Alice Johnson",
+    role: "Employer",
+    company: "Acme Corp",
+    position: "HR Manager",
+    review:
+      "JobCore made hiring so much easier! The process was smooth and the candidates were top-notch.",
+    rating: 5,
+    date: "July 2025",
   },
   {
-    name: "Carlos Ramirez",
+    name: "Michael Lee",
     role: "Job Seeker",
-    review: "The application process was quick and easy. I got responses from employers within days!",
+    review:
+      "I found my dream job through JobCore. The platform is user-friendly and the support team is amazing!",
+    rating: 5,
+    date: "June 2025",
+  },
+  {
+    name: "Priya Singh",
+    role: "Employer",
+    company: "GlobalTech",
+    position: "Recruiter",
+    review:
+      "We hired several great employees thanks to JobCore. Highly recommended for any business!",
     rating: 4,
-    date: "April 2025",
+    date: "May 2025",
   },
 ];
 
@@ -74,7 +91,8 @@ function StarRating({ rating, setRating }) {
       {[...Array(5)].map((_, i) => (
         <svg
           key={i}
-          className={`w-5 h-5 cursor-pointer ${i < rating ? "text-yellow-400" : "text-gray-300"}`}
+          className={`w-5 h-5 cursor-pointer ${i < rating ? "text-yellow-400" : "text-gray-300"
+            }`}
           fill="currentColor"
           viewBox="0 0 20 20"
           onClick={() => setRating && setRating(i + 1)}
@@ -97,7 +115,7 @@ export default function Reviews() {
     review: "",
     rating: 5,
   });
-  const [filterRole, setFilterRole] = useState("Employer"); // default filter
+  const [filterRole, setFilterRole] = useState("Employer");
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -115,58 +133,93 @@ export default function Reviews() {
     setShowForm(false);
   }
 
-  const filteredReviews = reviews.filter(r => r.role === filterRole);
+  const filteredReviews = reviews.filter((r) => r.role === filterRole);
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-16 px-6">
-      <div className="max-w-5xl w-full relative">
-        {/* Header */}
-        <h1 className="text-3xl text-gray-800 mb-6 text-center">What Our Users Say</h1>
-
-        {/* Leave Review Button */}
-        <div className="absolute top-0 right-0 mt-2">
-          <button
-            className="bg-green-700 text-white font-semibold py-2 px-6 rounded-md text-sm transition duration-200"
-            onClick={() => setShowForm(true)}
-          >
-            Submit Review
-          </button>
-        </div>
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-16 px-6">
+      <div className="max-w-6xl w-full">
+        <h1 className="text-4xl  text-center text-gray-800 mb-12">
+          Hear From Our Users
+        </h1>
 
         {/* Tab Buttons */}
-        <div className="flex justify-center mt-12">
+        <div className="flex justify-center gap-4 mb-8">
           {["Employer", "Job Seeker"].map((role) => (
             <button
               key={role}
-              className={`px-6 py-2 -mb-px font-semibold text-sm transition-colors duration-200 
-        ${filterRole === role
-                  ? "bg-green-400 text-white rounded-md"  // <-- selected button is yellow
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-200 rounded-md"
+              className={`px-6 py-2 rounded-full border border-black font-semibold text-sm transition ${filterRole === role
+                ? "bg-gray-800 text-white  "
+                : "bg-white text-gray-600  "
                 }`}
               onClick={() => setFilterRole(role)}
             >
               {role}
             </button>
           ))}
+          <button
+            className="px-6 py-2 rounded-full font-semibold text-sm bg-blue-600 text-white shadow-md  transition"
+            onClick={() => setShowForm(true)}
+          >
+            + Submit Review
+          </button>
         </div>
+        {/* Reviews Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+          {filteredReviews.map((review, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-2xl shadow-md p-6 relative overflow-hidden border border-gray-200
+                 transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
+            >
+              {/* Top Accent */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-blue-500 rounded-t-2xl" />
+
+              {/* Name & Info */}
+              <div className="flex flex-col gap-1 mb-2 mt-2">
+                <div className="font-bold text-gray-800">{review.name}</div>
+                {review.role === "Employer" && (
+                  <div className="text-sm text-gray-600">
+                    {review.position} @ {review.company}
+                  </div>
+                )}
+                <div className="text-xs text-gray-400">{review.date}</div>
+              </div>
+
+              {/* Star Rating */}
+              <div className="mb-2">
+                <StarRating rating={review.rating} />
+              </div>
+
+              {/* Scrollable Review Text */}
+              <div className="max-h-20 overflow-y-auto">
+                <p className="text-gray-700 text-sm italic leading-snug">
+                  {review.review}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
 
         {/* Review Form Modal */}
         {showForm && (
-          <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
-            <div className="bg-white rounded-md p-8 shadow-lg w-full max-w-md relative">
+          <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+            <div className="bg-white rounded-md p-8 shadow-2xl w-full max-w-lg relative">
               <button
-                className="absolute top-3 right-3 text-gray-400 hover:text-gray-800 text-2xl"
+                className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl"
                 onClick={() => setShowForm(false)}
               >
                 &times;
               </button>
-              <h2 className="text-xl text-gray-900 mb-4 text-center font-semibold">Submit Your Review</h2>
+              <h2 className="text-2xl mb-4 text-center text-gray-900">
+                Submit Your Review
+              </h2>
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <select
                   name="role"
                   value={form.role}
                   onChange={handleChange}
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-100"
+                  className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-200"
                   required
                 >
                   <option value="">Select Role</option>
@@ -179,7 +232,7 @@ export default function Reviews() {
                   value={form.name}
                   onChange={handleChange}
                   placeholder="Name *"
-                  className="w-full border bg-gray-50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm transition duration-200"
+                  className="w-full border bg-gray-50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-sm transition"
                   required
                 />
                 {form.role === "Employer" && (
@@ -190,7 +243,7 @@ export default function Reviews() {
                       value={form.company}
                       onChange={handleChange}
                       placeholder="Company Name *"
-                      className="w-full border bg-gray-50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm transition duration-200"
+                      className="w-full border bg-gray-50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-sm transition"
                       required
                     />
                     <input
@@ -199,7 +252,7 @@ export default function Reviews() {
                       value={form.position}
                       onChange={handleChange}
                       placeholder="Position *"
-                      className="w-full border bg-gray-50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm transition duration-200"
+                      className="w-full border bg-gray-50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-sm transition"
                       required
                     />
                   </>
@@ -209,18 +262,21 @@ export default function Reviews() {
                   value={form.review}
                   onChange={handleChange}
                   placeholder="Message *"
-                  className="w-full border bg-gray-50 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm transition duration-200 resize-y max-h-40 min-h-[60px] overflow-y-auto"
+                  className="w-full border bg-gray-50 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-200 shadow-sm transition resize-y max-h-40 min-h-[60px]"
                   rows="3"
                   required
                 />
                 <div className="flex items-center gap-2">
                   <span className="text-gray-700 font-semibold">Rating:</span>
-                  <StarRating rating={form.rating} setRating={(r) => setForm(prev => ({ ...prev, rating: r }))} />
+                  <StarRating
+                    rating={form.rating}
+                    setRating={(r) => setForm((prev) => ({ ...prev, rating: r }))}
+                  />
                 </div>
                 <div className="w-full flex justify-end">
                   <button
                     type="submit"
-                    className="bg-yellow-400 text-white font-semibold py-2 px-6 rounded-md text-sm transition duration-200"
+                    className="bg-blue-600 text-white font-semibold py-2 px-6 rounded-xl shadow-md hover:shadow-lg transition"
                   >
                     Submit
                   </button>
@@ -229,49 +285,6 @@ export default function Reviews() {
             </div>
           </div>
         )}
-
-      {/* Reviews Grid */}
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-  {filteredReviews.map((review, idx) => {
-    const highlightColors = [
-      "bg-green-200",
-      "bg-green-300",
-      "bg-teal-200",
-      "bg-teal-300",
-      "bg-blue-200",
-      "bg-blue-300"
-    ];
-    const bgColor = highlightColors[idx % highlightColors.length];
-
-    return (
-      <div
-        key={idx}
-        className={`relative ${bgColor}  rounded-md shadow-sm p-4 flex flex-col gap-2 transition-transform duration-300 hover:-translate-y-1 hover:shadow-md`}
-      >
-        {/* Name, Role, Company */}
-        <div className="flex flex-col gap-1">
-          <div className="font-bold text-gray-800 text-sm">{review.name}</div>
-          {review.role === "Employer" && (
-            <div className="text-gray-700 text-xs">{review.position} @ {review.company}</div>
-          )}
-          <div className="text-gray-600 text-xs">{review.date}</div>
-        </div>
-        {/* Star Rating */}
-        <StarRating rating={review.rating} />
-        {/* Review Text */}
-        <p
-          className="text-gray-800 italic text-sm mt-1 leading-snug overflow-y-auto"
-          style={{ maxHeight: "4.5em" }}
-        >
-          {review.review}
-        </p>
-      </div>
-    );
-  })}
-</div>
-
-
-
       </div>
     </div>
   );
