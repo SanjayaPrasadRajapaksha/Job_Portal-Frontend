@@ -81,7 +81,7 @@ export default function NewJobPost() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-16 px-4">
-      <div className="max-w-4xl w-full bg-white rounded-md  border-gray-200 p-10 ">
+      <div className="max-w-4xl w-full bg-yellow-50 rounded-md  border-gray-200 p-10 ">
         <h2 className="text-3xl text-teal-700 mb-6 text-center font-serif">
           Post Your Vacancy
         </h2>
@@ -358,7 +358,7 @@ export default function NewJobPost() {
           <div className="w-full flex justify-end">
             <button
               type="submit"
-              className="bg-teal-400 text-white font-semibold py-2 px-6 rounded-md text-sm transition duration-200 shadow-sm"
+              className="bg-teal-600 text-white font-semibold py-2 px-6 rounded-md text-sm transition duration-200 shadow-sm"
             >
               Submit
             </button>
