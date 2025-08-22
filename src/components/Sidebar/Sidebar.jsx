@@ -1,43 +1,27 @@
-import { Link } from "react-router-dom";
 
-const jobCategories = [
-  { name: "IT & Software Development", path: "/categories/software-development" },
-  { name: "Hardware & Technical Support", path: "/categories/hardware-technical-support" },
-  { name: "Mechanical & Civil Engineering", path: "/categories/mechanical-civil-engineering" },
-  { name: "Healthcare & Nursing", path: "/categories/healthcare-nursing" },
-  { name: "Finance & Accounting", path: "/categories/finance-accounting" },
-  { name: "Sales & Marketing", path: "/categories/sales-marketing" },
-  { name: "Human Resources (HR)", path: "/categories/human-resources" },
-  { name: "Administration & Office", path: "/categories/administration-office" },
-  { name: "Customer Service", path: "/categories/customer-service" },
-  { name: "Education & Training", path: "/categories/education-training" },
-  { name: "Legal & Compliance", path: "/categories/legal-compliance" },
-  { name: "Construction & Real Estate", path: "/categories/construction-real-estate" },
-  { name: "Manufacturing & Production", path: "/categories/manufacturing-production" },
-  { name: "Logistics & Supply Chain", path: "/categories/logistics-supply-chain" },
-  { name: "Retail & Fashion", path: "/categories/retail-fashion" },
-  { name: "Hospitality & Tourism", path: "/categories/hospitality-tourism" },
-  { name: "Science & R&D", path: "/categories/science-rd" },
-  { name: "Arts & Design", path: "/categories/arts-design" },
-  { name: "Government Service", path: "/categories/government-service" },
-  { name: "NGO & Social Work", path: "/categories/ngo-social-work" },
-  { name: "Skilled Trades", path: "/categories/skilled-trades" },
-  { name: "Telecommunications", path: "/categories/telecommunications" },
-  { name: "Agriculture & Environment", path: "/categories/agriculture-environment" },
-  { name: "Automotive Services", path: "/categories/automotive-services" },
-  { name: "Energy & Utilities", path: "/categories/energy-utilities" },
-  { name: "Sports & Recreation", path: "/categories/sports-recreation" },
-  { name: "Other", path: "/categories/other" },
-];
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { getAllCategories } from '../../apis/Api';
+
 
 export default function Sidebar({ selectedCategory, setSelectedCategory, onCategorySelect }) {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function fetchCategories() {
+      const cats = await getAllCategories();
+      setCategories(cats);
+    }
+    fetchCategories();
+  }, []);
+
   const handleSelect = (cat) => {
     setSelectedCategory(cat.name);
     if (onCategorySelect) onCategorySelect(cat);
   };
 
   return (
-  <aside className="w-72 min-w-[220px] flex flex-col bg-white border-r border-gray-200 shadow-lg z-20 max-h-[90vh] my-4">
+    <aside className="w-72 min-w-[220px] flex flex-col bg-white border-r border-gray-200 shadow-lg z-20 max-h-[90vh] my-4">
       <div className="flex-1 flex flex-col bg-gradient-to-b from-green-500 to-green-300 overflow-hidden">
         {/* Heading */}
         <h2 className="bg-green-800 text-white text-md text-center py-3 font-semibold tracking-wide uppercase shadow-sm">
@@ -45,12 +29,12 @@ export default function Sidebar({ selectedCategory, setSelectedCategory, onCateg
         </h2>
 
         {/* Category List */}
-      <ul className="flex-1 overflow-y-auto px-1 py-1.5 space-y-1 scrollbar-green">
-          {jobCategories.map((cat) => (
-            <li key={cat.name}>
+        <ul className="flex-1 overflow-y-auto px-1 py-1.5 space-y-1 scrollbar-green">
+          {categories.map((cat) => (
+            <li key={cat.id || cat.name}>
               <Link
-                to={cat.path}
-                className={`block text-md font-medium px-3 py-2  transition-all duration-200 shadow-sm
+                to={cat.path || `/categories/${cat.name?.toLowerCase().replace(/\s+/g, '-')}`}
+                className={`block text-sm font-medium px-3 py-2  transition-all duration-200 shadow-sm
                   ${
                     selectedCategory === cat.name
                       ? "bg-yellow-400 text-gray-900 shadow-md"

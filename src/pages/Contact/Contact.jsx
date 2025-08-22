@@ -1,9 +1,31 @@
 import { HiOutlineLocationMarker, HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
 
+
 import { useState } from 'react';
+import { addContact } from '../../apis/Api';
 
 export default function Contact() {
   const [mapLoading, setMapLoading] = useState(true);
+  const [form, setForm] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await addContact(form);
+      // Optionally reset form here
+      setForm({ name: '', email: '', message: '' });
+    } catch (err) {
+      // Error handled by toast in Api.jsx
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-16 px-4">
       <div className="max-w-6xl w-full p-10 grid md:grid-cols-2 gap-12">
@@ -14,29 +36,42 @@ export default function Contact() {
             Contact Us
           </h1>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <input
               type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
               className="w-full border bg-gray-100 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm transition duration-200 text-gray-700"
               placeholder="Name *"
+              required
             />
             <input
               type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
               className="w-full border bg-gray-100 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm transition duration-200 text-gray-700"
               placeholder="Email *"
+              required
             />
             <textarea
+              name="message"
+              value={form.message}
+              onChange={handleChange}
               className="w-full border bg-gray-100 rounded-md px-4 py-3 focus:outline-none focus:ring-2 focus:ring-gray-100 shadow-sm transition duration-200 text-gray-700"
               rows="5"
               placeholder="Message *"
+              required
             ></textarea>
 
             <div className="w-full flex justify-end">
               <button
                 type="submit"
-                className="bg-green-500 text-white font-semibold py-2 px-6 rounded-md text-sm transition duration-200 shadow"
+                className="bg-green-500 text-white font-semibold py-2 px-6 rounded-md text-sm transition duration-200 shadow disabled:opacity-60"
+                disabled={loading}
               >
-                Send Message
+                {loading ? 'Sending...' : 'Send Message'}
               </button>
             </div>
           </form>

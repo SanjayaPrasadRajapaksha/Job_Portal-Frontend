@@ -1,89 +1,11 @@
-import { useState } from "react";
 
-const initialReviews = [
-  {
-    name: "Alice Johnson",
-    role: "Employer",
-    company: "Acme Corp",
-    position: "HR Manager",
-    review:
-      "JobCore made hiring so much easier! The process was smooth and the candidates were top-notch.",
-    rating: 5,
-    date: "July 2025",
-  },
-  {
-    name: "Michael Lee",
-    role: "Job Seeker",
-    review:
-      "I found my dream job through JobCore. The platform is user-friendly and the support team is amazing!",
-    rating: 5,
-    date: "June 2025",
-  },
-  {
-    name: "Priya Singh",
-    role: "Employer",
-    company: "GlobalTech",
-    position: "Recruiter",
-    review:
-      "We hired several great employees thanks to JobCore. Highly recommended for any business!",
-    rating: 4,
-    date: "May 2025",
-  }, {
-    name: "Alice Johnson",
-    role: "Employer",
-    company: "Acme Corp",
-    position: "HR Manager",
-    review:
-      "JobCore made hiring so much easier! The process was smooth and the candidates were top-notch.",
-    rating: 5,
-    date: "July 2025",
-  },
-  {
-    name: "Michael Lee",
-    role: "Job Seeker",
-    review:
-      "I found my dream job through JobCore. The platform is user-friendly and the support team is amazing!",
-    rating: 5,
-    date: "June 2025",
-  },
-  {
-    name: "Priya Singh",
-    role: "Employer",
-    company: "GlobalTech",
-    position: "Recruiter",
-    review:
-      "We hired several great employees thanks to JobCore. Highly recommended for any business!We hired several great employees thanks to JobCore. Highly recommended for any business!We hired several great employees thanks to JobCore. Highly recommended for any business!We hired several great employees thanks to JobCore. Highly recommended for any business!",
-    rating: 4,
-    date: "May 2025",
-  }, {
-    name: "Alice Johnson",
-    role: "Employer",
-    company: "Acme Corp",
-    position: "HR Manager",
-    review:
-      "JobCore made hiring so much easier! The process was smooth and the candidates were top-notch.",
-    rating: 5,
-    date: "July 2025",
-  },
-  {
-    name: "Michael Lee",
-    role: "Job Seeker",
-    review:
-      "I found my dream job through JobCore. The platform is user-friendly and the support team is amazing!",
-    rating: 5,
-    date: "June 2025",
-  },
-  {
-    name: "Priya Singh",
-    role: "Employer",
-    company: "GlobalTech",
-    position: "Recruiter",
-    review:
-      "We hired several great employees thanks to JobCore. Highly recommended for any business!",
-    rating: 4,
-    date: "May 2025",
-  },
-];
+import { useEffect, useState } from "react";
+import { toast } from 'react-toastify';
+import { addReview } from '../../apis/Api';
+
+const API_BASE_URL = 'http://localhost:5000';
+
+
 
 function StarRating({ rating, setRating }) {
   return (
@@ -105,7 +27,25 @@ function StarRating({ rating, setRating }) {
 }
 
 export default function Reviews() {
-  const [reviews, setReviews] = useState(initialReviews);
+  const [reviews, setReviews] = useState([]);
+  // Fetch reviews from backend
+  async function fetchReviews() {
+    try {
+      const res = await fetch(`${API_BASE_URL}/review/all`);
+      const data = await res.json();
+      if (res.ok && data.result) {
+        setReviews(data.result);
+      } else {
+        toast.error(data.message || 'Failed to fetch reviews.');
+      }
+    } catch (error) {
+      toast.error(error.message || 'An error occurred.');
+    }
+  }
+
+  useEffect(() => {
+    fetchReviews();
+  }, []);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({
     role: "",
@@ -122,15 +62,20 @@ export default function Reviews() {
     setForm((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const newReview = {
       ...form,
       date: new Date().toLocaleString("default", { month: "long", year: "numeric" }),
     };
-    setReviews([newReview, ...reviews]);
-    setForm({ role: "", name: "", company: "", position: "", review: "", rating: 5 });
-    setShowForm(false);
+    try {
+      await addReview(newReview);
+      await fetchReviews();
+      setForm({ role: "", name: "", company: "", position: "", review: "", rating: 5 });
+      setShowForm(false);
+    } catch (err) {
+      // Error handled by toast in Api.jsx
+    }
   }
 
   const filteredReviews = reviews.filter((r) => r.role === filterRole);

@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { addJobPost, getAllCategories } from '../../apis/Api';
 
 const districts = [
   'Colombo', 'Gampaha', 'Kalutara', 'Kandy', 'Matale', 'Nuwara Eliya',
@@ -15,7 +16,7 @@ const workTypes = ['Full Time', 'Part Time', 'Other'];
 
 export default function NewJobPost() {
   const today = new Date().toISOString().split('T')[0];
-  const [form, setForm] = useState({
+  const initialForm = {
     title: '',
     description: '',
     image: null,
@@ -33,10 +34,19 @@ export default function NewJobPost() {
     applicationMethodOther: '',
     openingDay: today,
     closingDay: '',
-  });
+  };
+  const [form, setForm] = useState(initialForm);
   const [previewUrl, setPreviewUrl] = useState('');
   const [imageError, setImageError] = useState('');
+  const [categories, setCategories] = useState([]);
 
+  useEffect(() => {
+    async function fetchCategories() {
+      const cats = await getAllCategories();
+      setCategories(cats);
+    }
+    fetchCategories();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, files, checked } = e.target;
@@ -69,14 +79,40 @@ export default function NewJobPost() {
   };
 
   const [descOrFileError, setDescOrFileError] = useState('');
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.description.trim() && !form.image) {
       setDescOrFileError('Please provide either a job description or upload a job poster file.');
       return;
     }
     setDescOrFileError('');
-    alert('Job post submitted!');
+    try {
+      await addJobPost(form);
+      setForm(f => ({
+        ...f,
+        title: '',
+        description: '',
+        image: null,
+        category: '',
+        categoryOther: '',
+        area: '',
+        selectedDistricts: [],
+        areaOther: '',
+        workType: '',
+        workTypeOther: '',
+        company: '',
+        website: '',
+        email: '',
+        applicationMethod: '',
+        applicationMethodOther: '',
+        closingDay: '',
+      }));
+      setPreviewUrl('');
+      setImageError('');
+      window.location.reload();
+    } catch (err) {
+      // Error handled by toast in Api.jsx
+    }
   };
 
   return (
@@ -166,12 +202,9 @@ export default function NewJobPost() {
               required
             >
               <option value="">Select category</option>
-              <option value="Software Development">Software Development</option>
-              <option value="Finance">Finance</option>
-              <option value="Healthcare">Healthcare</option>
-              <option value="Education">Education</option>
-              <option value="Sales">Sales</option>
-              <option value="Engineering">Engineering</option>
+              {categories.map((cat) => (
+                <option key={cat.id || cat.name} value={cat.name}>{cat.name}</option>
+              ))}
             </select>
           </div>
 
