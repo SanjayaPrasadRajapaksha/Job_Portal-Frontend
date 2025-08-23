@@ -69,11 +69,36 @@ export default function ITSoftwareDevelopment() {
     setSubmitting(true);
     setSubmitStatus(null);
 
+    // Prepare form data for backend
+    const formData = new FormData();
+    formData.append("applicantName", applyData.name);
+    formData.append("applicantEmail", applyData.email);
+    formData.append("message", applyData.message);
+    formData.append("jobTitle", selectedJob.title);
+    if (!selectedJob.email) {
+      setSubmitStatus("❌ This job is missing a company email address. Application cannot be sent.");
+      setSubmitting(false);
+      return;
+    }
+    formData.append("companyEmail", selectedJob.email);
+    formData.append("companyName", selectedJob.company);
+    if (applyData.cv) {
+      formData.append("cv", applyData.cv);
+    }
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setSubmitStatus("✅ Application submitted successfully!");
-      setShowApply(false);
-      setApplyData({ name: "", email: "", message: "", cv: null });
+      const res = await fetch("http://localhost:5000/jobpost/apply", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.status) {
+        setSubmitStatus("✅ Application submitted successfully!");
+        setShowApply(false);
+        setApplyData({ name: "", email: "", message: "", cv: null });
+      } else {
+        setSubmitStatus("❌ " + (data.message || "Something went wrong. Try again."));
+      }
     } catch (error) {
       setSubmitStatus("❌ Something went wrong. Try again.");
     } finally {
