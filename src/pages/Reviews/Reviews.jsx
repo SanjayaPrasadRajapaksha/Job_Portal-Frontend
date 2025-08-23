@@ -28,8 +28,10 @@ function StarRating({ rating, setRating }) {
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
   // Fetch reviews from backend
   async function fetchReviews() {
+    setLoading(true);
     try {
       const res = await fetch(`${API_BASE_URL}/review/verified`);
       const data = await res.json();
@@ -40,6 +42,8 @@ export default function Reviews() {
       }
     } catch (error) {
       toast.error(error.message || 'An error occurred.');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -81,7 +85,15 @@ export default function Reviews() {
   const filteredReviews = reviews.filter((r) => r.role === filterRole && r.isVerify === true);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-16 px-6">
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center py-16 px-6 relative">
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 z-10">
+          <svg className="animate-spin h-8 w-8 text-yellow-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+          </svg>
+        </div>
+      )}
       <div className="max-w-6xl w-full">
 {/* Tab Buttons */}
 <div className="flex justify-between items-center mb-8">
