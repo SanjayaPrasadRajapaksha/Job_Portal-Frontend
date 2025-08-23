@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchFilter } from "../../context/SearchFilterContext";
 
-export default function ITSoftwareDevelopment() {
+export default function AllCategories() {
   const [jobList, setJobList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -46,7 +46,7 @@ export default function ITSoftwareDevelopment() {
     const fetchJobs = async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/jobpost/category/IT%20%26%20Software%20Development"
+          "http://localhost:5000/jobpost/all-verify"
         );
         const data = await res.json();
         if (data.status && Array.isArray(data.result)) {

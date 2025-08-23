@@ -9,6 +9,7 @@ import Reviews from "../pages/Reviews/Reviews";
 import AccountingAuditFinance from "../pages/Categories/AccountingAuditFinance";
 import AdministrationOfficeSupport from "../pages/Categories/AdministrationOfficeSupport";
 import AgricultureDairyEnvironment from "../pages/Categories/AgricultureDairyEnvironment";
+import AllCategories from "../pages/Categories/AllCategories";
 import ApparelClothingTextiles from "../pages/Categories/ApparelClothingTextiles";
 import BankingInsurance from "../pages/Categories/BankingInsurance";
 import BPOKPOOutsourcing from "../pages/Categories/BPOKPOOutsourcing";
@@ -33,20 +34,19 @@ import QualityAssuranceSupervision from "../pages/Categories/QualityAssuranceSup
 import ResearchScienceRD from "../pages/Categories/ResearchScienceRD";
 import SalesMarketingMerchandising from "../pages/Categories/SalesMarketingMerchandising";
 import SecuritySafety from "../pages/Categories/SecuritySafety";
+import SoftwareDevelopment from "../pages/Categories/SoftwareDevelopment";
 import SportsFitnessRecreation from "../pages/Categories/SportsFitnessRecreation";
 import TelecomsComTechnology from "../pages/Categories/TelecomsComTechnology";
 import TravelTourismTicketing from "../pages/Categories/TravelTourismTicketing";
-import SoftwareDevelopment from "../pages/Categories/SoftwareDevelopment";
 
 
 function MainRoutes() {
   return (
     <Routes>
+      {/* Redirect root to all categories */}
+      <Route path="/" element={<AllCategories />} />
 
-
-
-      
-<Route path="/s" element={<SoftwareDevelopment />} />
+      <Route path="/s" element={<SoftwareDevelopment />} />
   <Route path="/post/new" element={<NewJobPost />} />
   <Route path="/contact" element={<Contact />} />
   <Route path="/reviews" element={<Reviews />} />
@@ -83,8 +83,8 @@ function MainRoutes() {
   <Route path="/categories/sports-fitness-recreation" element={<SportsFitnessRecreation />} />
   <Route path="/categories/telecoms-com-technology" element={<TelecomsComTechnology />} />
   <Route path="/categories/travel-tourism-ticketing" element={<TravelTourismTicketing />} />
+  <Route path="/categories/all-categories" element={<AllCategories />} />
 
-     
     </Routes>
   );
 }

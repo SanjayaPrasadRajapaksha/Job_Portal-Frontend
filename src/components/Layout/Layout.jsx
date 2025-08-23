@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { useSearchFilter } from '../../context/SearchFilterContext';
 import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
 import Checkboxes from '../SearchTopbar/Checkboxes';
@@ -9,26 +10,14 @@ import Sidebar from '../Sidebar/Sidebar';
 
 
 
+
 function Layout({ children }) {
-  // Placeholder search handler
-  const handleSearch = (query) => {
-    // You can connect this to page logic or global state as needed
-    // For now, just log
-    console.log('Search:', query);
-  };
-
-  // State for checkboxes
-  const [checkboxValues, setCheckboxValues] = React.useState({
-    fullTime: false,
-    partTime: false,
-    fullOrPartTime: false,
-  });
-
   // State for selected sidebar category
   const [selectedCategory, setSelectedCategory] = React.useState(null);
-
   // Get current location
   const location = useLocation();
+  // Use context for search and checkbox filter
+  const { searchQuery, setSearchQuery, checkboxValues, setCheckboxValues } = useSearchFilter();
 
   return (
   <div className="h-screen flex flex-col">
@@ -37,12 +26,12 @@ function Layout({ children }) {
         <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
         <main className="flex-1 flex flex-col overflow-hidden">
 
-          {/* Search bar and checkboxes bar below nav, beside sidebar, visible on any category path */}
+          {/* Search bar and checkboxes bar below nav, beside sidebar, visible only on category pages */}
           {location.pathname.startsWith('/categories/') && (
             <div className="bg-gray-300 px-6 py-1 shadow-sm flex items-center gap-4 justify-start rounded-md ml-4 mt-3">
               <div className="ml-auto flex items-center gap-4">
                 <Checkboxes values={checkboxValues} onChange={setCheckboxValues} />
-                <CommonSearchBar onSearch={handleSearch} />
+                <CommonSearchBar onSearch={setSearchQuery} value={searchQuery} />
               </div>
             </div>
           )}

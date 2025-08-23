@@ -11,7 +11,7 @@ const districts = [
   'Monaragala', 'Ratnapura', 'Kegalle'
 ];
 
-const workTypes = ['Full Time', 'Part Time', 'Other'];
+const workTypes = ['Full Time', 'Part Time', 'Full Time/Part Time'];
 
 
 export default function NewJobPost() {
@@ -223,8 +223,7 @@ export default function NewJobPost() {
             >
               <option value="">Select Location</option>
               <option value="Islandwide">Islandwide</option>
-              <option value="District">District</option>
-              <option value="Other">Other</option>
+              <option value="District">District</option>     
             </select>
 
             {/* District checkboxes if District selected */}

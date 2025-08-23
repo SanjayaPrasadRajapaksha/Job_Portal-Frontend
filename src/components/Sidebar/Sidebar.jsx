@@ -4,46 +4,66 @@ import { Link } from "react-router-dom";
 
 
 
+import { useEffect } from "react";
+
 export default function Sidebar({ selectedCategory, setSelectedCategory, onCategorySelect }) {
   // Hardcoded categories
   const categories = [
-    { name: "Accounting, Audit & Finance", path: "/categories/accounting-audit-finance" },
-    { name: "Administration & Office Support", path: "/categories/administration-office-support" },
-    { name: "Agriculture, Dairy & Environment", path: "/categories/agriculture-dairy-environment" },
-    { name: "Apparel, Clothing & Textiles", path: "/categories/apparel-clothing-textiles" },
-    { name: "Banking, Insurance", path: "/categories/banking-insurance" },
-    { name: "BPO, KPO & Outsourcing", path: "/categories/bpo-kpo-outsourcing" },
-    { name: "Civil, Construction & Architecture", path: "/categories/civil-construction-architecture" },
-    { name: "Corporate Management & Analysis", path: "/categories/corporate-management-analysis" },
-    { name: "Customer & Public Relations", path: "/categories/customer-public-relations" },
-    { name: "Education, Teaching & Training", path: "/categories/education-teaching-training" },
-    { name: "Eng – Mechanical, Electrical, Auto", path: "/categories/eng-mechanical-electrical-auto" },
-    { name: "Fashion, Beauty & Lifestyle", path: "/categories/fashion-beauty-lifestyle" },
-    { name: "Healthcare, Medical & Nursing", path: "/categories/healthcare-medical-nursing" },
-    { name: "Hospitality, Food & Beverage", path: "/categories/hospitality-food-beverage" },
-    { name: "Human Resources & Training", path: "/categories/human-resources-training" },
-    { name: "Imports, Exports & Trading", path: "/categories/imports-exports-trading" },
-    { name: "International Development & NGOs", path: "/categories/international-development-ngos" },
     { name: "IT & Software Development", path: "/categories/it-software-development" },
     { name: "IT Infrastructure & Networking", path: "/categories/it-infrastructure-networking" },
-    { name: "Legal & Compliance", path: "/categories/legal-compliance" },
+    { name: "Telecoms & Com-Technology", path: "/categories/telecoms-com-technology" },
+    { name: "Accounting, Audit & Finance", path: "/categories/accounting-audit-finance" },
+    { name: "Banking, Insurance", path: "/categories/banking-insurance" },
+    { name: "Sales, Marketing & Merchandising", path: "/categories/sales-marketing-merchandising" },
+    { name: "Human Resources & Training", path: "/categories/human-resources-training" },
+    { name: "Corporate Management & Analysis", path: "/categories/corporate-management-analysis" },
+    { name: "Administration & Office Support", path: "/categories/administration-office-support" },
+    { name: "Customer & Public Relations", path: "/categories/customer-public-relations" },
     { name: "Logistics, Supply Chain & Transport", path: "/categories/logistics-supply-chain-transport" },
+    { name: "Eng – Mechanical, Electrical, Auto", path: "/categories/eng-mechanical-electrical-auto" },
+    { name: "Civil, Construction & Architecture", path: "/categories/civil-construction-architecture" },
     { name: "Manufacturing & Production", path: "/categories/manufacturing-production" },
     { name: "Media, Advertising & Communications", path: "/categories/media-advertising-communications" },
-    { name: "Quality Assurance & Supervision", path: "/categories/quality-assurance-supervision" },
-    { name: "Research, Science & R&D", path: "/categories/research-science-rd" },
-    { name: "Sales, Marketing & Merchandising", path: "/categories/sales-marketing-merchandising" },
-    { name: "Security & Safety", path: "/categories/security-safety" },
+    { name: "Hospitality, Food & Beverage", path: "/categories/hospitality-food-beverage" },
+    { name: "Travel, Tourism & Ticketing", path: "/categories/travel-tourism-and-ticketing" },
     { name: "Sports, Fitness & Recreation", path: "/categories/sports-fitness-recreation" },
-    { name: "Telecoms & Com-Technology", path: "/categories/telecoms-com-technology" },
-    { name: "Travel, Tourism & Ticketing", path: "/categories/travel-tourism-and-ticketing" }
+    { name: "Healthcare, Medical & Nursing", path: "/categories/healthcare-medical-nursing" },
+    { name: "Legal & Compliance", path: "/categories/legal-compliance" },
+    { name: "Quality Assurance & Supervision", path: "/categories/quality-assurance-supervision" },
+    { name: "Apparel, Clothing & Textiles", path: "/categories/apparel-clothing-textiles" },
+    { name: "Education, Teaching & Training", path: "/categories/education-teaching-training" },
+    { name: "Research, Science & R&D", path: "/categories/research-science-rd" },
+    { name: "Agriculture, Dairy & Environment", path: "/categories/agriculture-dairy-environment" },
+    { name: "Security & Safety", path: "/categories/security-safety" },
+    { name: "Fashion, Beauty & Lifestyle", path: "/categories/fashion-beauty-lifestyle" },
+    { name: "International Development & NGOs", path: "/categories/international-development-ngos" },
+    { name: "BPO, KPO & Outsourcing", path: "/categories/bpo-kpo-outsourcing" },
+    { name: "Imports, Exports & Trading", path: "/categories/imports-exports-trading" },
+  { name: "All Categories", path: "/categories/all-categories" },
   ];
-
 
   const handleSelect = (cat) => {
     setSelectedCategory(cat.name);
     if (onCategorySelect) onCategorySelect(cat);
   };
+
+  // On mount, select 'All Categories' by default if nothing is selected and scroll to it
+  useEffect(() => {
+    if (!selectedCategory) {
+      const allCat = categories.find(c => c.name === "All Categories");
+      if (allCat) {
+        setSelectedCategory(allCat.name);
+        if (onCategorySelect) onCategorySelect(allCat);
+      }
+    }
+    // Scroll to 'All Categories' item
+    setTimeout(() => {
+      const el = document.getElementById('all-categories-item');
+      if (el) {
+        el.scrollIntoView({ block: 'center', behavior: 'auto' });
+      }
+    }, 0);
+  }, [selectedCategory, setSelectedCategory, onCategorySelect]);
 
   // Helper to convert category name to slug used in MainRoutes.jsx
   const slugify = (name) =>
@@ -75,10 +95,9 @@ export default function Sidebar({ selectedCategory, setSelectedCategory, onCateg
               <Link
                 to={cat.path}
                 className={`block text-sm font-medium px-3 py-2  transition-all duration-200 shadow-sm
-                  ${
-                    selectedCategory === cat.name
-                      ? "bg-yellow-400 text-gray-900 shadow-md"
-                      : "text-gray-900 hover:bg-yellow-400 hover:text-green-900 hover:shadow-md"
+                  ${selectedCategory === cat.name
+                    ? "bg-yellow-400 text-gray-900 shadow-md"
+                    : "text-gray-900 hover:bg-yellow-400 hover:text-green-900 hover:shadow-md"
                   }`}
                 onClick={() => handleSelect(cat)}
               >
