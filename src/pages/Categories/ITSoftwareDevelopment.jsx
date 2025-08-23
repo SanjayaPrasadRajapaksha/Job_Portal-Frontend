@@ -83,13 +83,12 @@ export default function ITSoftwareDevelopment() {
                 </span>
 
                 <span
-                  className={`ml-auto text-xs px-3 py-0.5 rounded-full font-semibold shadow-sm ${
-                    job.workType === "Full Time"
-                      ? "bg-green-200 text-green-900"
-                      : job.workType === "Part Time"
+                  className={`ml-auto text-xs px-3 py-0.5 rounded-full font-semibold shadow-sm ${job.workType === "Full Time"
+                    ? "bg-green-200 text-green-900"
+                    : job.workType === "Part Time"
                       ? "bg-blue-200 text-blue-900"
                       : "bg-purple-200 text-purple-900"
-                  }`}
+                    }`}
                 >
                   {job.workType}
                 </span>
@@ -100,16 +99,24 @@ export default function ITSoftwareDevelopment() {
                 <h3 className="text-sm font-extrabold text-gray-700 group-hover:text-yellow-600 transition-colors">
                   {job.title}
                 </h3>
-                <div className="text-xs text-gray-500 font-medium">{job.company}</div>
+                <div className="text-xs text-gray-500 font-medium">
+                  {job.company}
+                </div>
               </div>
 
               {/* Open/Close Days */}
               <div className="flex items-center gap-2 text-xs text-gray-400">
                 <span className="text-gray-500">
-                  Open: <span className="font-semibold text-green-700">{job.openingDay}</span>
+                  Open:{" "}
+                  <span className="font-semibold text-green-700">
+                    {job.openingDay}
+                  </span>
                 </span>
                 <span className="text-gray-500">
-                  Close: <span className="font-semibold text-red-700">{job.closingDay}</span>
+                  Close:{" "}
+                  <span className="font-semibold text-red-700">
+                    {job.closingDay}
+                  </span>
                 </span>
               </div>
 
@@ -130,6 +137,7 @@ export default function ITSoftwareDevelopment() {
       </div>
 
       {/* Modal */}
+      {/* Modal */}
       {selectedJob && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 overflow-auto p-4">
           <div className="bg-white rounded-lg shadow-lg max-w-6xl w-full flex flex-col lg:flex-row relative overflow-hidden">
@@ -140,30 +148,42 @@ export default function ITSoftwareDevelopment() {
               &times;
             </button>
 
-            {/* Left: Image */}
-            {selectedJob.image && (
-              <div className="lg:w-2/3 w-full overflow-auto max-h-[90vh] p-4">
-                <img
-                  src={selectedJob.image}
-                  alt={selectedJob.title}
-                  className="w-full rounded-md border"
-                  style={{ objectFit: "contain" }}
+            {/* Left: Description + Image */}
+            <div className="lg:w-2/3 w-full overflow-auto max-h-[90vh] p-4 space-y-4">
+              {/* If description exists */}
+              {selectedJob.description && (
+                <div
+                  className="prose max-w-none text-justify text-gray-700"
+                  dangerouslySetInnerHTML={{ __html: selectedJob.description }}
                 />
-              </div>
-            )}
+              )}
+
+              {/* If image exists */}
+              {selectedJob.image && (
+                <div className="overflow-auto">
+                  <img
+                    src={selectedJob.image}
+                    alt={selectedJob.title}
+                    className="w-full rounded-md border"
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+              )}
+            </div>
 
             {/* Right: Details + Apply */}
             <div className="lg:w-1/3 w-full overflow-auto p-6 flex flex-col gap-6 max-h-[90vh]">
               <div className="flex flex-col gap-2">
-                <h2 className="text-2xl font-bold text-gray-800">{selectedJob.title}</h2>
-                <p className="text-gray-600">{selectedJob.company}</p>
-                <p className="text-gray-500">{selectedJob.description}</p>
-                <p className="text-gray-500">Location: {selectedJob.area}</p>
-                <p className="text-gray-500">
-                  Open: <span className="font-semibold">{selectedJob.openingDay}</span> | Close:{" "}
+                <h2 className="text-2xl font-bold text-gray-900">
+                  {selectedJob.title}
+                </h2>
+                <p className="text-gray-700">{selectedJob.company}</p>
+                <p className="text-gray-600">Location: {selectedJob.area}</p>
+                <p className="text-blue-500">
+                  Open: <span className="font-semibold text-green-700">{selectedJob.openingDay}</span> | Close:{" "}
                   <span className="font-semibold text-red-500">{selectedJob.closingDay}</span>
                 </p>
-                <p className="text-gray-500">Work Type: {selectedJob.workType || "N/A"}</p>
+
               </div>
 
               {!showApply ? (
@@ -180,7 +200,9 @@ export default function ITSoftwareDevelopment() {
                     className="border rounded px-3 py-2 w-full"
                     placeholder="Full Name"
                     value={applyData.name}
-                    onChange={(e) => setApplyData({ ...applyData, name: e.target.value })}
+                    onChange={(e) =>
+                      setApplyData({ ...applyData, name: e.target.value })
+                    }
                     required
                   />
                   <input
@@ -188,21 +210,27 @@ export default function ITSoftwareDevelopment() {
                     className="border rounded px-3 py-2 w-full"
                     placeholder="Email"
                     value={applyData.email}
-                    onChange={(e) => setApplyData({ ...applyData, email: e.target.value })}
+                    onChange={(e) =>
+                      setApplyData({ ...applyData, email: e.target.value })
+                    }
                     required
                   />
                   <textarea
                     className="border rounded px-3 py-2 w-full"
                     placeholder="Cover Letter / Message"
                     value={applyData.message}
-                    onChange={(e) => setApplyData({ ...applyData, message: e.target.value })}
+                    onChange={(e) =>
+                      setApplyData({ ...applyData, message: e.target.value })
+                    }
                     required
                   />
                   <input
                     type="file"
                     accept=".pdf,.doc,.docx"
                     className="border rounded px-3 py-2 w-full"
-                    onChange={(e) => setApplyData({ ...applyData, cv: e.target.files[0] })}
+                    onChange={(e) =>
+                      setApplyData({ ...applyData, cv: e.target.files[0] })
+                    }
                     required
                   />
                   <button
@@ -216,12 +244,15 @@ export default function ITSoftwareDevelopment() {
               )}
 
               {submitStatus && (
-                <div className="mt-3 text-center text-green-600 font-medium">{submitStatus}</div>
+                <div className="mt-3 text-center text-green-600 font-medium">
+                  {submitStatus}
+                </div>
               )}
             </div>
           </div>
         </div>
       )}
+
     </div>
   );
 }
