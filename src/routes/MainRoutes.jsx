@@ -1,76 +1,91 @@
+import { Route, Routes } from "react-router-dom";
 
-import { Route,Routes} from "react-router-dom";
-import AdministrationOffice from "../pages/Categories/AdministrationOffice";
-import AgricultureEnvironment from "../pages/Categories/AgricultureEnvironment";
-import ArtsDesign from "../pages/Categories/ArtsDesign";
-import AutomotiveServices from "../pages/Categories/AutomotiveServices";
-import ConstructionRealEstate from "../pages/Categories/ConstructionRealEstate";
-import CustomerService from "../pages/Categories/CustomerService";
-import EducationTraining from "../pages/Categories/EducationTraining";
-import EnergyUtilities from "../pages/Categories/EnergyUtilities";
-import FinanceAccounting from "../pages/Categories/FinanceAccounting";
-import GovernmentService from "../pages/Categories/GovernmentService";
-import HardwareTechnicalSupport from "../pages/Categories/HardwareTechnicalSupport";
-import HealthcareNursing from "../pages/Categories/HealthcareNursing";
-import HospitalityTourism from "../pages/Categories/HospitalityTourism";
-import HumanResources from "../pages/Categories/HumanResources";
-import LegalCompliance from "../pages/Categories/LegalCompliance";
-import LogisticsSupplyChain from "../pages/Categories/LogisticsSupplyChain";
-import ManufacturingProduction from "../pages/Categories/ManufacturingProduction";
-import MechanicalCivilEngineering from "../pages/Categories/MechanicalCivilEngineering";
-import NGOSocialWork from "../pages/Categories/NGOSocialWork";
-import Other from "../pages/Categories/Other";
-import RetailFashion from "../pages/Categories/RetailFashion";
-import SalesMarketing from "../pages/Categories/SalesMarketing";
-import ScienceRD from "../pages/Categories/ScienceRD";
-import SkilledTrades from "../pages/Categories/SkilledTrades";
-import SoftwareDevelopment from "../pages/Categories/SoftwareDevelopment";
-import SportsRecreation from "../pages/Categories/SportsRecreation";
-import Telecommunications from "../pages/Categories/Telecommunications";
-import NewJobPost from "../pages/JobPost/NewJobPost";
-import Contact from "../pages/Contact/Contact";
-import Reviews from "../pages/Reviews/Reviews";
+
 import Company from "../pages/Company/Company";
+import Contact from "../pages/Contact/Contact";
+import NewJobPost from "../pages/JobPost/NewJobPost";
+import Reviews from "../pages/Reviews/Reviews";
+
+import AccountingAuditFinance from "../pages/Categories/AccountingAuditFinance";
+import AdministrationOfficeSupport from "../pages/Categories/AdministrationOfficeSupport";
+import AgricultureDairyEnvironment from "../pages/Categories/AgricultureDairyEnvironment";
+import ApparelClothingTextiles from "../pages/Categories/ApparelClothingTextiles";
+import BankingInsurance from "../pages/Categories/BankingInsurance";
+import BPOKPOOutsourcing from "../pages/Categories/BPOKPOOutsourcing";
+import CivilConstructionArchitecture from "../pages/Categories/CivilConstructionArchitecture";
+import CorporateManagementAnalysis from "../pages/Categories/CorporateManagementAnalysis";
+import CustomerPublicRelations from "../pages/Categories/CustomerPublicRelations";
+import EducationTeachingTraining from "../pages/Categories/EducationTeachingTraining";
+import EngMechanicalElectricalAuto from "../pages/Categories/EngMechanicalElectricalAuto";
+import FashionBeautyLifestyle from "../pages/Categories/FashionBeautyLifestyle";
+import HealthcareMedicalNursing from "../pages/Categories/HealthcareMedicalNursing";
+import HospitalityFoodBeverage from "../pages/Categories/HospitalityFoodBeverage";
+import HumanResourcesTraining from "../pages/Categories/HumanResourcesTraining";
+import ImportsExportsTrading from "../pages/Categories/ImportsExportsTrading";
+import InternationalDevelopmentNGOs from "../pages/Categories/InternationalDevelopmentNGOs";
+import ITInfrastructureNetworking from "../pages/Categories/ITInfrastructureNetworking";
+import ITSoftwareDevelopment from "../pages/Categories/ITSoftwareDevelopment";
+import LegalCompliance from "../pages/Categories/LegalCompliance";
+import LogisticsSupplyChainTransport from "../pages/Categories/LogisticsSupplyChainTransport";
+import ManufacturingProduction from "../pages/Categories/ManufacturingProduction";
+import MediaAdvertisingCommunications from "../pages/Categories/MediaAdvertisingCommunications";
+import QualityAssuranceSupervision from "../pages/Categories/QualityAssuranceSupervision";
+import ResearchScienceRD from "../pages/Categories/ResearchScienceRD";
+import SalesMarketingMerchandising from "../pages/Categories/SalesMarketingMerchandising";
+import SecuritySafety from "../pages/Categories/SecuritySafety";
+import SportsFitnessRecreation from "../pages/Categories/SportsFitnessRecreation";
+import TelecomsComTechnology from "../pages/Categories/TelecomsComTechnology";
+import TravelTourismTicketing from "../pages/Categories/TravelTourismTicketing";
+import SoftwareDevelopment from "../pages/Categories/SoftwareDevelopment";
+
 
 function MainRoutes() {
   return (
-  
-      <Routes>
-        <Route path="/categories/software-development" element={<SoftwareDevelopment />} />
-        <Route path="/categories/hardware-technical-support" element={<HardwareTechnicalSupport />} />
-        <Route path="/categories/mechanical-civil-engineering" element={<MechanicalCivilEngineering />} />
-        <Route path="/categories/healthcare-nursing" element={<HealthcareNursing />} />
-        <Route path="/categories/finance-accounting" element={<FinanceAccounting />} />
-        <Route path="/categories/sales-marketing" element={<SalesMarketing />} />
-        <Route path="/categories/human-resources" element={<HumanResources />} />
-        <Route path="/categories/administration-office" element={<AdministrationOffice />} />
-        <Route path="/categories/customer-service" element={<CustomerService />} />
-        <Route path="/categories/education-training" element={<EducationTraining />} />
-        <Route path="/categories/legal-compliance" element={<LegalCompliance />} />
-        <Route path="/categories/construction-real-estate" element={<ConstructionRealEstate />} />
-        <Route path="/categories/manufacturing-production" element={<ManufacturingProduction />} />
-        <Route path="/categories/logistics-supply-chain" element={<LogisticsSupplyChain />} />
-        <Route path="/categories/retail-fashion" element={<RetailFashion />} />
-        <Route path="/categories/hospitality-tourism" element={<HospitalityTourism />} />
-        <Route path="/categories/science-rd" element={<ScienceRD />} />
-        <Route path="/categories/arts-design" element={<ArtsDesign />} />
-        <Route path="/categories/government-service" element={<GovernmentService />} />
-        <Route path="/categories/ngo-social-work" element={<NGOSocialWork />} />
-        <Route path="/categories/skilled-trades" element={<SkilledTrades />} />
-        <Route path="/categories/telecommunications" element={<Telecommunications />} />
-        <Route path="/categories/agriculture-environment" element={<AgricultureEnvironment />} />
-        <Route path="/categories/automotive-services" element={<AutomotiveServices />} />
-        <Route path="/categories/energy-utilities" element={<EnergyUtilities />} />
-        <Route path="/categories/sports-recreation" element={<SportsRecreation />} />
-        <Route path="/categories/other" element={<Other />} />
+    <Routes>
 
-        <Route path="/post/new" element={<NewJobPost />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/reviews" element={<Reviews />} />
-        <Route path="/company" element={<Company />} />
-        {/* Add other routes as needed */}
-      </Routes>
-  
+
+
+      
+<Route path="/s" element={<SoftwareDevelopment />} />
+  <Route path="/post/new" element={<NewJobPost />} />
+  <Route path="/contact" element={<Contact />} />
+  <Route path="/reviews" element={<Reviews />} />
+  <Route path="/company" element={<Company />} />
+
+  {/* Category Routes */}
+  <Route path="/categories/accounting-audit-finance" element={<AccountingAuditFinance />} />
+  <Route path="/categories/administration-office-support" element={<AdministrationOfficeSupport />} />
+  <Route path="/categories/agriculture-dairy-environment" element={<AgricultureDairyEnvironment />} />
+  <Route path="/categories/apparel-clothing-textiles" element={<ApparelClothingTextiles />} />
+  <Route path="/categories/banking-insurance" element={<BankingInsurance />} />
+  <Route path="/categories/bpo-kpo-outsourcing" element={<BPOKPOOutsourcing />} />
+  <Route path="/categories/civil-construction-architecture" element={<CivilConstructionArchitecture />} />
+  <Route path="/categories/corporate-management-analysis" element={<CorporateManagementAnalysis />} />
+  <Route path="/categories/customer-public-relations" element={<CustomerPublicRelations />} />
+  <Route path="/categories/education-teaching-training" element={<EducationTeachingTraining />} />
+  <Route path="/categories/eng-mechanical-electrical-auto" element={<EngMechanicalElectricalAuto />} />
+  <Route path="/categories/fashion-beauty-lifestyle" element={<FashionBeautyLifestyle />} />
+  <Route path="/categories/healthcare-medical-nursing" element={<HealthcareMedicalNursing />} />
+  <Route path="/categories/hospitality-food-beverage" element={<HospitalityFoodBeverage />} />
+  <Route path="/categories/human-resources-training" element={<HumanResourcesTraining />} />
+  <Route path="/categories/imports-exports-trading" element={<ImportsExportsTrading />} />
+  <Route path="/categories/international-development-ngos" element={<InternationalDevelopmentNGOs />} />
+  <Route path="/categories/it-infrastructure-networking" element={<ITInfrastructureNetworking />} />
+  <Route path="/categories/it-software-development" element={<ITSoftwareDevelopment />} />
+  <Route path="/categories/legal-compliance" element={<LegalCompliance />} />
+  <Route path="/categories/logistics-supply-chain-transport" element={<LogisticsSupplyChainTransport />} />
+  <Route path="/categories/manufacturing-production" element={<ManufacturingProduction />} />
+  <Route path="/categories/media-advertising-communications" element={<MediaAdvertisingCommunications />} />
+  <Route path="/categories/quality-assurance-supervision" element={<QualityAssuranceSupervision />} />
+  <Route path="/categories/research-science-rd" element={<ResearchScienceRD />} />
+  <Route path="/categories/sales-marketing-merchandising" element={<SalesMarketingMerchandising />} />
+  <Route path="/categories/security-safety" element={<SecuritySafety />} />
+  <Route path="/categories/sports-fitness-recreation" element={<SportsFitnessRecreation />} />
+  <Route path="/categories/telecoms-com-technology" element={<TelecomsComTechnology />} />
+  <Route path="/categories/travel-tourism-ticketing" element={<TravelTourismTicketing />} />
+
+     
+    </Routes>
   );
 }
 

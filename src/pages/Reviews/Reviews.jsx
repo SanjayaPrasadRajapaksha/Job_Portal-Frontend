@@ -31,7 +31,7 @@ export default function Reviews() {
   // Fetch reviews from backend
   async function fetchReviews() {
     try {
-      const res = await fetch(`${API_BASE_URL}/review/all`);
+      const res = await fetch(`${API_BASE_URL}/review/verified`);
       const data = await res.json();
       if (res.ok && data.result) {
         setReviews(data.result);
@@ -78,7 +78,7 @@ export default function Reviews() {
     }
   }
 
-  const filteredReviews = reviews.filter((r) => r.role === filterRole);
+  const filteredReviews = reviews.filter((r) => r.role === filterRole && r.isVerify === true);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center py-16 px-6">
