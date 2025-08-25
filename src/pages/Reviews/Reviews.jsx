@@ -95,33 +95,32 @@ export default function Reviews() {
         </div>
       )}
       <div className="max-w-6xl w-full">
-{/* Tab Buttons */}
-<div className="flex justify-between items-center mb-8">
-  {/* Left side: Employer & Job Seeker */}
-  <div className="flex gap-4">
-    {["Employer", "Job Seeker"].map((role) => (
-      <button
-        key={role}
-        className={`px-6 py-2 rounded-full border border-black font-semibold text-sm transition ${
-          filterRole === role
-            ? "bg-gray-800 text-white"
-            : "bg-white text-gray-600"
-        }`}
-        onClick={() => setFilterRole(role)}
-      >
-        {role}
-      </button>
-    ))}
-  </div>
+        {/* Tab Buttons */}
+        <div className="flex justify-between items-center mb-8">
+          {/* Left side: Employer & Job Seeker */}
+          <div className="flex gap-4">
+            {["Employer", "Job Seeker"].map((role) => (
+              <button
+                key={role}
+                className={`px-6 py-2 rounded-full border border-black font-semibold text-sm transition ${filterRole === role
+                    ? "bg-gray-800 text-white"
+                    : "bg-white text-gray-600"
+                  }`}
+                onClick={() => setFilterRole(role)}
+              >
+                {role}
+              </button>
+            ))}
+          </div>
 
-  {/* Right side: Submit Review */}
-  <button
-    className="px-6 py-2 rounded-full font-semibold text-sm bg-blue-600 text-white shadow-md transition"
-    onClick={() => setShowForm(true)}
-  >
-    + Submit Review
-  </button>
-</div>
+          {/* Right side: Submit Review */}
+          <button
+            className="px-6 py-2 rounded-full font-semibold text-sm bg-orange-500 text-white shadow-md transition"
+            onClick={() => setShowForm(true)}
+          >
+            + Submit Review
+          </button>
+        </div>
 
         {/* Reviews Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
@@ -132,7 +131,7 @@ export default function Reviews() {
                  transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
             >
               {/* Top Accent */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-blue-500 rounded-t-2xl" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-orange-500 rounded-t-2xl" />
 
               {/* Name & Info */}
               <div className="flex flex-col gap-1 mb-2 mt-2">
@@ -236,7 +235,7 @@ export default function Reviews() {
                 <div className="w-full flex justify-end">
                   <button
                     type="submit"
-                    className="bg-blue-600 text-white font-semibold py-2 px-6 rounded-xl shadow-md hover:shadow-lg transition"
+                    className="bg-orange-500 text-white font-semibold py-2 px-6 rounded-xl shadow-md hover:shadow-lg transition"
                   >
                     Submit
                   </button>

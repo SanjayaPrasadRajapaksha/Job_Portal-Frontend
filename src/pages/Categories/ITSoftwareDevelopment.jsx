@@ -128,7 +128,7 @@ export default function ITSoftwareDevelopment() {
           filteredJobs.map((job, i) => (
             <div
               key={job.id || i}
-              className="relative bg-gray-100 rounded-md shadow-md border border-gray-200 hover:shadow-lg hover:bg-white hover:-translate-y-0.5 transition-all duration-300 p-6 flex flex-col gap-3 min-w-[320px] max-w-[410px] min-h-[180px] mx-auto cursor-pointer"
+              className="relative bg-gray-200 rounded-md shadow-md border border-gray-200 hover:shadow-lg hover:bg-white hover:-translate-y-0.5 transition-all duration-300 p-6 flex flex-col gap-3 min-w-[320px] max-w-[410px] min-h-[180px] mx-auto cursor-pointer"
               onClick={() => {
                 setSelectedJob(job);
                 setShowApply(false);

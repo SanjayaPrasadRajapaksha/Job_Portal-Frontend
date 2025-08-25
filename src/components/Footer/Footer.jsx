@@ -21,7 +21,7 @@ export default function Footer() {
   <div className="max-w-screen-xl text-gray-200 mx-auto flex flex-wrap md:flex-nowrap items-center justify-between px-2 py-1 gap-2 shadow-lg rounded-t-lg bg-gradient-to-b from-gray-700 to-gray-800">
         {/* Links */}
         <nav className="flex flex-wrap gap-1 justify-start flex-1 text-xs">
-          © 2006-2025 Genesisi Software (Pvt) Ltd. All Rights Reserved.
+          {/* © 2006-2025 Genesisi Software (Pvt) Ltd. All Rights Reserved. */}
         </nav>
 
         {/* Subscribe Form */}
