@@ -127,7 +127,7 @@ export default function Reviews() {
               className="bg-white rounded-2xl shadow-md p-6 relative overflow-hidden border border-gray-200
                  transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-orange-500 rounded-t-2xl" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-orange-400 rounded-t-2xl" />
               <div className="flex flex-col gap-1 mb-2 mt-2">
                 <div className="font-bold text-gray-800">{review.name}</div>
                 {review.role === "Employer" && (

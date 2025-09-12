@@ -17,12 +17,13 @@ export default function CommonSearchBar({ onSearch, placeholder = "Search..." })
   return (
     <div className="flex items-center gap-1 w-64 sm:w-72">
       {/* Form with input and clear button */}
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-1 items-center gap-0.5 px-1 py-0.5 bg-white border rounded-md shadow-sm"
-        role="search"
-        aria-label="Search jobs"
-      >
+    <form
+  onSubmit={handleSubmit}
+  className="flex flex-1 items-center gap-0.5 px-1 py-0.5 bg-white border border-gray-400 rounded-md shadow-sm"
+  role="search"
+  aria-label="Search jobs"
+>
+
         <input
           type="text"
           placeholder={placeholder}
