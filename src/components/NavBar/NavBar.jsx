@@ -71,34 +71,37 @@ export default function NavBar({ clearSidebarCategory }) {
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-50 border-t border-yellow-400 flex flex-col p-4 space-y-2 shadow-lg animate-fadeIn">
-          <Link
-            to="/post/new"
-            className="px-1.5 py-1 rounded-md bg-green-600 text-white font-semibold text-sm"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Post Vacancy
-          </Link>
+ {/* Mobile Menu Dropdown */}
+{isMenuOpen && (
+  <div className="md:hidden fixed top-16 left-0 w-full text-center bg-white border-t border-yellow-400 shadow-xl flex flex-col p-4 space-y-3 animate-fadeIn z-50">
+    
+    {/* Post Vacancy Button */}
+    <Link
+      to="/post/new"
+      className="px-4 py-2 rounded-md bg-gradient-to-r bg-[#239BA7] text-white font-semibold text-sm text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all"
+      onClick={() => setIsMenuOpen(false)}
+    >
+      Post Vacancy
+    </Link>
 
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`text-sm font-semibold ${location.pathname === link.path
-                ? 'text-green-700 underline'
-                : 'text-gray-800'
-                }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
+    {/* Navigation Links */}
+    {navLinks.map((link) => (
+      <Link
+        key={link.path}
+        to={link.path}
+        className={`text-sm font-semibold py-2 px-3 rounded-md transition-colors duration-200
+          ${location.pathname === link.path
+            ? 'bg-green-100 text-green-700 '
+            : 'text-gray-800 hover:bg-yellow-100 hover:text-green-900'
+          }`}
+        onClick={() => setIsMenuOpen(false)}
+      >
+        {link.label}
+      </Link>
+    ))}
+  </div>
+)}
 
-         
-        </div>
-      )}
     </nav>
   );
 }
