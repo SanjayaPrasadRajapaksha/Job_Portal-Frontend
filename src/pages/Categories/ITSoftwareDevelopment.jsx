@@ -121,7 +121,7 @@ export default function ITSoftwareDevelopment() {
       {/* Card Grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredJobs.length === 0 ? (
-          <div className="col-span-full text-center text-gray-500">
+          <div className="col-span-full text-center text-gray-600">
             No jobs found for IT & Software Development.
           </div>
         ) : (
@@ -191,7 +191,7 @@ export default function ITSoftwareDevelopment() {
                 <div className="font-medium block overflow-y-auto max-h-10 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
                   {job.area === "Islandwide"
                     ? job.area
-                    : job.selectedDistricts.join(", ")}
+                    : job.selectedDistricts?.join(", ")}
                 </div>
               </div>
 
@@ -246,7 +246,7 @@ export default function ITSoftwareDevelopment() {
                 <p className="text-gray-600">Location: <span className="font-medium">
                   {selectedJob.area === "Islandwide"
                     ? selectedJob.area
-                    : selectedJob.selectedDistricts.join(", ")}
+                    : selectedJob.selectedDistricts?.join(", ")}
                 </span>
                 </p>
                 <p className="text-blue-500">

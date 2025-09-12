@@ -166,7 +166,7 @@ export default function AllCategories() {
                 <div className="font-medium block overflow-y-auto max-h-10 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
                   {job.area === "Islandwide"
                     ? job.area
-                    : job.selectedDistricts.join(", ")}
+                    : job.selectedDistricts?.join(", ")}
                 </div>
               </div>
 
@@ -221,7 +221,7 @@ export default function AllCategories() {
                 <p className="text-gray-600">Location: <span className="font-medium">
                   {selectedJob.area === "Islandwide"
                     ? selectedJob.area
-                    : selectedJob.selectedDistricts.join(", ")}
+                    : selectedJob.selectedDistricts?.join(", ")}
                 </span>
                 </p>
                 <p className="text-blue-500">

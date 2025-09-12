@@ -25,7 +25,7 @@ export default function Sidebar({ selectedCategory, setSelectedCategory, onCateg
     { name: "Manufacturing & Production", path: "/categories/manufacturing-production" },
     { name: "Media, Advertising & Communications", path: "/categories/media-advertising-communications" },
     { name: "Hospitality, Food & Beverage", path: "/categories/hospitality-food-beverage" },
-    { name: "Travel, Tourism & Ticketing", path: "/categories/travel-tourism-and-ticketing" },
+    { name: "Travel, Tourism & Ticketing", path: "/categories/travel-tourism-ticketing" },
     { name: "Sports, Fitness & Recreation", path: "/categories/sports-fitness-recreation" },
     { name: "Healthcare, Medical & Nursing", path: "/categories/healthcare-medical-nursing" },
     { name: "Legal & Compliance", path: "/categories/legal-compliance" },
