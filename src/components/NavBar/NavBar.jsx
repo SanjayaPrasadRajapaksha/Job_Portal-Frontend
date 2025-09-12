@@ -96,22 +96,7 @@ export default function NavBar({ clearSidebarCategory }) {
             </Link>
           ))}
 
-          <div className="flex gap-2">
-            <Link
-              to="/user"
-              className="bg-yellow-400 rounded-md px-1.5 py-1 flex items-center justify-center border border-yellow-400 shadow-sm"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <FaUser className="text-lg text-black" />
-            </Link>
-            <Link
-              to="/login"
-              className="bg-yellow-400 rounded-md px-1.5 py-1 flex items-center justify-center border border-yellow-400 shadow-sm"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <FaSignInAlt className="text-lg text-black" />
-            </Link>
-          </div>
+         
         </div>
       )}
     </nav>

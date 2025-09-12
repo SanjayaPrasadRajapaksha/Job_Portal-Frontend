@@ -1,14 +1,11 @@
-
-
 import { Link } from "react-router-dom";
-
-
-
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Sidebar({ selectedCategory, setSelectedCategory, onCategorySelect }) {
-  // Hardcoded categories
-  const categories = [
+  const [isOpen, setIsOpen] = useState(false);
+  const sidebarRef = useRef(null);
+
+const categories = [
     { name: "IT & Software Development", path: "/categories/it-software-development" },
     { name: "IT Infrastructure & Networking", path: "/categories/it-infrastructure-networking" },
     { name: "Telecoms & Com-Technology", path: "/categories/telecoms-com-technology" },
@@ -39,79 +36,122 @@ export default function Sidebar({ selectedCategory, setSelectedCategory, onCateg
     { name: "International Development & NGOs", path: "/categories/international-development-ngos" },
     { name: "BPO, KPO & Outsourcing", path: "/categories/bpo-kpo-outsourcing" },
     { name: "Imports, Exports & Trading", path: "/categories/imports-exports-trading" },
-  { name: "All Categories", path: "/categories/all-categories" },
+    { name: "All Categories", path: "/categories/all-categories" },
   ];
-
   const handleSelect = (cat) => {
     setSelectedCategory(cat.name);
     if (onCategorySelect) onCategorySelect(cat);
+    setIsOpen(false); // close sidebar on mobile after selecting
   };
 
-  // On mount, select 'All Categories' by default if nothing is selected and scroll to it
   useEffect(() => {
     if (!selectedCategory) {
-      const allCat = categories.find(c => c.name === "All Categories");
+      const allCat = categories.find((c) => c.name === "All Categories");
       if (allCat) {
         setSelectedCategory(allCat.name);
         if (onCategorySelect) onCategorySelect(allCat);
       }
     }
-    // Scroll to 'All Categories' item
-    setTimeout(() => {
-      const el = document.getElementById('all-categories-item');
-      if (el) {
-        el.scrollIntoView({ block: 'center', behavior: 'auto' });
-      }
-    }, 0);
   }, [selectedCategory, setSelectedCategory, onCategorySelect]);
 
-  // Helper to convert category name to slug used in MainRoutes.jsx
-  const slugify = (name) =>
-    name
-      .replace(/&/g, 'and')
-      .replace(/–/g, '-')
-      .replace(/,/g, '')
-      .replace(/\s*\/\s*/g, '-')
-      .replace(/\s+/g, '-')
-      .replace(/\//g, '-')
-      .replace(/\++/g, 'and')
-      .replace(/\.+/g, '')
-      .replace(/-+/g, '-')
-      .replace(/[^a-zA-Z0-9-]/g, '')
-      .toLowerCase();
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
+
+  const sidebarHeightStyle = {
+    height: 'calc(100vh - 70px - 60px)', // 70px navbar, 70px footer. Adjust as needed!
+    top: '80px', // sidebar starts at bottom of navbar
+  };
 
   return (
-    <aside className="w-72 min-w-[220px] flex flex-col bg-white border-r border-gray-200 shadow-lg z-20 max-h-[90vh] my-4">
-      <div className="flex-1 flex flex-col bg-gradient-to-b from-green-500 to-green-300 overflow-hidden">
-        {/* Heading */}
-        <h2 className="bg-green-800 text-white text-md text-center py-3 font-semibold tracking-wide uppercase shadow-sm">
-          Job Categories
-        </h2>
+    <>
+      {/* Only show button when sidebar is hidden (mobile/tablet only) */}
+      {!isOpen && (
+        <button
+          className="block lg:hidden fixed top-1/2 left-0 z-50 bg-yellow-500 text-black font-semibold px-2 py-4 rounded-r-md shadow-lg transform -translate-y-1/2"
+          style={{
+            writingMode: "vertical-lr",
+            textOrientation: "mixed",
+            minHeight: "120px",
+            minWidth: "40px"
+          }}
+          onClick={() => setIsOpen(true)}
+        >
+          Categories
+        </button>
+      )}
 
-        {/* Category List */}
-        <ul className="flex-1 overflow-y-auto px-1 py-1.5 space-y-1 scrollbar-green">
-          {categories.map((cat) => (
-            <li key={cat.name}>
-              <Link
-                to={cat.path}
-                className={`block text-sm font-medium px-3 py-2  transition-all duration-200 shadow-sm
-                  ${selectedCategory === cat.name
-                    ? "bg-yellow-400 text-gray-900 shadow-md"
-                    : "text-gray-900 hover:bg-yellow-400 hover:text-green-900 hover:shadow-md"
-                  }`}
-                onClick={() => handleSelect(cat)}
-              >
-                {cat.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      {/* Sidebar */}
+      <aside
+        ref={sidebarRef}
+        className={`
+          fixed lg:static
+          left-0
+          w-72 min-w-[220px]
+          flex flex-col bg-white border-r border-gray-200 shadow-lg z-40
+          transform transition-transform duration-300
+          ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
+          lg:top-0 lg:h-full
+        `}
+        style={
+          !isOpen
+            ? {}
+            : window.innerWidth < 1024
+              ? sidebarHeightStyle
+              : {}
+        }
+      >
+        <div className="flex-1 flex flex-col bg-gradient-to-b from-green-500 to-green-300 overflow-hidden">
+          {/* Circle close button (top right, mobile/tablet only) */}
+          {isOpen && (
+            <button
+              className="block lg:hidden absolute top-1 right-3 w-9 h-9 flex items-center justify-center rounded-full text-yellow-500 hover:text-red-600 transition-colors"
+              onClick={() => setIsOpen(false)}
+              aria-label="Close sidebar"
+            >
+              <span className="text-2xl font-bold">&times;</span>
+            </button>
+          )}
 
-        {/* Scroll hint */}
-        <div className="bg-green-700 text-white text-[13px] text-center py-2 flex items-center justify-center gap-2 border-t border-green-600">
-          More Categories Below
+          <h2 className="bg-green-800 text-white text-md text-center py-3 font-semibold tracking-wide uppercase shadow-sm">
+            Job Categories
+          </h2>
+
+          <ul className="flex-1 overflow-y-auto px-1 py-1.5 space-y-1 scrollbar-green">
+            {categories.map((cat) => (
+              <li key={cat.name}>
+                <Link
+                  to={cat.path}
+                  className={`block text-sm font-medium px-3 py-2 transition-all duration-200 shadow-sm
+                    ${selectedCategory === cat.name
+                      ? "bg-yellow-400 text-gray-900 shadow-md"
+                      : "text-gray-900 hover:bg-yellow-400 hover:text-green-900 hover:shadow-md"
+                    }`}
+                  onClick={() => handleSelect(cat)}
+                >
+                  {cat.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="bg-green-700 text-white text-[13px] text-center py-2 flex items-center justify-center gap-2 border-t border-green-600">
+            More Categories Below
+          </div>
         </div>
-      </div>
-    </aside>
+      </aside>
+    </>
   );
 }

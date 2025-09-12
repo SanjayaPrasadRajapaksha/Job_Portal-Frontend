@@ -7,10 +7,6 @@ import Checkboxes from '../SearchTopbar/Checkboxes';
 import CommonSearchBar from '../SearchTopbar/CommonSearchBar';
 import Sidebar from '../Sidebar/Sidebar';
 
-
-
-
-
 function Layout({ children }) {
   // State for selected sidebar category
   const [selectedCategory, setSelectedCategory] = React.useState(null);
@@ -20,7 +16,7 @@ function Layout({ children }) {
   const { searchQuery, setSearchQuery, checkboxValues, setCheckboxValues } = useSearchFilter();
 
   return (
-  <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col">
       <NavBar clearSidebarCategory={() => setSelectedCategory(null)} />
       <div className="flex flex-1 min-h-0 bg-white">
         <Sidebar selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
@@ -28,11 +24,28 @@ function Layout({ children }) {
 
           {/* Search bar and checkboxes bar below nav, beside sidebar, visible only on category pages */}
           {location.pathname.startsWith('/categories/') && (
-            <div className="bg-gray-300 px-6 py-1 shadow-sm flex items-center gap-4 justify-start rounded-md ml-4 mt-3">
-              <div className="ml-auto flex items-center gap-4">
-                <Checkboxes values={checkboxValues} onChange={setCheckboxValues} />
-                <CommonSearchBar onSearch={setSearchQuery} value={searchQuery} />
-              </div>
+            <div
+              className="
+                bg-slate-100
+                border-b border-gray-300
+                px-2 py-2
+                shadow-sm
+                flex flex-col gap-2
+                md:flex-row md:items-center md:gap-4
+                rounded-md
+                md:ml-4 mt-3
+              "
+            >
+              <Checkboxes
+                values={checkboxValues}
+                onChange={setCheckboxValues}
+                className="mb-2 md:mb-0"
+              />
+              <CommonSearchBar
+                onSearch={setSearchQuery}
+                value={searchQuery}
+                className="flex-1"
+              />
             </div>
           )}
 

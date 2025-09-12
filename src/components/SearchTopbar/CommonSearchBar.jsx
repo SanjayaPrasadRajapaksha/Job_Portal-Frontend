@@ -38,7 +38,7 @@ export default function CommonSearchBar({ onSearch, placeholder = "Search..." })
           <button
             type="button"
             onClick={handleClear}
-            className="p-0.5 text-gray-400 hover:text-gray-600 transition"
+            className="p-0.5 text-gray-900 hover:text-gray-600 transition"
             aria-label="Clear search"
           >
             <FiX size={14} />
