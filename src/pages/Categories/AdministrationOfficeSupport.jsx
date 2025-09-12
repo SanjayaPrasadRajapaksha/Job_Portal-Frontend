@@ -154,12 +154,12 @@ export default function AdministrationOfficeSupport() {
                 </span>
               </div>
 
-              {/* Job Title & Company */}
+   {/* Job Title & Company */}
               <div className="mb-1">
-                <h3 className="text-sm font-extrabold text-gray-700 group-hover:text-yellow-600 transition-colors">
+                <h3 className="text-md font-bold text-gray-800 group-hover:text-yellow-600 transition-colors">
                   {job.title}
                 </h3>
-                <div className="text-xs text-gray-500 font-medium">
+                <div className="text-xs text-gray-700 font-medium">
                   {job.company}
                 </div>
               </div>
@@ -204,125 +204,116 @@ export default function AdministrationOfficeSupport() {
 
 
       {/* Modal */}
-      {selectedJob && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 overflow-auto p-4">
-          <div className="bg-white rounded-lg shadow-lg max-w-6xl w-full flex flex-col lg:flex-row relative overflow-hidden">
-            <button
-              className="absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-2xl font-bold z-10"
-              onClick={() => setSelectedJob(null)}
-            >
-              &times;
-            </button>
+{selectedJob && (
+  <div className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 p-4 overflow-auto">
+    <div className="bg-white rounded-lg shadow-lg w-full max-w-5xl flex flex-col lg:flex-row relative">
+      {/* Close button */}
+      <button
+        className="absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-2xl font-bold z-10"
+        onClick={() => setSelectedJob(null)}
+      >
+        &times;
+      </button>
 
-            {/* Left: Description + Image */}
-            <div className="lg:w-2/3 w-full overflow-auto max-h-[90vh] p-4 space-y-4">
-              {/* If description exists */}
-              {selectedJob.description && (
-                <div
-                  className="prose max-w-none text-justify text-gray-700"
-                  dangerouslySetInnerHTML={{ __html: selectedJob.description }}
-                />
-              )}
+      {/* Left: Description + Image */}
+      <div className="lg:w-2/3 w-full p-4 flex flex-col gap-4">
+        {selectedJob.description && (
+          <div
+            className="prose max-w-none text-justify text-gray-700"
+            dangerouslySetInnerHTML={{ __html: selectedJob.description }}
+          />
+        )}
 
-              {/* If image exists */}
-              {selectedJob.image && (
-                <div className="overflow-auto">
-                  <img
-                    src={selectedJob.image}
-                    alt={selectedJob.title}
-                    className="w-full rounded-md border"
-                    style={{ objectFit: "contain" }}
-                  />
-                </div>
-              )}
-            </div>
-
-            {/* Right: Details + Apply */}
-            <div className="lg:w-1/3 w-full overflow-auto p-6 flex flex-col gap-6 max-h-[90vh]">
-              <div className="flex flex-col gap-2">
-                <h2 className="text-2xl font-bold text-gray-900">
-                  {selectedJob.title}
-                </h2>
-                <p className="text-gray-700">{selectedJob.company}</p>
-                <p className="text-gray-600">Location: <span className="font-medium">
-                  {selectedJob.area === "Islandwide"
-                    ? selectedJob.area
-                    : selectedJob.selectedDistricts?.join(", ")}
-                </span>
-                </p>
-                <p className="text-blue-500">
-                  Open: <span className="font-semibold text-green-700">{selectedJob.openingDay}</span> | Close:{" "}
-                  <span className="font-semibold text-red-500">{selectedJob.closingDay}</span>
-                </p>
-
-              </div>
-
-              {!showApply ? (
-                <button
-                  className="mt-4 w-full bg-yellow-500 text-white rounded py-3 font-semibold hover:bg-yellow-600"
-                  onClick={() => setShowApply(true)}
-                >
-                  Apply Now
-                </button>
-              ) : (
-                <form className="mt-4 flex flex-col gap-3" onSubmit={handleSubmit}>
-                  <input
-                    type="text"
-                    className="border rounded px-3 py-2 w-full"
-                    placeholder="Full Name"
-                    value={applyData.name}
-                    onChange={(e) =>
-                      setApplyData({ ...applyData, name: e.target.value })
-                    }
-                    required
-                  />
-                  <input
-                    type="email"
-                    className="border rounded px-3 py-2 w-full"
-                    placeholder="Email"
-                    value={applyData.email}
-                    onChange={(e) =>
-                      setApplyData({ ...applyData, email: e.target.value })
-                    }
-                    required
-                  />
-                  <textarea
-                    className="border rounded px-3 py-2 w-full"
-                    placeholder="Cover Letter / Message"
-                    value={applyData.message}
-                    onChange={(e) =>
-                      setApplyData({ ...applyData, message: e.target.value })
-                    }
-                    required
-                  />
-                  <input
-                    type="file"
-                    accept=".pdf,.doc,.docx"
-                    className="border rounded px-3 py-2 w-full"
-                    onChange={(e) =>
-                      setApplyData({ ...applyData, cv: e.target.files[0] })
-                    }
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="bg-green-600 text-white rounded py-2 font-semibold hover:bg-green-700 disabled:opacity-60"
-                    disabled={submitting}
-                  >
-                    {submitting ? "Submitting..." : "Submit Application"}
-                  </button>
-                </form>
-              )}
-
-              {submitStatus && (
-                <div className="mt-3 text-center text-green-600 font-medium">
-                  {submitStatus}
-                </div>
-              )}
-            </div>
+        {selectedJob.image && (
+          <div className="w-full flex justify-center">
+            <img
+              src={selectedJob.image}
+              alt={selectedJob.title}
+              className="w-full max-w-full h-auto rounded-md border object-contain"
+            />
           </div>
+        )}
+      </div>
+
+      {/* Right: Details + Apply */}
+      <div className="lg:w-1/3 w-full p-4 flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <h2 className="text-xl lg:text-2xl font-bold text-gray-900">
+            {selectedJob.title}
+          </h2>
+          <p className="text-gray-700">{selectedJob.company}</p>
+          <p className="text-gray-600">
+            Location:{" "}
+            <span className="font-medium">
+              {selectedJob.area === "Islandwide"
+                ? selectedJob.area
+                : selectedJob.selectedDistricts?.join(", ")}
+            </span>
+          </p>
+          <p className="text-blue-500">
+            Open: <span className="font-semibold text-green-700">{selectedJob.openingDay}</span> | Close:{" "}
+            <span className="font-semibold text-red-500">{selectedJob.closingDay}</span>
+          </p>
         </div>
-      )}
+
+        {!showApply ? (
+          <button
+            className="mt-4 w-full bg-yellow-500 text-white rounded py-3 font-semibold hover:bg-yellow-600"
+            onClick={() => setShowApply(true)}
+          >
+            Apply Now
+          </button>
+        ) : (
+          <form className="mt-4 flex flex-col gap-3" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              className="border rounded px-3 py-2 w-full"
+              placeholder="Full Name"
+              value={applyData.name}
+              onChange={(e) => setApplyData({ ...applyData, name: e.target.value })}
+              required
+            />
+            <input
+              type="email"
+              className="border rounded px-3 py-2 w-full"
+              placeholder="Email"
+              value={applyData.email}
+              onChange={(e) => setApplyData({ ...applyData, email: e.target.value })}
+              required
+            />
+            <textarea
+              className="border rounded px-3 py-2 w-full"
+              placeholder="Cover Letter / Message"
+              value={applyData.message}
+              onChange={(e) => setApplyData({ ...applyData, message: e.target.value })}
+              required
+            />
+            <input
+              type="file"
+              accept=".pdf,.doc,.docx"
+              className="border rounded px-3 py-2 w-full"
+              onChange={(e) => setApplyData({ ...applyData, cv: e.target.files[0] })}
+              required
+            />
+            <button
+              type="submit"
+              className="bg-green-600 text-white rounded py-2 font-semibold hover:bg-green-700 disabled:opacity-60"
+              disabled={submitting}
+            >
+              {submitting ? "Submitting..." : "Submit Application"}
+            </button>
+          </form>
+        )}
+
+        {submitStatus && (
+          <div className="mt-3 text-center text-green-600 font-medium">{submitStatus}</div>
+        )}
+      </div>
+    </div>
+  </div>
+)}
+
+
 
     </div>
   );

@@ -71,7 +71,7 @@ const categories = [
   }, [isOpen]);
 
   const sidebarHeightStyle = {
-    height: 'calc(100vh - 70px - 60px)', // 70px navbar, 70px footer. Adjust as needed!
+    height: 'calc(100vh - 70px - 57px)', // 70px navbar, 70px footer. Adjust as needed!
     top: '80px', // sidebar starts at bottom of navbar
   };
 

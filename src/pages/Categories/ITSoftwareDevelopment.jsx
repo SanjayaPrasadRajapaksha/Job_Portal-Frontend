@@ -153,12 +153,12 @@ export default function ITSoftwareDevelopment() {
                 </span>
               </div>
 
-              {/* Job Title & Company */}
+   {/* Job Title & Company */}
               <div className="mb-1">
-                <h3 className="text-sm font-extrabold text-gray-700 group-hover:text-yellow-600 transition-colors">
+                <h3 className="text-md font-bold text-gray-800 group-hover:text-yellow-600 transition-colors">
                   {job.title}
                 </h3>
-                <div className="text-xs text-gray-500 font-medium">
+                <div className="text-xs text-gray-700 font-medium">
                   {job.company}
                 </div>
               </div>
