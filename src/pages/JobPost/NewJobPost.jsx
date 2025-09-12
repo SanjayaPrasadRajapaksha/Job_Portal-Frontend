@@ -300,7 +300,7 @@ export default function NewJobPost() {
               />
             </div>
             <div>
-              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Vacancy Closing Day</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Vacancy Closing Day *</label>
               <input
                 type="date"
                 name="closingDay"
@@ -329,7 +329,7 @@ export default function NewJobPost() {
             </div>
 
             <div>
-              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Website (optional)</label>
+              <label className="block text-gray-600 text-sm font-medium mb-2 uppercase font-serif">Website <span className="text-gray-400 font-normal">(optional)</span></label>
               <input
                 type="url"
                 name="website"
