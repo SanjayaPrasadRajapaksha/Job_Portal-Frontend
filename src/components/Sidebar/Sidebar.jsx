@@ -80,12 +80,12 @@ const categories = [
       {/* Only show button when sidebar is hidden (mobile/tablet only) */}
       {!isOpen && (
         <button
-          className="block lg:hidden fixed top-1/2 left-0 z-50 bg-yellow-500 text-black font-semibold px-2 py-4 rounded-r-md shadow-lg transform -translate-y-1/2"
+          className="block lg:hidden fixed top-1/2 left-0 z-50 bg-yellow-500 text-black font-semibold px-1 py-4 rounded-r-md shadow-lg transform -translate-y-1/2"
           style={{
             writingMode: "vertical-lr",
             textOrientation: "mixed",
-            minHeight: "120px",
-            minWidth: "40px"
+            minHeight: "80px",
+            minWidth: "30px"
           }}
           onClick={() => setIsOpen(true)}
         >

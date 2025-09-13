@@ -26,8 +26,8 @@ function Layout({ children }) {
           {location.pathname.startsWith('/categories/') && (
             <div
               className="
-                bg-slate-200
-                border-b border-gray-300
+                bg-green-100
+                border-b border-green-200
                 px-2 py-2
                 shadow-sm
                 flex flex-col gap-2
