@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaBars, FaSignInAlt, FaUser } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function NavBar({ clearSidebarCategory }) {
