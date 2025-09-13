@@ -70,7 +70,7 @@ function ThankYouPopup({ onClose }) {
           </svg>
         </span>
         <h2 className="text-2xl font-extrabold mb-2 text-green-700 tracking-tight">Thank You!</h2>
-        <p className="text-gray-700 mb-4 text-center text-base">You have successfully subscribed to jobCore.lk updates.</p>
+        <p className="text-gray-700 mb-4 text-center text-base">You have successfully subscribed to <span className="text-green-700 font-bold">jobCore.lk</span> updates.</p>
       </div>
       <style>{`
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

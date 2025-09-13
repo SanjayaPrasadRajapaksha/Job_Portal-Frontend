@@ -36,13 +36,29 @@ export default function NavBar({ clearSidebarCategory }) {
         </Link>
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-3">
-          <Link
-            to="/post/new"
-            className="px-2 py-1 rounded-md bg-[#239BA7] text-white font-semibold shadow text-md"
-            onClick={clearSidebarCategory}
-          >
-            Post Vacancy
-          </Link>
+<Link
+  to="/post/new"
+  className="px-3 py-1 rounded-md text-white font-semibold shadow text-md
+             bg-gradient-to-r from-[#2bdff0] via-[#00c4cc] to-[#239BA7]
+             bg-[length:200%_200%] animate-[shimmer_3s_linear_infinite]"
+  onClick={clearSidebarCategory}
+>
+  Post Vacancy
+</Link>
+
+<style>
+{`
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+`}
+</style>
+
+
+
+
+
 
           {navLinks.map((link) => (
             <Link
@@ -75,14 +91,26 @@ export default function NavBar({ clearSidebarCategory }) {
 {isMenuOpen && (
   <div className="md:hidden fixed top-16 left-0 w-full text-center bg-white border-t border-yellow-400 shadow-xl flex flex-col p-4 space-y-3 animate-fadeIn z-50">
     
-    {/* Post Vacancy Button */}
-    <Link
-      to="/post/new"
-      className="px-4 py-2 rounded-md bg-gradient-to-r bg-[#239BA7] text-white font-semibold text-sm text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all"
-      onClick={() => setIsMenuOpen(false)}
-    >
-      Post Vacancy
-    </Link>
+  {/* Post Vacancy Button */}
+<Link
+  to="/post/new"
+  className="px-4 py-2 rounded-md text-white font-semibold text-sm text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all
+             bg-gradient-to-r from-[#2bdff0] via-[#00c4cc] to-[#239BA7]
+             bg-[length:200%_200%] animate-[shimmer_3s_linear_infinite]"
+  onClick={() => setIsMenuOpen(false)}
+>
+  Post Vacancy
+</Link>
+
+<style>
+{`
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+`}
+</style>
+
 
     {/* Navigation Links */}
     {navLinks.map((link) => (
