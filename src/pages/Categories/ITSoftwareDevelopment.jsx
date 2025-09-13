@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchFilter } from "../../context/SearchFilterContext";
 
-export default function ManufacturingProduction() {
+export default function ITSoftwareDevelopment() {
   const [jobList, setJobList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -46,8 +46,7 @@ export default function ManufacturingProduction() {
     const fetchJobs = async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/jobpost/category/Manufacturing & Production"
-
+          "http://localhost:5000/jobpost/category/IT%20%26%20Software%20Development"
         );
         const data = await res.json();
         if (data.status && Array.isArray(data.result)) {
@@ -123,7 +122,7 @@ export default function ManufacturingProduction() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredJobs.length === 0 ? (
           <div className="col-span-full text-center text-gray-600">
-            No jobs found for Manufacturing & Production.
+            No jobs found for IT & Software Development.
           </div>
         ) : (
           filteredJobs.map((job, i) => (
@@ -154,7 +153,7 @@ export default function ManufacturingProduction() {
                 </span>
               </div>
 
-    {/* Job Title & Company */}
+   {/* Job Title & Company */}
               <div className="mb-1">
                 <h3 className="text-md font-bold text-gray-800 group-hover:text-yellow-600 transition-colors">
                   {job.title}
@@ -208,7 +207,7 @@ export default function ManufacturingProduction() {
   <div className="fixed inset-0 z-50 flex items-start justify-center bg-black bg-opacity-50 p-4 overflow-auto">
     <div className="bg-white rounded-lg shadow-lg w-full max-w-5xl flex flex-col lg:flex-row relative">
       {/* Close button */}
-     <button
+      <button
         className="absolute top-0 right-2 text-red-500 hover:text-green-600 text-2xl z-10"
         onClick={() => setSelectedJob(null)}
       >

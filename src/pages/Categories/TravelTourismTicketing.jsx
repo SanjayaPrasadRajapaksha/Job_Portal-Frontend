@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchFilter } from "../../context/SearchFilterContext";
 
-export default function ManufacturingProduction() {
+export default function TravelTourismTicketing() {
   const [jobList, setJobList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -46,7 +46,7 @@ export default function ManufacturingProduction() {
     const fetchJobs = async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/jobpost/category/Manufacturing & Production"
+          "http://localhost:5000/jobpost/category/Travel, Tourism & Ticketing"
 
         );
         const data = await res.json();
@@ -123,7 +123,7 @@ export default function ManufacturingProduction() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredJobs.length === 0 ? (
           <div className="col-span-full text-center text-gray-600">
-            No jobs found for Manufacturing & Production.
+            No jobs found for Travel, Tourism & Ticketing.
           </div>
         ) : (
           filteredJobs.map((job, i) => (
@@ -154,7 +154,7 @@ export default function ManufacturingProduction() {
                 </span>
               </div>
 
-    {/* Job Title & Company */}
+     {/* Job Title & Company */}
               <div className="mb-1">
                 <h3 className="text-md font-bold text-gray-800 group-hover:text-yellow-600 transition-colors">
                   {job.title}

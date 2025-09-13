@@ -38,7 +38,7 @@ export default function Checkboxes({ values = {}, onChange }) {
           }
           className="accent-green-600 w-4 h-4 rounded"
         />
-        Full or Part Time
+  Full Time/Part Time
       </label>
     </div>
   );
