@@ -208,7 +208,7 @@ export default function ITSoftwareDevelopment() {
     <div className="bg-white rounded-lg shadow-lg w-full max-w-5xl flex flex-col lg:flex-row relative">
       {/* Close button */}
       <button
-        className="absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-2xl font-bold z-10"
+        className="absolute top-0 right-2 text-red-500 hover:text-green-600 text-2xl z-10"
         onClick={() => setSelectedJob(null)}
       >
         &times;

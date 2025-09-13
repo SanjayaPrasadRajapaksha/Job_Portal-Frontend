@@ -117,7 +117,7 @@ const categories = [
           {/* Circle close button (top right, mobile/tablet only) */}
           {isOpen && (
             <button
-              className="block lg:hidden absolute top-1 right-3 w-9 h-9 flex items-center justify-center rounded-full text-yellow-500 hover:text-red-600 transition-colors"
+              className="block lg:hidden absolute top-0 right-0 w-9 h-9 flex items-center justify-center rounded-full text-red-600 hover:text-red-700 transition-colors"
               onClick={() => setIsOpen(false)}
               aria-label="Close sidebar"
             >

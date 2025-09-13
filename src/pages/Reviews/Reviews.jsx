@@ -112,7 +112,7 @@ export default function Reviews() {
           </div>
 
           <button
-            className="px-3 py-1 sm:px-6 sm:py-2 rounded-full font-semibold text-xs sm:text-sm bg-orange-500 text-white shadow-md transition"
+            className="px-3 py-1 sm:px-6 sm:py-2 rounded-full font-semibold text-xs sm:text-sm bg-pink-500 text-white shadow-md transition"
             onClick={() => setShowForm(true)}
           >
             + Submit Review
@@ -127,7 +127,7 @@ export default function Reviews() {
               className="bg-white rounded-2xl shadow-md p-6 relative overflow-hidden border border-gray-200
                  transform transition-all duration-300 hover:shadow-xl hover:-translate-y-2"
             >
-              <div className="absolute top-0 left-0 w-full h-1 bg-orange-400 rounded-t-2xl" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-pink-400 rounded-t-2xl" />
               <div className="flex flex-col gap-1 mb-2 mt-2">
                 <div className="font-bold text-gray-800">{review.name}</div>
                 {review.role === "Employer" && (
@@ -154,7 +154,7 @@ export default function Reviews() {
           <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
             <div className="bg-white rounded-md p-4 sm:p-8 shadow-2xl w-full max-w-lg relative">
               <button
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl"
+                className="absolute top-0 right-2 text-red-500 hover:text-green-600 text-2xl"
                 onClick={() => setShowForm(false)}
               >
                 &times;
@@ -224,7 +224,7 @@ export default function Reviews() {
                 <div className="w-full flex justify-end">
                   <button
                     type="submit"
-                    className="bg-orange-500 text-white font-semibold py-1 px-4 sm:py-2 sm:px-6 rounded-xl shadow-md hover:shadow-lg transition text-xs sm:text-base"
+                    className="bg-pink-500 text-white font-semibold py-1 px-4 sm:py-2 sm:px-6 rounded-md shadow-md hover:shadow-lg transition text-xs sm:text-base"
                   >
                     Submit
                   </button>
