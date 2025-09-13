@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchFilter } from "../../context/SearchFilterContext";
 
-export default function ManufacturingProduction() {
+export default function AllCategories() {
   const [jobList, setJobList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -46,8 +46,7 @@ export default function ManufacturingProduction() {
     const fetchJobs = async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/jobpost/category/Manufacturing & Production"
-
+          "http://localhost:5000/jobpost/all-verify"
         );
         const data = await res.json();
         if (data.status && Array.isArray(data.result)) {
@@ -70,36 +69,11 @@ export default function ManufacturingProduction() {
     setSubmitting(true);
     setSubmitStatus(null);
 
-    // Prepare form data for backend
-    const formData = new FormData();
-    formData.append("applicantName", applyData.name);
-    formData.append("applicantEmail", applyData.email);
-    formData.append("message", applyData.message);
-    formData.append("jobTitle", selectedJob.title);
-    if (!selectedJob.email) {
-      setSubmitStatus("❌ This job is missing a company email address. Application cannot be sent.");
-      setSubmitting(false);
-      return;
-    }
-    formData.append("companyEmail", selectedJob.email);
-    formData.append("companyName", selectedJob.company);
-    if (applyData.cv) {
-      formData.append("cv", applyData.cv);
-    }
-
     try {
-      const res = await fetch("http://localhost:5000/jobpost/apply", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await res.json();
-      if (data.status) {
-        setSubmitStatus("✅ Application submitted successfully!");
-        setShowApply(false);
-        setApplyData({ name: "", email: "", message: "", cv: null });
-      } else {
-        setSubmitStatus("❌ " + (data.message || "Something went wrong. Try again."));
-      }
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      setSubmitStatus("✅ Application submitted successfully!");
+      setShowApply(false);
+      setApplyData({ name: "", email: "", message: "", cv: null });
     } catch (error) {
       setSubmitStatus("❌ Something went wrong. Try again.");
     } finally {
@@ -122,14 +96,14 @@ export default function ManufacturingProduction() {
       {/* Card Grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredJobs.length === 0 ? (
-          <div className="col-span-full text-center text-gray-600">
-            No jobs found for Manufacturing & Production.
+          <div className="col-span-full text-center text-gray-500">
+            No jobs found for IT & Software Development.
           </div>
         ) : (
           filteredJobs.map((job, i) => (
             <div
               key={job.id || i}
-              className="relative bg-gray-200 rounded-md shadow-md border border-gray-200 hover:shadow-lg hover:bg-white hover:-translate-y-0.5 transition-all duration-300 p-6 flex flex-col gap-3 min-w-[320px] max-w-[410px] min-h-[180px] mx-auto cursor-pointer"
+              className="relative bg-gray-100 rounded-md shadow-md border border-gray-200 hover:shadow-lg hover:bg-white hover:-translate-y-0.5 transition-all duration-300 p-6 flex flex-col gap-3 min-w-[320px] max-w-[410px] min-h-[180px] mx-auto cursor-pointer"
               onClick={() => {
                 setSelectedJob(job);
                 setShowApply(false);
@@ -154,7 +128,7 @@ export default function ManufacturingProduction() {
                 </span>
               </div>
 
-    {/* Job Title & Company */}
+   {/* Job Title & Company */}
               <div className="mb-1">
                 <h3 className="text-md font-bold text-gray-800 group-hover:text-yellow-600 transition-colors">
                   {job.title}

@@ -36,13 +36,29 @@ export default function NavBar({ clearSidebarCategory }) {
         </Link>
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-3">
-          <Link
-            to="/post/new"
-            className="px-2 py-1 rounded-md bg-[#239BA7] text-white font-semibold shadow text-md"
-            onClick={clearSidebarCategory}
-          >
-            Post Vacancy
-          </Link>
+<Link
+  to="/post/new"
+  className="px-3 py-1 rounded-md text-white font-semibold shadow text-md
+             bg-gradient-to-r from-[#2bdff0] via-[#00c4cc] to-[#239BA7]
+             bg-[length:200%_200%] animate-[shimmer_3s_linear_infinite]"
+  onClick={clearSidebarCategory}
+>
+  Post Vacancy
+</Link>
+
+<style>
+{`
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+`}
+</style>
+
+
+
+
+
 
           {navLinks.map((link) => (
             <Link
@@ -71,49 +87,49 @@ export default function NavBar({ clearSidebarCategory }) {
         </button>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-50 border-t border-yellow-400 flex flex-col p-4 space-y-2 shadow-lg animate-fadeIn">
-          <Link
-            to="/post/new"
-            className="px-1.5 py-1 rounded-md bg-green-600 text-white font-semibold text-sm"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Post Vacancy
-          </Link>
+ {/* Mobile Menu Dropdown */}
+{isMenuOpen && (
+  <div className="md:hidden fixed top-16 left-0 w-full text-center bg-white border-t border-yellow-400 shadow-xl flex flex-col p-4 space-y-3 animate-fadeIn z-50">
+    
+  {/* Post Vacancy Button */}
+<Link
+  to="/post/new"
+  className="px-4 py-2 rounded-md text-white font-semibold text-sm text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all
+             bg-gradient-to-r from-[#2bdff0] via-[#00c4cc] to-[#239BA7]
+             bg-[length:200%_200%] animate-[shimmer_3s_linear_infinite]"
+  onClick={() => setIsMenuOpen(false)}
+>
+  Post Vacancy
+</Link>
 
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`text-sm font-semibold ${location.pathname === link.path
-                ? 'text-green-700 underline'
-                : 'text-gray-800'
-                }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
+<style>
+{`
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+`}
+</style>
 
-          <div className="flex gap-2">
-            <Link
-              to="/user"
-              className="bg-yellow-400 rounded-md px-1.5 py-1 flex items-center justify-center border border-yellow-400 shadow-sm"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <FaUser className="text-lg text-black" />
-            </Link>
-            <Link
-              to="/login"
-              className="bg-yellow-400 rounded-md px-1.5 py-1 flex items-center justify-center border border-yellow-400 shadow-sm"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <FaSignInAlt className="text-lg text-black" />
-            </Link>
-          </div>
-        </div>
-      )}
+
+    {/* Navigation Links */}
+    {navLinks.map((link) => (
+      <Link
+        key={link.path}
+        to={link.path}
+        className={`text-sm font-semibold py-2 px-3 rounded-md transition-colors duration-200
+          ${location.pathname === link.path
+            ? 'bg-green-100 text-green-700 '
+            : 'text-gray-800 hover:bg-yellow-100 hover:text-green-900'
+          }`}
+        onClick={() => setIsMenuOpen(false)}
+      >
+        {link.label}
+      </Link>
+    ))}
+  </div>
+)}
+
     </nav>
   );
 }
