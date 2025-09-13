@@ -89,9 +89,11 @@ export default function Footer() {
   const [showThankYou, setShowThankYou] = useState(false);
   const [error, setError] = useState("");
   const [showErrorPopup, setShowErrorPopup] = useState(false);
+  const [subscribing, setSubscribing] = useState(false);
   const handleSubscribe = async (e) => {
     e.preventDefault();
     setError("");
+    setSubscribing(true);
     try {
       const res = await fetch("http://localhost:5000/subscribe/add", {
         method: "POST",
@@ -113,6 +115,8 @@ export default function Footer() {
       }
     } catch {
       setError("Error. Try again.");
+    } finally {
+      setSubscribing(false);
     }
   };
 
@@ -137,8 +141,9 @@ export default function Footer() {
           <button
             type="submit"
             className="h-7 px-2 bg-red-600 text-white rounded-r-md text-xs shadow-sm transition hover:bg-red-700"
+            disabled={subscribing}
           >
-            Subscribe
+            {subscribing ? "Subscribing..." : "Subscribe"}
           </button>
           {/* Inline error removed, now shown as popup */}
         </form>

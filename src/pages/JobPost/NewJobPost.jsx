@@ -79,6 +79,7 @@ export default function NewJobPost() {
   };
 
   const [descOrFileError, setDescOrFileError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.description.trim() && !form.image) {
@@ -86,6 +87,7 @@ export default function NewJobPost() {
       return;
     }
     setDescOrFileError('');
+    setSubmitting(true);
     try {
       await addJobPost(form);
       setForm(f => ({
@@ -112,6 +114,8 @@ export default function NewJobPost() {
       window.location.reload();
     } catch (err) {
       // Error handled by toast in Api.jsx
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -391,8 +395,9 @@ export default function NewJobPost() {
             <button
               type="submit"
               className="bg-teal-600 text-white font-semibold py-2 px-6 rounded-md text-sm transition duration-200 shadow-sm"
+              disabled={submitting}
             >
-              Submit
+              {submitting ? 'Submitting...' : 'Submit'}
             </button>
           </div>
 
